@@ -30,12 +30,12 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputValue);
+    console.log(e.target[0].value);
   };
 
   return (
     <div className="">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex flex-col border">
         <input type="text" name="namn" />
         <input type="text" name="efternamn" />
         <input type="text" name="skola" />
