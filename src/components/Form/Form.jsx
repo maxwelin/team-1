@@ -1,6 +1,7 @@
 const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(e.target[0].value);
   };
 
   return (
