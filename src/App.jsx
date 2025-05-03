@@ -1,5 +1,7 @@
 import "./App.css";
 import Form from "./components/Form/Form";
+import About from "./components/Portfolio/About";
+import Footer from "./components/Portfolio/Footer";
 import Hero from "./components/Portfolio/Hero";
 import Projects from "./components/Portfolio/Projects";
 import Skills from "./components/Portfolio/Skills";
@@ -13,6 +15,8 @@ function App() {
       <Skills />
       <Form />
       <Projects />
+      <About />
+      <Footer />
     </>
   );
 }
