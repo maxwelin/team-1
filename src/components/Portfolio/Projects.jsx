@@ -37,11 +37,11 @@ const Hero = () => {
                 isOpen ? "max-h-[1000px] pt-20" : "max-h-0"
               }`}
             >
-              <div className="relative text-center">
+              <div className="relative text-center pb-20">
                 <>
                   <button
                     onClick={() => sliderRef.current.slickPrev()}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 text-[#1C1C1C] text-[14px] md:text-[20px] tracking-widest rotate-[-90deg] origin-center z-10 hover:opacity-50 bg-[#FBFBFB] px-1 py-0.5 rounded"
+                    className="absolute left-0 top-0 translate-y-[50%] text-white text-[14px] z-10 md:text-[20px] tracking-widest rotate-[-90deg] hover:shadow-[0px_0px_15px_white] bg-black px-1 py-0.5 rounded cursor-pointer"
                   >
                     BACK
                   </button>
@@ -61,7 +61,7 @@ const Hero = () => {
                   </Slider>
                   <button
                     onClick={() => sliderRef.current.slickNext()}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 text-[#1C1C1C] text-[14px] md:text-[20px] tracking-widest rotate-[-90deg] origin-center z-10 hover:opacity-50 bg-[#FBFBFB] px-1 py-0.5 rounded"
+                    className="absolute right-0 top-0 translate-y-[50%] text-white text-[14px] md:text-[20px] z-10 tracking-widest rotate-[-90deg] hover:shadow-[0px_0px_15px_white] bg-black px-1 py-0.5 rounded cursor-pointer"
                   >
                     NEXT
                   </button>
