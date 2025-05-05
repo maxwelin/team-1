@@ -7,6 +7,21 @@
   --color-secondary: #f9f9f9;
 }
 
+.slick-dots li button {
+  position: absolute;
+  top: 32px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s;
+}
+
+.slick-dots li.slick-active button {
+  background-color: white;
+  transform: scale(1.2);
+}
+
 * {
   box-sizing: border-box;
   font-family: Helvetica, sans-serif;
