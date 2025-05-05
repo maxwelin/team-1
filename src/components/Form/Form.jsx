@@ -1,7 +1,45 @@
+import { useContext } from "react";
+import { FormContext } from "../providers/FormContext";
+
 const Form = () => {
+  const {
+    setFirstName,
+    setLastName,
+    setSchool,
+    setEducation,
+    setEmail,
+    setPhoneNumber,
+    setGithubURL,
+    setLinkedInURL,
+    setAboutMe,
+    setHeader,
+  } = useContext(FormContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
+
+    const form = e.target;
+    const firstName = form[0].value;
+    const LastName = form[1].value;
+    const School = form[2].value;
+    const Education = form[3].value;
+    const Email = form[4].value;
+    const PhoneNumber = form[5].value;
+    const GithubURL = form[6].value;
+    const LinkedInURL = form[7].value;
+    const AboutMe = form[8].value;
+    const Header = form[9].value;
+
+    setFirstName(firstName);
+    setLastName(LastName);
+    setSchool(School);
+    setEducation(Education);
+    setEmail(Email);
+    setPhoneNumber(PhoneNumber);
+    setGithubURL(GithubURL);
+    setLinkedInURL(LinkedInURL);
+    setAboutMe(AboutMe);
+    setHeader(Header);
   };
 
   return (
