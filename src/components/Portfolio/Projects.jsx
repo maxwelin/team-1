@@ -41,7 +41,7 @@ const Hero = () => {
                 <>
                   <button
                     onClick={() => sliderRef.current.slickPrev()}
-                    className="absolute left-0 top-0 translate-y-[50%] text-white text-[14px] z-10 md:text-[20px] tracking-widest rotate-[-90deg] hover:shadow-[0px_0px_15px_white] bg-black px-1 py-0.5 rounded cursor-pointer"
+                    className="absolute left-0 top-0 translate-y-[50%] text-white text-[14px] z-10 md:text-[20px] tracking-widest rotate-[-90deg] hover:underline underline-offset-4 bg-black px-1 py-0.5 rounded cursor-pointer"
                   >
                     BACK
                   </button>
@@ -61,7 +61,7 @@ const Hero = () => {
                   </Slider>
                   <button
                     onClick={() => sliderRef.current.slickNext()}
-                    className="absolute right-0 top-0 translate-y-[50%] text-white text-[14px] md:text-[20px] z-10 tracking-widest rotate-[-90deg] hover:shadow-[0px_0px_15px_white] bg-black px-1 py-0.5 rounded cursor-pointer"
+                    className="absolute right-0 top-0 translate-y-[50%] text-white text-[14px] md:text-[20px] hover:underline underline-offset-4 z-10 tracking-widest rotate-[-90deg] bg-black px-1 py-0.5 rounded cursor-pointer"
                   >
                     NEXT
                   </button>
