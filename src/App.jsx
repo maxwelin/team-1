@@ -9,14 +9,16 @@ import Skills from "./components/Portfolio/Skills";
 function App() {
   return (
     <>
-      <h1 className="text-5xl text-center bg-primary">Hello world</h1>
-      <p className="text-2xl text-center bg-secondary">from team one</p>
-      <Hero />
-      <Skills />
-      <Form />
-      <Projects />
-      <About />
-      <Footer />
+      <div className="grid grid-cols-9 bg-black">
+        <div className="col-start-2 col-end-9">
+          <Hero />
+          <About />
+          <Skills />
+          <Form />
+          <Projects />
+          <Footer />
+        </div>
+      </div>
     </>
   );
 }
