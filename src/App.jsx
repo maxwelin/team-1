@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <div className="grid grid-cols-9 bg-black">
-        <div className="col-start-2 col-end-9">
+        <div className="col-start-2 col-end-9 pt-[200px]">
           <Hero />
           <About />
           <Skills />
