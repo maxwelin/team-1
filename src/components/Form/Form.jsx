@@ -15,6 +15,7 @@ const Form = () => {
     profilePic,
     setProfilePic,
     setHeader,
+    setToggleForm,
   } = useContext(FormContext);
 
   const handleImageUpload = (e) => {
@@ -52,6 +53,8 @@ const Form = () => {
     setGithubURL(GithubURL);
     setLinkedInURL(LinkedInURL);
     setAboutMe(AboutMe);
+
+    setToggleForm(false);
   };
 
   return (
