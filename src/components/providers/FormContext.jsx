@@ -13,6 +13,7 @@ const FormContextProvider = ({ children }) => {
   const [linkedInURL, setLinkedInURL] = useState(
     "https://linkedin.com/in/johndoe"
   );
+  const [profilePic, setProfilePic] = useState(null);
   const [aboutMe, setAboutMe] = useState(
     "I'm a passionate developer with a love for clean code and elegant design."
   );
@@ -29,6 +30,7 @@ const FormContextProvider = ({ children }) => {
         phoneNumber,
         githubURL,
         linkedInURL,
+        profilePic,
         aboutMe,
         header,
         setFirstName,
@@ -39,6 +41,7 @@ const FormContextProvider = ({ children }) => {
         setPhoneNumber,
         setGithubURL,
         setLinkedInURL,
+        setProfilePic,
         setAboutMe,
         setHeader,
       }}
