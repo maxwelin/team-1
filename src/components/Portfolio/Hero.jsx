@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { GoPlus } from "react-icons/go";
 import { HiOutlineMinus } from "react-icons/hi2";
 import { CgProfile } from "react-icons/cg";
+import { FormContext } from "../Providers/FormContext";
 
 const Hero = () => {
+  const { firstName, lastName, school, education, profilePic } =
+    useContext(FormContext);
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -12,13 +16,15 @@ const Hero = () => {
       <div className="bg-black text-white text-6xl">
         <div className="flex justify-between items-start gap-10">
           <div className="flex flex-col">
-            <h1 className="font-bold">HI. IM NAME LASTNAME</h1>
-            <h2 className="text-6xl">STUDENT AT SCHOOL</h2>
-            <h2 className="text-6xl mb-8">(EDUCATION)</h2>
+            <h1 className="font-bold">
+              HI. IM {firstName} {lastName}
+            </h1>
+            <h2 className="text-6xl">STUDENT AT {school}</h2>
+            <h2 className="text-6xl mb-8">({education})</h2>
 
             <div className="border-t border-b border-white w-full max-w-[700px]">
               <div
-                className="flex justify-between items-center py-4 cursor-pointer"
+                className="flex justify-between items-center py-1 cursor-pointer"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 <span className="text-4xl">CV</span>
@@ -50,7 +56,15 @@ const Hero = () => {
           </div>
 
           <div className="shrink-0">
-            <CgProfile className="text-white text-[220px]" />
+            {profilePic ? (
+              <img
+                className="h-[300px] w-[300px] rounded-[50%] object-center object-cover"
+                src={profilePic}
+                alt=""
+              />
+            ) : (
+              <CgProfile className="text-white text-[220px]" />
+            )}
           </div>
         </div>
       </div>
