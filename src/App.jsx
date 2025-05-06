@@ -1,7 +1,5 @@
 import "./App.css";
 import Main from "./components/Common/Main";
-import Form from "./components/Form/Form";
-import Portfolio from "./components/Portfolio/Portfolio";
 import { FormContextProvider } from "./components/providers/FormContext";
 
 function App() {

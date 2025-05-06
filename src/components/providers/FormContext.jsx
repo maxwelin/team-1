@@ -4,16 +4,14 @@ const FormContext = createContext(undefined);
 
 const FormContextProvider = ({ children }) => {
   const [toggleForm, setToggleForm] = useState(true);
-  const [firstName, setFirstName] = useState("John");
-  const [lastName, setLastName] = useState("Doe");
-  const [school, setSchool] = useState("Example University");
-  const [education, setEducation] = useState("B.S. in Computer Science");
-  const [email, setEmail] = useState("john.doe@example.com");
-  const [phoneNumber, setPhoneNumber] = useState("123-456-7890");
-  const [githubURL, setGithubURL] = useState("https://github.com/johndoe");
-  const [linkedInURL, setLinkedInURL] = useState(
-    "https://linkedin.com/in/johndoe"
-  );
+  const [firstName, setFirstName] = useState("First name");
+  const [lastName, setLastName] = useState("Last name");
+  const [school, setSchool] = useState("School");
+  const [education, setEducation] = useState("Education");
+  const [email, setEmail] = useState("Email");
+  const [phoneNumber, setPhoneNumber] = useState("Phone number");
+  const [githubURL, setGithubURL] = useState("Github");
+  const [linkedInURL, setLinkedInURL] = useState("LinkedIn");
   const [profilePic, setProfilePic] = useState(null);
   const [aboutMe, setAboutMe] = useState(
     "I'm a passionate developer with a love for clean code and elegant design."
