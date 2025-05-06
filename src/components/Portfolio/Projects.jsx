@@ -4,7 +4,7 @@ import { GoPlus } from "react-icons/go";
 import { HiOutlineMinus } from "react-icons/hi2";
 import Slider from "react-slick";
 
-const Hero = () => {
+const Projects = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   var settings = {
@@ -75,4 +75,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Projects;

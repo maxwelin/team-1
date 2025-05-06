@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 const FormContext = createContext(undefined);
 
 const FormContextProvider = ({ children }) => {
+  const [toggleForm, setToggleForm] = useState(true);
   const [firstName, setFirstName] = useState("John");
   const [lastName, setLastName] = useState("Doe");
   const [school, setSchool] = useState("Example University");
@@ -22,6 +23,7 @@ const FormContextProvider = ({ children }) => {
   return (
     <FormContext.Provider
       value={{
+        toggleForm,
         firstName,
         lastName,
         school,
@@ -33,6 +35,7 @@ const FormContextProvider = ({ children }) => {
         profilePic,
         aboutMe,
         header,
+        setToggleForm,
         setFirstName,
         setLastName,
         setSchool,
