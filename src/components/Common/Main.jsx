@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Form from "../Form/Form";
 import Portfolio from "../Portfolio/Portfolio";
-import { FormContext } from "../Providers/FormContext";
+import { FormContext } from "../providers/FormContext";
 
 const Main = () => {
   const { toggleForm, setToggleForm } = useContext(FormContext);

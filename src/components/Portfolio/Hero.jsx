@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { GoPlus } from "react-icons/go";
 import { HiOutlineMinus } from "react-icons/hi2";
 import { CgProfile } from "react-icons/cg";
-import { FormContext } from "../Providers/FormContext";
+import { FormContext } from "../providers/FormContext";
 
 const Hero = () => {
   const { firstName, lastName, school, education, profilePic } =
