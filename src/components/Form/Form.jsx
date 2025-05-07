@@ -25,6 +25,8 @@ const Form = () => {
     setToggleForm,
     fileName,
     setFileName,
+    cvFile,
+    setCvFile,
   } = useContext(FormContext);
 
   const handleImageUpload = (e) => {
@@ -33,6 +35,12 @@ const Form = () => {
       setFileName(file.name);
       const imageUrl = URL.createObjectURL(file);
       setProfilePic(imageUrl);
+    }
+  };
+  const handleCVUpload = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type === "application/pdf") {
+      setCvFile(file); // ✅ filen, inte URL.createObjectURL(file)
     }
   };
 
@@ -109,7 +117,13 @@ const Form = () => {
             <label className="absolute" htmlFor="cv">
               Upload CV
             </label>
-            <input className="opacity-0" type="file" accept=".pdf" name="cv" />
+            <input
+              className="opacity-0"
+              type="file"
+              accept="application/pdf"
+              name="cv"
+              onChange={handleCVUpload}
+            />
           </div>
 
           <div className="relative">
