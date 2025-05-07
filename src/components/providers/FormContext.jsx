@@ -18,7 +18,6 @@ const FormContextProvider = ({ children }) => {
   );
   const [header, setHeader] = useState("Front End Developer");
   const [fileName, setFileName] = useState(null);
-  const [cvFile, setCvFile] = useState(null);
 
   return (
     <FormContext.Provider
@@ -36,7 +35,6 @@ const FormContextProvider = ({ children }) => {
         aboutMe,
         header,
         fileName,
-        cvFile,
         setToggleForm,
         setFirstName,
         setLastName,
@@ -50,7 +48,6 @@ const FormContextProvider = ({ children }) => {
         setAboutMe,
         setHeader,
         setFileName,
-        setCvFile,
       }}
     >
       {children}

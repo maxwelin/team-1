@@ -28,8 +28,6 @@ const Form = () => {
     setToggleForm,
     fileName,
     setFileName,
-    cvFile,
-    setCvFile,
   } = useContext(FormContext);
 
   const handleImageUpload = (e) => {
@@ -38,12 +36,6 @@ const Form = () => {
       setFileName(file.name);
       const imageUrl = URL.createObjectURL(file);
       setProfilePic(imageUrl);
-    }
-  };
-  const handleCVUpload = (e) => {
-    const file = e.target.files[0];
-    if (file && file.type === "application/pdf") {
-      setCvFile(file); // ✅ filen, inte URL.createObjectURL(file)
     }
   };
 
@@ -158,13 +150,13 @@ const Form = () => {
                   {profilePic ? fileName : "Upload profile img"}
                   <BsFiletypeJpg />
                 </label>
-               <input
-              className="opacity-0"
-              type="file"
-              accept="application/pdf"
-              name="cv"
-              onChange={handleCVUpload}
-            />
+                <input
+                  className="opacity-0"
+                  type="file"
+                  accept="image/*"
+                  name="profilePicture"
+                  onChange={handleImageUpload}
+                />
               </div>
             </div>
           </div>
@@ -183,6 +175,13 @@ const Form = () => {
             placeholder="Something about you/Cover letter"
             className="outline-none border-t border-b border-white w-full text-2xl font-thin text-white pb-15 pt-3"
           />
+        </div>
+
+        {/* <textarea
+          name="about"
+          defaultValue=""
+          placeholder="About me"
+        ></textarea> */}
 
         <div className="flex flex-col mt-30 mb-30">
           <p className="text-white text-3xl text-left font-normal">
