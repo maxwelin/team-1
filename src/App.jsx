@@ -1,5 +1,6 @@
 import "./App.css";
 import Main from "./components/Common/Main";
+import Footer from "./components/Portfolio/Footer";
 import { FormContextProvider } from "./components/providers/FormContext";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <div className="grid grid-cols-9 bg-black">
         <div className="col-start-2 col-end-9 pt-[200px]">
           <Main />
+          <Footer />
         </div>
       </div>
     </FormContextProvider>
