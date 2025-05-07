@@ -9,7 +9,7 @@
 
 .slick-dots li button {
   position: absolute;
-  top: 32px;
+  top: 80px;
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -20,6 +20,14 @@
 .slick-dots li.slick-active button {
   background-color: white;
   transform: scale(1.2);
+}
+
+.slick-slide > div {
+  margin: 0 40px;
+}
+
+.slick-list {
+  overflow: visible;
 }
 
 * {
