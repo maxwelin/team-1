@@ -8,6 +8,8 @@ const Projects = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   var settings = {
+    centerMode: true,
+    centerPadding: "260px",
     dots: true,
     infinite: true,
     speed: 500,
@@ -26,7 +28,7 @@ const Projects = () => {
               className="flex justify-between items-center py-1 cursor-pointer"
               onClick={() => setIsOpen(!isOpen)}
             >
-              <span className="text-4xl">PROJECTS</span>
+              <span className="text-4xl">MY PROJECTS</span>
               <span className="text-4xl ">
                 {isOpen ? <HiOutlineMinus /> : <GoPlus />}
               </span>
@@ -37,35 +39,31 @@ const Projects = () => {
                 isOpen ? "max-h-[1000px] pt-20" : "max-h-0"
               }`}
             >
-              <div className="relative text-center pb-20">
-                <>
-                  <button
-                    onClick={() => sliderRef.current.slickPrev()}
-                    className="absolute left-0 top-0 translate-y-[50%] text-white text-[14px] z-10 md:text-[20px] tracking-widest rotate-[-90deg] hover:underline underline-offset-4 bg-black px-1 py-0.5 rounded cursor-pointer"
-                  >
-                    BACK
-                  </button>
-                  <Slider ref={sliderRef} {...settings}>
-                    <div>
-                      <h3>Lorem</h3>
+              <div className="relative text-center pb-30 overflow-visible">
+                <button
+                  onClick={() => sliderRef.current.slickPrev()}
+                  className="absolute left-5 top-[30%] text-white text-[14px] z-10 md:text-[20px] tracking-widest rotate-[-90deg] hover:bg-transparent hover:text-black bg-black px-1 py-0.5 rounded cursor-pointer"
+                >
+                  BACK
+                </button>
+                <Slider ref={sliderRef} {...settings}>
+                  {["Lorem", "Ipsum", "För", "Helvete"].map((text, i) => (
+                    <div className="bg-[#D9D9D9] w-[660px] h-[330px] relative">
+                      <h3 className="absolute left-1/2 -translate-x-1/2 -top-15 z-10 text-5xl">
+                        {text}
+                      </h3>
+                      <h3 className="absolute left-1/2 -translate-x-1/2 -bottom-15 z-10 text-5xl">
+                        {text}
+                      </h3>
                     </div>
-                    <div>
-                      <h3>Ipsum</h3>
-                    </div>
-                    <div>
-                      <h3>För</h3>
-                    </div>
-                    <div>
-                      <h3>Helvete</h3>
-                    </div>
-                  </Slider>
-                  <button
-                    onClick={() => sliderRef.current.slickNext()}
-                    className="absolute right-0 top-0 translate-y-[50%] text-white text-[14px] md:text-[20px] hover:underline underline-offset-4 z-10 tracking-widest rotate-[-90deg] bg-black px-1 py-0.5 rounded cursor-pointer"
-                  >
-                    NEXT
-                  </button>
-                </>
+                  ))}
+                </Slider>
+                <button
+                  onClick={() => sliderRef.current.slickNext()}
+                  className="absolute right-5 top-[30%] text-white text-[14px] md:text-[20px] hover:bg-transparent  hover:text-black z-10 tracking-widest rotate-[-90deg] bg-black px-1 py-0.5 rounded cursor-pointer"
+                >
+                  NEXT
+                </button>
               </div>
             </div>
           </div>
