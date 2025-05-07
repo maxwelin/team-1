@@ -42,7 +42,7 @@ const Projects = () => {
               <div className="relative text-center pb-30 overflow-visible">
                 <button
                   onClick={() => sliderRef.current.slickPrev()}
-                  className="absolute left-5 top-[30%] text-white text-[14px] z-10 md:text-[20px] tracking-widest rotate-[-90deg] hover:underline underline-offset-4 bg-black px-1 py-0.5 rounded cursor-pointer"
+                  className="absolute left-5 top-[30%] text-white text-[14px] z-10 md:text-[20px] tracking-widest rotate-[-90deg] hover:bg-transparent hover:text-black bg-black px-1 py-0.5 rounded cursor-pointer"
                 >
                   BACK
                 </button>
@@ -60,7 +60,7 @@ const Projects = () => {
                 </Slider>
                 <button
                   onClick={() => sliderRef.current.slickNext()}
-                  className="absolute right-5 top-[30%] text-white text-[14px] md:text-[20px] hover:underline underline-offset-4 z-10 tracking-widest rotate-[-90deg] bg-black px-1 py-0.5 rounded cursor-pointer"
+                  className="absolute right-5 top-[30%] text-white text-[14px] md:text-[20px] hover:bg-transparent  hover:text-black z-10 tracking-widest rotate-[-90deg] bg-black px-1 py-0.5 rounded cursor-pointer"
                 >
                   NEXT
                 </button>
