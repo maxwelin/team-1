@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { FormContext } from "../providers/FormContext";
-import { BsFiletypePdf } from "react-icons/bs";
-import { BsFiletypeJpg } from "react-icons/bs";
+import { BsFiletypePdf, BsFiletypeJpg } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 
 const Form = () => {
@@ -28,6 +27,10 @@ const Form = () => {
     setToggleForm,
     fileName,
     setFileName,
+    cvFile,
+    setCvFile,
+    cvFileName,
+    setCvFileName,
   } = useContext(FormContext);
 
   const handleImageUpload = (e) => {
@@ -36,6 +39,14 @@ const Form = () => {
       setFileName(file.name);
       const imageUrl = URL.createObjectURL(file);
       setProfilePic(imageUrl);
+    }
+  };
+
+  const handleCVUpload = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type === "application/pdf") {
+      setCvFile(file);
+      setCvFileName(file.name);
     }
   };
 
@@ -126,23 +137,20 @@ const Form = () => {
               className="outline-none border-t border-b border-white w-full text-3xl font-light text-white"
             />
             <div className="flex gap-6 w-full">
-              <div className="relative w-full">
-                <label
-                  className="absolute cursor-pointer w-full flex justify-between items-center border-t border-b border-white text-3xl font-light text-white"
-                  htmlFor="cv"
-                >
-                  Upload CV
-                  <BsFiletypePdf />
-                </label>
+              <label className="relative w-full cursor-pointer">
+                <div className="flex justify-between items-center border-t border-b border-white text-3xl font-light text-white">
+                  {cvFileName ? cvFileName : "Upload CV"} <BsFiletypePdf />
+                </div>
                 <input
-                  className="opacity-0"
+                  className="opacity-0 absolute inset-0"
                   type="file"
-                  accept=".pdf"
+                  accept="application/pdf"
                   name="cv"
+                  onChange={handleCVUpload}
                 />
-              </div>
+              </label>
 
-              <div className="relative w-full">
+              <div className="relative w-full cursor-pointer">
                 <label
                   htmlFor="profilePicture"
                   className="absolute cursor-pointer w-full flex justify-between items-center border-t border-b border-white text-3xl font-light text-white"
