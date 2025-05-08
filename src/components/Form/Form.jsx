@@ -85,7 +85,7 @@ const Form = () => {
     setPhoneNumber(form.telephone.value.toUpperCase());
     setGithubURL(form.github.value.toUpperCase());
     setLinkedInURL(form.linkedIn.value.toUpperCase());
-    setAboutMe(form.about.value.toUpperCase());
+    setAboutMe(form.header.value.toUpperCase());
 
     setToggleForm(false);
   };
