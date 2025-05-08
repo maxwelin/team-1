@@ -5,7 +5,7 @@ import { HiOutlineMinus } from "react-icons/hi2"; // minus icon
 
 const Footer = () => {
   const { firstName, lastName, school } = useContext(FormContext);
-  const [isOpen, setIsOpen] = useState(true); // Initially open
+  const [isOpen, setIsOpen] = useState(true); // initially open
 
   const toggleFooter = () => {
     setIsOpen(!isOpen);
@@ -13,7 +13,6 @@ const Footer = () => {
 
   return (
     <div className="bg-black text-white text-xl mx-10 my-10">
-      {/* Header with toggle button */}
       <div className="flex justify-between items-center">
         <h1>NAMN EFTERNAMN</h1>
         <button onClick={toggleFooter} className="text-white text-2xl">
@@ -21,7 +20,6 @@ const Footer = () => {
         </button>
       </div>
 
-      {/* Content that shows/hides based on isOpen */}
       {isOpen && (
         <div className="mt-4">
           <h2>{firstName}</h2>
