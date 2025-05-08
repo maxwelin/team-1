@@ -1,6 +1,7 @@
 import "./App.css";
 import Main from "./components/Common/Main";
 import Footer from "./components/Portfolio/Footer";
+import ScrollToTop from "./components/Common/ScrollToTop";
 import { FormContextProvider } from "./components/providers/FormContext";
 
 function App() {
@@ -11,6 +12,9 @@ function App() {
           <Main />
           <Footer />
         </div>
+      </div>
+      <div className="col-start-9 col-end-10 flex justify-end items-end p-4">
+        <ScrollToTop />
       </div>
     </FormContextProvider>
   );
