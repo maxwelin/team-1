@@ -10,7 +10,7 @@ const Skills = () => {
       <div className="flex justify-between items-start gap-10">
         <div className="border-t border-b border-white w-full max-w-[100%]">
           <div
-            className="flex justify-between items-center py-4 cursor-pointer"
+            className="flex justify-between items-center py-1 cursor-pointer"
             onClick={() => setIsOpen(!isOpen)}
           >
             <span className="4xl">SKILLS</span>
