@@ -13,39 +13,50 @@ const Hero = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="my-20">
+    <section className="mt-10 mb-[300px]">
       <div className="bg-black text-white text-6xl tracking-tighter">
         <div className="flex justify-between items-start">
           <div className="flex flex-col">
-            <h1 className="font-bold text-[#FF58C7]">
-              HI. IM {firstName} {lastName}
+            <h1 className="font-bold">
+              <span className="text-white">HI. I'M </span>
+              <span className="text-[#FF58C7]">
+                {firstName} {lastName}
+              </span>
             </h1>
             <h2 className="text-5xl font-light mt-2">STUDENT AT {school}</h2>
             <h2 className="text-5xl font-light mb-8 mt-2">({education})</h2>
 
-            <div className="border-t border-b border-white w-full max-w-[900px]">
-              <div
-                className="flex justify-between items-center py-1 cursor-pointer"
-                onClick={() => setIsOpen(!isOpen)}
-              >
-                <span className="text-4xl">CV</span>
-                <span className="text-4xl transition-all">
-                  {isOpen ? <HiOutlineMinus /> : <GoPlus />}
-                </span>
+            <div className="text-[#FF58C7]">
+              <div className="border-t border-b w-full max-w-[900px]">
+                <div
+                  className="flex justify-between items-center py-1 cursor-pointer"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <span className="text-4xl">CV</span>
+                  <span className="text-4xl transition-all">
+                    {isOpen ? <HiOutlineMinus /> : <GoPlus />}
+                  </span>
+                </div>
+                {isOpen && <CVViewer />}
               </div>
-              {isOpen && <CVViewer />}
             </div>
           </div>
 
-          <div className="shrink-0">
+          <div className="shrink-0 relative w-fit mt-[-0%]">
             {profilePic ? (
-              <img
-                className="h-[400px] w-[400px] rounded-[50%] mt-[-18%] object-center object-cover border-4 border-[#FF58C7]"
-                src={profilePic}
-                alt=""
-              />
+              <>
+                {/* Offset ram bakom bilden */}
+                <div className="absolute top-4 left-4 w-full h-full border-1 border-[#FF58C7] z-0"></div>
+
+                {/* Själva bilden */}
+                <img
+                  className="relative z-10 h-[400px] w-[300px] object-center object-cover"
+                  src={profilePic}
+                  alt=""
+                />
+              </>
             ) : (
-              <CgProfile className="text-white text-[220px] " />
+              <CgProfile className="text-white text-[220px]" />
             )}
           </div>
         </div>
