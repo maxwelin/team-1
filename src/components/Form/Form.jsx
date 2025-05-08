@@ -1,9 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FormContext } from "../providers/FormContext";
 import { BsFiletypePdf, BsFiletypeJpg } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 
 const Form = () => {
+  const [bgColor, setBgColor] = useState("#000000");
+  const [fontColor, setFontColor] = useState("#FFFFFF");
+  const [accentColor, setAccentColor] = useState("#1EFF00");
+  const [bgColorName, setBgColorName] = useState("Black #000000");
+  const [fontColorName, setFontColorName] = useState("White #FFFFFF");
+  const [accentColorName, setAccentColorName] = useState("Green #1EFF00");
+
   const {
     firstName,
     lastName,
@@ -47,6 +54,22 @@ const Form = () => {
     if (file && file.type === "application/pdf") {
       setCvFile(file);
       setCvFileName(file.name);
+    }
+  };
+
+  const handleColorChange = (e) => {
+    const currentColor = e.target.value;
+    const colorName = e.target.name;
+
+    if (colorName === "bgColor") {
+      setBgColor(currentColor);
+      setBgColorName(currentColor.toUpperCase());
+    } else if (colorName === "fontColor") {
+      setFontColor(currentColor);
+      setFontColorName(currentColor.toUpperCase());
+    } else if (colorName === "accentColor") {
+      setAccentColor(currentColor);
+      setAccentColorName(currentColor.toUpperCase());
     }
   };
 
@@ -185,12 +208,6 @@ const Form = () => {
           />
         </div>
 
-        {/* <textarea
-          name="about"
-          defaultValue=""
-          placeholder="About me"
-        ></textarea> */}
-
         <div className="flex flex-col mt-30 mb-30">
           <p className="text-white text-3xl text-left font-normal">
             Upload images of your projects
@@ -235,36 +252,44 @@ const Form = () => {
           </p>
           <select
             name="fontTheme"
-            className="outline-none border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1"
+            className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1"
           >
             <option value="sans">Helvetica</option>
             <option value="poppins">Poppins</option>
             <option value="mono">Monospace</option>
           </select>
-          <select
-            name="fontTheme"
-            className="outline-none border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1"
-          >
-            <option value="sans">Helvetica</option>
-            <option value="poppins">Poppins</option>
-            <option value="mono">Monospace</option>
-          </select>
-          <select
-            name="fontTheme"
-            className="outline-none border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1"
-          >
-            <option value="sans">Helvetica</option>
-            <option value="poppins">Poppins</option>
-            <option value="mono">Monospace</option>
-          </select>
-          <select
-            name="fontTheme"
-            className="outline-none border-t border-b border-[#FF58C7] w-full text-3xl font-light text-[#FF58C7] pt-1 pb-1"
-          >
-            <option value="sans">Helvetica</option>
-            <option value="poppins">Poppins</option>
-            <option value="mono">Monospace</option>
-          </select>
+
+          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1">
+            {bgColorName}
+            <input
+              type="color"
+              value={bgColor}
+              onChange={handleColorChange}
+              name="bgColor"
+              className="opacity-0 cursor-pointer"
+            />
+          </label>
+
+          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1">
+            {fontColorName}
+            <input
+              type="color"
+              value={fontColor}
+              onChange={handleColorChange}
+              name="fontColor"
+              className="opacity-0 cursor-pointer"
+            />
+          </label>
+          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1">
+            {accentColorName}
+            <input
+              type="color"
+              value={accentColor}
+              onChange={handleColorChange}
+              name="accentColor"
+              className="opacity-0 cursor-pointer"
+            />
+          </label>
         </div>
 
         <p className="text-white text-1xl text-left mb-2 font-normal w-2/3">
@@ -276,11 +301,9 @@ const Form = () => {
           realtid.
         </p>
 
-        {/* <input type="color" name="colorTheme" /> */}
-
         <button
           type="submit"
-          className="cursor-pointer items-center pl-4 pr-4 rounded-4xl mt-20 mb-20 text-black text-2xl bg-[#FF58C7]"
+          className="cursor-pointer items-center pl-4 pr-4 rounded-4xl mt-20 mb-20 text-black text-2xl bg-[#FF58C7] transition duration-300 ease-in-out hover:bg-fuchsia-600"
         >
           SUBMIT
         </button>
