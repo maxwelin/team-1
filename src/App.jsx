@@ -1,19 +1,22 @@
 import "./App.css";
-import Form from "./components/Form/Form";
-import Hero from "./components/Portfolio/Hero";
-import Projects from "./components/Portfolio/Projects";
-import Skills from "./components/Portfolio/Skills";
+import Main from "./components/Common/Main";
+import Footer from "./components/Portfolio/Footer";
+import ScrollToTop from "./components/Common/ScrollToTop";
+import { FormContextProvider } from "./components/providers/FormContext";
 
 function App() {
   return (
-    <>
-      <h1 className="text-5xl text-center bg-primary">Hello world</h1>
-      <p className="text-2xl text-center bg-secondary">from team one</p>
-      <Hero />
-      <Skills />
-      <Form />
-      <Projects />
-    </>
+    <FormContextProvider>
+      <div className="grid grid-cols-9 bg-black">
+        <div className="col-start-2 col-end-9 pt-[200px]">
+          <Main />
+          <Footer />
+        </div>
+      </div>
+      <div className="col-start-9 col-end-10 flex justify-end items-end p-4">
+        <ScrollToTop />
+      </div>
+    </FormContextProvider>
   );
 }
 

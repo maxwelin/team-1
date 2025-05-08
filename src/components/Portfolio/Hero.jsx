@@ -1,11 +1,68 @@
+import { useContext, useState } from "react";
+import { FormContext } from "../providers/FormContext";
+import CVViewer from "./CVViewer";
 
+import { GoPlus } from "react-icons/go";
+import { HiOutlineMinus } from "react-icons/hi2";
+import { CgProfile } from "react-icons/cg";
 
 const Hero = () => {
-  return (
-    <div className="bg-black text-xl text-white px-10 py-10">
-      <h1>Jerker</h1>
-    </div>
-  )
-}
+  const { firstName, lastName, school, education, profilePic } =
+    useContext(FormContext);
 
-export default Hero
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <section className="mt-10 mb-[300px]">
+      <div className="bg-black text-white text-6xl tracking-tighter">
+        <div className="flex justify-between items-start">
+          <div className="flex flex-col">
+            <h1 className="font-bold">
+              <span className="text-white">HI. I'M </span>
+              <span className="text-[#FF58C7]">
+                {firstName} {lastName}
+              </span>
+            </h1>
+            <h2 className="text-5xl font-light mt-2">STUDENT AT {school}</h2>
+            <h2 className="text-5xl font-light mb-8 mt-2">({education})</h2>
+
+            <div className="text-[#FF58C7]">
+              <div className="border-t border-b w-full max-w-[900px]">
+                <div
+                  className="flex justify-between items-center py-1 cursor-pointer"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <span className="text-4xl">CV</span>
+                  <span className="text-4xl transition-all">
+                    {isOpen ? <HiOutlineMinus /> : <GoPlus />}
+                  </span>
+                </div>
+                {isOpen && <CVViewer />}
+              </div>
+            </div>
+          </div>
+
+          <div className="shrink-0 relative w-fit mt-[-0%]">
+            {profilePic ? (
+              <>
+                {/* Offset ram bakom bilden */}
+                <div className="absolute top-4 left-4 w-full h-full border-1 border-[#FF58C7] z-0"></div>
+
+                {/* Själva bilden */}
+                <img
+                  className="relative z-10 h-[400px] w-[300px] object-center object-cover"
+                  src={profilePic}
+                  alt=""
+                />
+              </>
+            ) : (
+              <CgProfile className="text-white text-[220px]" />
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
