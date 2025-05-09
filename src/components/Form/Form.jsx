@@ -1,37 +1,312 @@
+import { useContext, useState } from "react";
+import { FormContext } from "../providers/FormContext";
+import { BsFiletypePdf, BsFiletypeJpg } from "react-icons/bs";
+import { CgProfile } from "react-icons/cg";
+
 const Form = () => {
+  const [bgColor, setBgColor] = useState("#000000");
+  const [fontColor, setFontColor] = useState("#FFFFFF");
+  const [accentColor, setAccentColor] = useState("#1EFF00");
+  const [bgColorName, setBgColorName] = useState("Black #000000");
+  const [fontColorName, setFontColorName] = useState("White #FFFFFF");
+  const [accentColorName, setAccentColorName] = useState("Green #1EFF00");
+
+  const {
+    firstName,
+    lastName,
+    school,
+    education,
+    email,
+    phoneNumber,
+    githubURL,
+    linkedInURL,
+    setFirstName,
+    setLastName,
+    setSchool,
+    setEducation,
+    setEmail,
+    setPhoneNumber,
+    setGithubURL,
+    setLinkedInURL,
+    setAboutMe,
+    profilePic,
+    setProfilePic,
+    setToggleForm,
+    fileName,
+    setFileName,
+    cvFile,
+    setCvFile,
+    cvFileName,
+    setCvFileName,
+  } = useContext(FormContext);
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFileName(file.name);
+      const imageUrl = URL.createObjectURL(file);
+      setProfilePic(imageUrl);
+    }
+  };
+
+  const handleCVUpload = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type === "application/pdf") {
+      setCvFile(file);
+      setCvFileName(file.name);
+    }
+  };
+
+  const handleColorChange = (e) => {
+    const currentColor = e.target.value;
+    const colorName = e.target.name;
+
+    if (colorName === "bgColor") {
+      setBgColor(currentColor);
+      setBgColorName(currentColor.toUpperCase());
+    } else if (colorName === "fontColor") {
+      setFontColor(currentColor);
+      setFontColorName(currentColor.toUpperCase());
+    } else if (colorName === "accentColor") {
+      setAccentColor(currentColor);
+      setAccentColorName(currentColor.toUpperCase());
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
+    const form = e.target;
+
+    setFirstName(form.fname.value.toUpperCase());
+    setLastName(form.lname.value.toUpperCase());
+    setSchool(form.school.value.toUpperCase());
+    setEducation(form.education.value.toUpperCase());
+    setEmail(form.email.value.toUpperCase());
+    setPhoneNumber(form.telephone.value.toUpperCase());
+    setGithubURL(form.github.value.toUpperCase());
+    setLinkedInURL(form.linkedIn.value.toUpperCase());
+    setAboutMe(form.header.value.toUpperCase());
+
+    setToggleForm(false);
   };
 
   return (
-    <div className="flex justify-center items-center">
-      <form onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-2 max-w-[400px] border-2 border-black">
-          <input type="text" name="fname" placeholder="Name..." />
-          <input type="text" name="lname" placeholder="Last name..." />
-          <input type="text" name="school" placeholder="School..." />
-          <input type="text" name="education" placeholder="Education..." />
-          <input type="email" name="email" placeholder="Email..." />
-          <input type="tel" name="telephone" placeholder="Tel..." />
-          <input type="url" name="github" placeholder="Github..." />
-          <input type="url" name="linkedIn" placeholder="LinkedIn..." />
-          <input type="text" name="header" placeholder="Add your header..." />
-          <textarea name="about" placeholder="About me..."></textarea>
-          <input type="url" name="project" placeholder="Projects..." />
-          <textarea name="skills" placeholder="Tech stack..."></textarea>
-          <input type="color" name="colorTheme" />
-          <select name="fontTheme">
-            <option value="sans">Sans-serif</option>
+    <div className="flex flex-col items-start gap-6">
+      <p className="text-white text-6xl text-left mb-2 font-medium">Form</p>
+      <p className="text-white text-1xl text-left mb-2 font-normal">
+        Fyll i formuläret nedan för att skapa din personliga portfolio.
+        Informationen du skriver in visas direkt i portfolion under formuläret.
+        När du är nöjd kan du ladda ner en färdig zip-fil med din portfolio som
+        du kan använda, visa upp eller fortsätta bygga vidare på. Du kan när som
+        helst uppdatera fälten för att se ändringar i realtid.
+      </p>
+      <form onSubmit={handleSubmit} className="w-full">
+        <div className="relative flex mb-10">
+          <div className="flex flex-col gap-4 w-2/3">
+            <input
+              type="text"
+              name="fname"
+              defaultValue={firstName}
+              placeholder="First name"
+              className="outline-none border-t border-b border-[#FF58C7] w-full text-3xl font-light text-[#FF58C7]"
+            />
+            <input
+              type="text"
+              name="lname"
+              defaultValue={lastName}
+              placeholder="Last name"
+              className="outline-none border-t border-b border-[#FF58C7] w-full text-3xl font-light text-[#FF58C7]"
+            />
+            <input
+              type="text"
+              name="school"
+              defaultValue={school}
+              placeholder="School"
+              className="outline-none border-t border-b border-white w-full text-3xl font-light text-white"
+            />
+            <input
+              type="text"
+              name="education"
+              defaultValue={education}
+              placeholder="Education"
+              className="outline-none border-t border-b border-white w-full text-3xl font-light text-white"
+            />
+            <input
+              type="email"
+              name="email"
+              defaultValue={email}
+              placeholder="Email"
+              className="outline-none border-t border-b border-white w-full text-3xl font-light text-white"
+            />
+            <input
+              type="tel"
+              name="telephone"
+              defaultValue={phoneNumber}
+              placeholder="Phone number"
+              className="outline-none border-t border-b border-white w-full text-3xl font-light text-white"
+            />
+            <input
+              type="url"
+              name="github"
+              defaultValue={githubURL}
+              placeholder="Github"
+              className="outline-none border-t border-b border-white w-full text-3xl font-light text-white"
+            />
+            <input
+              type="url"
+              name="linkedIn"
+              defaultValue={linkedInURL}
+              placeholder="LinkedIn"
+              className="outline-none border-t border-b border-white w-full text-3xl font-light text-white"
+            />
+            <div className="flex gap-6 w-full">
+              <label className="relative w-full cursor-pointer">
+                <div className="flex justify-between items-center border-t border-b border-white text-3xl font-light text-white">
+                  {cvFileName ? cvFileName : "Upload CV"} <BsFiletypePdf />
+                </div>
+                <input
+                  className="opacity-0 absolute inset-0"
+                  type="file"
+                  accept="application/pdf"
+                  name="cv"
+                  onChange={handleCVUpload}
+                />
+              </label>
+
+              <div className="relative w-full cursor-pointer">
+                <label
+                  htmlFor="profilePicture"
+                  className="absolute cursor-pointer w-full flex justify-between items-center border-t border-b border-white text-3xl font-light text-white"
+                >
+                  {profilePic ? fileName : "Upload profile img"}
+                  <BsFiletypeJpg />
+                </label>
+                <input
+                  className="opacity-0"
+                  type="file"
+                  accept="image/*"
+                  name="profilePicture"
+                  onChange={handleImageUpload}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <CgProfile className="absolute right-5 text-white text-[300px]" />
+          </div>
+        </div>
+
+        <div className="flex flex-col mt-30 mb-30">
+          <p className="text-white text-3xl text-left font-normal">
+            Header for about
+          </p>
+          <input
+            type="text"
+            name="header"
+            placeholder="Something about you/Cover letter"
+            className="outline-none border-t border-b border-white w-full text-2xl font-thin text-white pb-15 pt-3"
+          />
+        </div>
+
+        <div className="flex flex-col mt-30 mb-30">
+          <p className="text-white text-3xl text-left font-normal">
+            Upload images of your projects
+          </p>
+          <div className="grid grid-cols-4 gap-4 border-t border-b border-white pt-3 pb-3 mb-5">
+            <div className="bg-gray-300 h-20 p-4">Item 1</div>
+            <div className="bg-gray-300 p-4">Item 2</div>
+            <div className="bg-gray-300 p-4">Item 3</div>
+            <div className="bg-gray-300 p-4">Item 4</div>
+            <div className="bg-gray-300 h-20 p-4">Item 5</div>
+            <div className="bg-gray-300 p-4">Item 6</div>
+            <div className="bg-gray-300 p-4">Item 7</div>
+            <div className="bg-gray-300 p-4">Item 8</div>
+          </div>
+          <div className="flex items-end gap-20">
+            <p className="text-white text-1xl text-left font-light">
+              Project.jpg
+            </p>
+            <input
+              type="url"
+              name="project"
+              placeholder="Link to project ex: url,netlify app or github repo"
+              className="outline-none bg-gray-100 w-full text-1.5xl font-light text-blac pl-4"
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col mt-30 mb-30">
+          <p className="text-white text-3xl text-left font-normal">
+            Your skills
+          </p>
+          <textarea
+            name="skills"
+            placeholder="Skills"
+            className="outline-none border-t border-b border-white w-full text-2xl font-thin text-white pb-15 pt-3"
+          ></textarea>
+        </div>
+
+        <div className="flex flex-col w-2/3 gap-2.5 mt-30 mb-20">
+          <p className="text-white text-3xl text-left font-normal mb-5">
+            Style your Portfolio
+          </p>
+          <select
+            name="fontTheme"
+            className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1"
+          >
+            <option value="sans">Helvetica</option>
             <option value="poppins">Poppins</option>
             <option value="mono">Monospace</option>
           </select>
-          <input type="file" accept=".pdf" name="cv" />
-          <input type="file" accept="image/*" name="profilePicture" />
-          <button type="submit" className="cursor-pointer">
-            Submit
-          </button>
+
+          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1">
+            {bgColorName}
+            <input
+              type="color"
+              value={bgColor}
+              onChange={handleColorChange}
+              name="bgColor"
+              className="opacity-0 cursor-pointer"
+            />
+          </label>
+
+          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1">
+            {fontColorName}
+            <input
+              type="color"
+              value={fontColor}
+              onChange={handleColorChange}
+              name="fontColor"
+              className="opacity-0 cursor-pointer"
+            />
+          </label>
+          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1">
+            {accentColorName}
+            <input
+              type="color"
+              value={accentColor}
+              onChange={handleColorChange}
+              name="accentColor"
+              className="opacity-0 cursor-pointer"
+            />
+          </label>
         </div>
+
+        <p className="text-white text-1xl text-left mb-2 font-normal w-2/3">
+          Fyll i formuläret nedan för att skapa din personliga portfolio.
+          Informationen du skriver in visas direkt i portfolion under
+          formuläret. När du är nöjd kan du ladda ner en färdig zip-fil med din
+          portfolio som du kan använda, visa upp eller fortsätta bygga vidare
+          på. Du kan när som helst uppdatera fälten för att se ändringar i
+          realtid.
+        </p>
+
+        <button
+          type="submit"
+          className="cursor-pointer items-center pl-4 pr-4 rounded-4xl mt-20 mb-20 text-black text-2xl bg-[#FF58C7] transition duration-300 ease-in-out hover:bg-fuchsia-600"
+        >
+          SUBMIT
+        </button>
       </form>
     </div>
   );

@@ -1,12 +1,36 @@
 @import "tailwindcss";
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 
 @theme {
   --color-primary: #f3f3f3;
   --color-secondary: #f9f9f9;
 }
 
+.slick-dots li button {
+  position: absolute;
+  top: 80px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s;
+}
+
+.slick-dots li.slick-active button {
+  background-color: white;
+  transform: scale(1.2);
+}
+
+.slick-slide > div {
+  margin: 0 40px;
+}
+
+.slick-list {
+  overflow: visible;
+}
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  font-family: Helvetica, sans-serif;
 }
