@@ -2,6 +2,7 @@ import About from "./About";
 import Projects from "./Projects";
 import Hero from "./Hero";
 import Skills from "./Skills";
+import Footer from "./Footer";
 
 const Portfolio = () => {
   return (
@@ -10,6 +11,7 @@ const Portfolio = () => {
       <About />
       <Projects />
       <Skills />
+      <Footer />
     </>
   );
 };

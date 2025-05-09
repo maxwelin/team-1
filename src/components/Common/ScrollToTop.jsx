@@ -25,7 +25,7 @@ const ScrollToTop = () => {
       {showButton && (
         <button
           onClick={scrollToTop}
-          className="hidden lg:flex fixed bottom-20 right-14 w-10 h-10 text-white rounded-full items-center justify-center shadow-lg hover:text-[#FF58C7] hover:scale-110 transition-all duration-300"
+          className="cursor-pointer hidden lg:flex fixed bottom-20 right-14 w-10 h-10 text-white rounded-full items-center justify-center shadow-lg hover:text-[#FF58C7] hover:scale-110 transition-all duration-300"
         >
           <FiArrowUpCircle className="w-10 h-10" />
         </button>

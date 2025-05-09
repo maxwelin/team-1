@@ -1,17 +1,17 @@
-import { useState, useRef, useEffect } from 'react';
-import { useContext } from 'react';
-import { FormContext } from '../providers/FormContext';
-import { GoPlus } from "react-icons/go";  // plus icon
+import { useState, useRef, useEffect } from "react";
+import { useContext } from "react";
+import { FormContext } from "../providers/FormContext";
+import { GoPlus } from "react-icons/go"; // plus icon
 import { HiOutlineMinus } from "react-icons/hi2"; // minus icon
 
 const Footer = () => {
   const { firstName, lastName, school } = useContext(FormContext);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [height, setHeight] = useState(0);
   const contentRef = useRef(null);
 
   const toggleFooter = () => {
-    setIsOpen(prev => !prev);
+    setIsOpen((prev) => !prev);
   };
 
   useEffect(() => {
@@ -33,7 +33,9 @@ const Footer = () => {
         onClick={toggleFooter}
       >
         {/* always show firstName and lastName */}
-        <h2 className="text-xl text-[#FF58C7]">{firstName} {lastName}</h2>
+        <h2 className="text-4xl text-[#FF58C7]">
+          {firstName} {lastName}
+        </h2>
         {isOpen ? (
           <HiOutlineMinus className="text-2xl text-[#FF58C7]" />
         ) : (
@@ -44,9 +46,9 @@ const Footer = () => {
       {/* animated section */}
       <div
         style={{
-          maxHeight: isOpen ? `${height + 16}px` : '0px',
-          overflow: 'hidden',
-          transition: 'max-height 0.5s ease, opacity 0.5s ease',
+          maxHeight: isOpen ? `${height + 16}px` : "0px",
+          overflow: "hidden",
+          transition: "max-height 0.5s ease, opacity 0.5s ease",
           opacity: isOpen ? 1 : 0,
         }}
       >

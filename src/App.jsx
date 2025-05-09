@@ -10,10 +10,9 @@ function App() {
       <div className="grid grid-cols-9 bg-black">
         <div className="col-start-2 col-end-9 pt-[200px]">
           <Main />
-          <Footer />
         </div>
       </div>
-      <div className="col-start-9 col-end-10 flex justify-end items-end p-4">
+      <div className="col-start-9 col-end-10 flex justify-end items-end p-4 bg-black">
         <ScrollToTop />
       </div>
     </FormContextProvider>
