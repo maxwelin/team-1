@@ -29,6 +29,7 @@ const Form = () => {
     setPhoneNumber,
     setGithubURL,
     setLinkedInURL,
+    setHeader,
     setAboutMe,
     profilePic,
     setProfilePic,
@@ -97,7 +98,8 @@ const Form = () => {
     setPhoneNumber(form.telephone.value.toUpperCase());
     setGithubURL(form.github.value.toUpperCase());
     setLinkedInURL(form.linkedIn.value.toUpperCase());
-    setAboutMe(form.header.value.toUpperCase());
+    setHeader(form.header.value.toUpperCase());
+    setAboutMe(form.about.value.toUpperCase());
 
     setToggleForm(false);
   };
@@ -177,7 +179,7 @@ const Form = () => {
                   {cvFileName ? cvFileName : "Upload CV"} <BsFiletypePdf />
                 </div>
                 <input
-                  className="opacity-0 absolute inset-0"
+                  className="opacity-0 absolute inset-0 w-full cursor-pointer"
                   type="file"
                   accept="application/pdf"
                   name="cv"
@@ -188,13 +190,13 @@ const Form = () => {
               <div className="relative w-full cursor-pointer">
                 <label
                   htmlFor="profilePicture"
-                  className="absolute cursor-pointer w-full flex justify-between items-center border-t border-b border-white text-3xl font-light text-white"
+                  className="absolute w-full flex justify-between items-center border-t border-b border-white text-3xl font-light text-white"
                 >
                   {profilePic ? fileName : "Upload profile img"}
                   <BsFiletypeJpg />
                 </label>
                 <input
-                  className="opacity-0"
+                  className="opacity-0 w-full h-full cursor-pointer"
                   type="file"
                   accept="image/*"
                   name="profilePicture"
@@ -209,12 +211,15 @@ const Form = () => {
         </div>
 
         <div className="flex flex-col mt-30 mb-30">
-          <p className="text-white text-3xl text-left font-normal">
-            Header for about
-          </p>
           <input
             type="text"
             name="header"
+            placeholder="Header for about"
+            className="text-white text-3xl text-left font-normal outline-none bg-black"
+          />
+          <input
+            type="text"
+            name="about"
             placeholder="Something about you/Cover letter"
             className="outline-none border-t border-b border-white w-full text-2xl font-thin text-white pb-15 pt-3"
           />

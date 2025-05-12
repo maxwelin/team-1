@@ -29,7 +29,9 @@ const Hero = () => {
             <div className="text-[#FF58C7]">
               <div className="border-t border-b w-full max-w-[900px]">
                 <div
-                  className="flex justify-between items-center py-1 cursor-pointer"
+                  className={`flex justify-between items-center py-1 cursor-pointer transition-all duration-200 ${
+                    !isOpen && "hover:pb-5"
+                  }`}
                   onClick={() => setIsOpen(!isOpen)}
                 >
                   <span className="text-4xl">CV</span>
