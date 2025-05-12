@@ -1,6 +1,5 @@
 import "./App.css";
 import Main from "./components/Common/Main";
-import Footer from "./components/Portfolio/Footer";
 import ScrollToTop from "./components/Common/ScrollToTop";
 import { FormContextProvider } from "./components/providers/FormContext";
 
