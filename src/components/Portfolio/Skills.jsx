@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { GoPlus } from "react-icons/go";
 import { HiOutlineMinus } from "react-icons/hi2";
+import { FormContext } from "../providers/FormContext";
 
 const Skills = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { skills } = useContext(FormContext);
 
   return (
     <div className="bg-black text-4xl text-white py-6">
@@ -23,11 +25,9 @@ const Skills = () => {
               isOpen ? "max-h-[1000px] pt-20" : "max-h-0"
             }`}
           >
-            <p className="text-lg text-white">React</p>
-            <p className="text-lg text-white">Html</p>
-            <p className="text-lg text-white">CSS</p>
-            <p className="text-lg text-white">Tailwind CSS</p>
-            <p className="text-lg text-white">Framer motion</p>
+            {skills.map((skill, index) => {
+              return <p key={index}>{skill}</p>;
+            })}
           </div>
         </div>
       </div>

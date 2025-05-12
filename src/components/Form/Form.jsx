@@ -10,6 +10,7 @@ const Form = () => {
   const [bgColorName, setBgColorName] = useState("Black #000000");
   const [fontColorName, setFontColorName] = useState("White #FFFFFF");
   const [accentColorName, setAccentColorName] = useState("Green #1EFF00");
+  const [skillInput, setSkillInput] = useState("");
 
   const {
     firstName,
@@ -38,6 +39,8 @@ const Form = () => {
     setCvFile,
     cvFileName,
     setCvFileName,
+    skills,
+    setSkills,
   } = useContext(FormContext);
 
   const handleImageUpload = (e) => {
@@ -70,6 +73,15 @@ const Form = () => {
     } else if (colorName === "accentColor") {
       setAccentColor(currentColor);
       setAccentColorName(currentColor.toUpperCase());
+    }
+  };
+
+  const handleSkills = (e) => {
+    e.preventDefault();
+    if (skillInput.trim() !== "") {
+      setSkills([...skills, skillInput]);
+      setSkillInput("");
+      console.log("Cleared input");
     }
   };
 
@@ -235,15 +247,29 @@ const Form = () => {
           </div>
         </div>
 
-        <div className="flex flex-col mt-30 mb-30">
+        <div className="flex flex-col mt-30 mb-30 relative">
           <p className="text-white text-3xl text-left font-normal">
             Your skills
           </p>
-          <textarea
+          <input
+            type="text"
             name="skills"
-            placeholder="Skills"
-            className="outline-none border-t border-b border-white w-full text-2xl font-thin text-white pb-15 pt-3"
-          ></textarea>
+            value={skillInput}
+            onChange={(e) => setSkillInput(e.target.value)}
+            placeholder="Write your skills..."
+            className="outline-none  border-t border-b border-white w-full text-3xl font-light text-white py-1 pb-1 mb-5"
+          />
+          <button
+            onClick={handleSkills}
+            className="absolute top-15 -translate-y-1/2 right-0 items-center pl-4 pr-4 rounded-4xl  text-black bg-[#FF58C7] transition duration-300 ease-in-out hover:bg-fuchsia-600 cursor-pointer text-2xl font-light "
+          >
+            Add skill
+          </button>
+          <div className="flex justify-around border-t border-b border-white w-full text-3xl font-light text-white py-5 pb-5">
+            {skills.map((skill, index) => {
+              return <p key={index}>{skill}</p>;
+            })}
+          </div>
         </div>
 
         <div className="flex flex-col w-2/3 gap-2.5 mt-30 mb-20">
