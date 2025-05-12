@@ -8,10 +8,10 @@ const FormContextProvider = ({ children }) => {
   const [lastName, setLastName] = useState("Last name");
   const [school, setSchool] = useState("School");
   const [education, setEducation] = useState("Education");
-  const [email, setEmail] = useState("Email");
+  const [email, setEmail] = useState("Example@email.com");
   const [phoneNumber, setPhoneNumber] = useState("Phone number");
-  const [githubURL, setGithubURL] = useState("Github");
-  const [linkedInURL, setLinkedInURL] = useState("LinkedIn");
+  const [githubURL, setGithubURL] = useState("https://github.com/");
+  const [linkedInURL, setLinkedInURL] = useState("https://linkedin.com/");
   const [profilePic, setProfilePic] = useState(null);
   const [aboutMe, setAboutMe] = useState(
     "I'm a passionate developer with a love for clean code and elegant design."
