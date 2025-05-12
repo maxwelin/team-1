@@ -20,6 +20,7 @@ const FormContextProvider = ({ children }) => {
   const [fileName, setFileName] = useState(null);
   const [cvFile, setCvFile] = useState(null);
   const [cvFileName, setCvFileName] = useState(null);
+  const [skills, setSkills] = useState([]);
 
   return (
     <FormContext.Provider
@@ -39,6 +40,7 @@ const FormContextProvider = ({ children }) => {
         fileName,
         cvFile,
         cvFileName,
+        skills,
         setToggleForm,
         setFirstName,
         setLastName,
@@ -54,6 +56,7 @@ const FormContextProvider = ({ children }) => {
         setFileName,
         setCvFile,
         setCvFileName,
+        setSkills,
       }}
     >
       {children}
