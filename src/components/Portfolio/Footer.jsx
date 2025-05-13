@@ -7,14 +7,8 @@ import { FiMail, FiPhone } from "react-icons/fi"; // icons for email and phone
 import { FaGithub, FaLinkedin } from "react-icons/fa"; // icons for GitHub and LinkedIn
 
 const Footer = () => {
-  const {
-    firstName,
-    lastName,
-    email,
-    phoneNumber,
-    githubURL,
-    linkedInURL,
-  } = useContext(FormContext);
+  const { firstName, lastName, email, phoneNumber, githubURL, linkedInURL } =
+    useContext(FormContext);
   const [isOpen, setIsOpen] = useState(true);
   const [height, setHeight] = useState(0);
   const contentRef = useRef(null);
@@ -54,12 +48,16 @@ const Footer = () => {
 
       {/* clickable area */}
       <div
-        className="flex justify-between items-center cursor-pointer py-2 mx-auto"
+
+        className={`flex justify-between items-center py-1 cursor-pointer transition-all duration-200 ${
+          !isOpen && "hover:pb-2"
+        }`}
         style={{ width: headerWidth }}
+
         onClick={toggleFooter}
       >
         {/* always show firstName and lastName */}
-        <h2 className="text-2xl text-[#FF58C7]">
+        <h2 className="text-4xl text-[#FF58C7]">
           {firstName} {lastName}
         </h2>
         {isOpen ? (
@@ -117,6 +115,7 @@ const Footer = () => {
               <FaLinkedin className="text-[#FF58C7]" />
               <span>LinkedIn</span>
             </a>
+
           </div>
         </div>
       </div>

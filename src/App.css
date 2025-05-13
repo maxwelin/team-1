@@ -5,6 +5,7 @@
 @theme {
   --color-primary: #f3f3f3;
   --color-secondary: #f9f9f9;
+  --breakpoint-3xl: 115rem;
 }
 
 .slick-dots li button {

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { FormContext } from "../providers/FormContext";
 import { BsFiletypePdf, BsFiletypeJpg } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
+import { LuFilePenLine } from "react-icons/lu";
 
 const Form = () => {
   const [bgColor, setBgColor] = useState("#000000");
@@ -10,6 +11,7 @@ const Form = () => {
   const [bgColorName, setBgColorName] = useState("Black #000000");
   const [fontColorName, setFontColorName] = useState("White #FFFFFF");
   const [accentColorName, setAccentColorName] = useState("Green #1EFF00");
+  const [skillInput, setSkillInput] = useState("");
 
   const {
     firstName,
@@ -20,6 +22,7 @@ const Form = () => {
     phoneNumber,
     githubURL,
     linkedInURL,
+    header,
     setFirstName,
     setLastName,
     setSchool,
@@ -28,6 +31,7 @@ const Form = () => {
     setPhoneNumber,
     setGithubURL,
     setLinkedInURL,
+    setHeader,
     setAboutMe,
     profilePic,
     setProfilePic,
@@ -38,6 +42,8 @@ const Form = () => {
     setCvFile,
     cvFileName,
     setCvFileName,
+    skills,
+    setSkills,
   } = useContext(FormContext);
 
   const handleImageUpload = (e) => {
@@ -73,6 +79,15 @@ const Form = () => {
     }
   };
 
+  const handleSkills = (e) => {
+    e.preventDefault();
+    if (skillInput.trim() !== "") {
+      setSkills([...skills, skillInput]);
+      setSkillInput("");
+      console.log("Cleared input");
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -81,11 +96,12 @@ const Form = () => {
     setLastName(form.lname.value.toUpperCase());
     setSchool(form.school.value.toUpperCase());
     setEducation(form.education.value.toUpperCase());
-    setEmail(form.email.value.toUpperCase());
-    setPhoneNumber(form.telephone.value.toUpperCase());
-    setGithubURL(form.github.value.toUpperCase());
-    setLinkedInURL(form.linkedIn.value.toUpperCase());
-    setAboutMe(form.header.value.toUpperCase());
+    setEmail(form.email.value);
+    setPhoneNumber(form.telephone.value);
+    setGithubURL(form.github.value);
+    setLinkedInURL(form.linkedIn.value);
+    setHeader(form.header.value);
+    setAboutMe(form.about.value);
 
     setToggleForm(false);
   };
@@ -101,6 +117,12 @@ const Form = () => {
         helst uppdatera fälten för att se ändringar i realtid.
       </p>
       <form onSubmit={handleSubmit} className="w-full">
+        <button
+          type="submit"
+          className="flex bg-white cursor-pointer p-1 pl-3 box-border rounded-3xl w-14 hover:bg-black hover:text-white mb-5"
+        >
+          <LuFilePenLine size={32} />
+        </button>
         <div className="relative flex mb-10">
           <div className="flex flex-col gap-4 w-2/3">
             <input
@@ -165,7 +187,7 @@ const Form = () => {
                   {cvFileName ? cvFileName : "Upload CV"} <BsFiletypePdf />
                 </div>
                 <input
-                  className="opacity-0 absolute inset-0"
+                  className="opacity-0 absolute inset-0 w-full cursor-pointer"
                   type="file"
                   accept="application/pdf"
                   name="cv"
@@ -176,13 +198,13 @@ const Form = () => {
               <div className="relative w-full cursor-pointer">
                 <label
                   htmlFor="profilePicture"
-                  className="absolute cursor-pointer w-full flex justify-between items-center border-t border-b border-white text-3xl font-light text-white"
+                  className="absolute w-full flex justify-between items-center border-t border-b border-white text-3xl font-light text-white "
                 >
                   {profilePic ? fileName : "Upload profile img"}
                   <BsFiletypeJpg />
                 </label>
                 <input
-                  className="opacity-0"
+                  className="opacity-0 w-full h-full cursor-pointer"
                   type="file"
                   accept="image/*"
                   name="profilePicture"
@@ -191,18 +213,41 @@ const Form = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center">
-            <CgProfile className="absolute right-5 text-white text-[300px]" />
+          <div className="shrink-0 relative w-fit mt-[-0%] h-[400px] ml-20">
+            {profilePic ? (
+              <>
+                {/* Offset ram bakom bilden */}
+                <div className="absolute top-4 left-4 w-full h-full border-1 border-[#FF58C7] z-0"></div>
+
+                {/* Själva bilden */}
+                <img
+                  className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1 border-white"
+                  src={profilePic}
+                  alt=""
+                />
+              </>
+            ) : (
+              <>
+                <div className="absolute top-4 left-4 w-full h-full border-1 border-[#FF58C7] z-0"></div>
+                <div className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1 bg-black border-white grid place-content-center">
+                  {/* <CgProfile className="text-white text-[200px]" /> */}
+                </div>
+              </>
+            )}
           </div>
         </div>
 
         <div className="flex flex-col mt-30 mb-30">
-          <p className="text-white text-3xl text-left font-normal">
-            Header for about
-          </p>
           <input
             type="text"
             name="header"
+            defaultValue={header}
+            placeholder="Header for about"
+            className="text-white text-3xl text-left font-normal outline-none bg-black"
+          />
+          <input
+            type="text"
+            name="about"
             placeholder="Something about you/Cover letter"
             className="outline-none border-t border-b border-white w-full text-2xl font-thin text-white pb-15 pt-3"
           />
@@ -235,15 +280,29 @@ const Form = () => {
           </div>
         </div>
 
-        <div className="flex flex-col mt-30 mb-30">
+        <div className="flex flex-col mt-30 mb-30 relative">
           <p className="text-white text-3xl text-left font-normal">
             Your skills
           </p>
-          <textarea
+          <input
+            type="text"
             name="skills"
-            placeholder="Skills"
-            className="outline-none border-t border-b border-white w-full text-2xl font-thin text-white pb-15 pt-3"
-          ></textarea>
+            value={skillInput}
+            onChange={(e) => setSkillInput(e.target.value)}
+            placeholder="Write your skills..."
+            className="outline-none  border-t border-b border-white w-full text-3xl font-light text-white py-1 pb-1 mb-5"
+          />
+          <button
+            onClick={handleSkills}
+            className="absolute top-15 -translate-y-1/2 right-0 items-center pl-4 pr-4 rounded-4xl  text-black bg-[#FF58C7] transition duration-300 ease-in-out hover:bg-fuchsia-600 cursor-pointer text-2xl font-light "
+          >
+            Add skill
+          </button>
+          <div className="flex justify-around border-t border-b border-white w-full text-3xl font-light text-white py-5 pb-5">
+            {skills.map((skill, index) => {
+              return <p key={index}>{skill}</p>;
+            })}
+          </div>
         </div>
 
         <div className="flex flex-col w-2/3 gap-2.5 mt-30 mb-20">
