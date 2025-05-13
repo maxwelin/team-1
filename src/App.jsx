@@ -1,6 +1,5 @@
 import "./App.css";
-import Main from "./components/Common/Main";
-import ScrollToTop from "./components/Common/ScrollToTop";
+import Layout from "./components/Common/Layout";
 import SocialBarScroller from "./components/Common/SocialBarScroller";
 import { FormContextProvider } from "./components/providers/FormContext";
 
@@ -10,14 +9,7 @@ function App() {
       <div className="relative">
         <SocialBarScroller />
       </div>
-      <div className="grid grid-cols-9 bg-black">
-        <div className="col-start-2 col-end-9 pt-[120px]">
-          <Main />
-        </div>
-      </div>
-      <div className="col-start-9 col-end-10 flex justify-end items-end p-4 bg-black">
-        <ScrollToTop />
-      </div>
+      <Layout />
     </FormContextProvider>
   );
 }
