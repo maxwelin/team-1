@@ -5,12 +5,6 @@ import { CgProfile } from "react-icons/cg";
 import { LuFilePenLine } from "react-icons/lu";
 
 const Form = () => {
-  const [bgColor, setBgColor] = useState("#000000");
-  const [fontColor, setFontColor] = useState("#FFFFFF");
-  const [accentColor, setAccentColor] = useState("#1EFF00");
-  const [bgColorName, setBgColorName] = useState("Black #000000");
-  const [fontColorName, setFontColorName] = useState("White #FFFFFF");
-  const [accentColorName, setAccentColorName] = useState("Green #1EFF00");
   const [skillInput, setSkillInput] = useState("");
 
   const {
@@ -44,6 +38,20 @@ const Form = () => {
     setCvFileName,
     skills,
     setSkills,
+    bgColor,
+    setBgColor,
+    fontColor,
+    setFontColor,
+    accentColor,
+    setAccentColor,
+    bgColorName,
+    setBgColorName,
+    fontColorName,
+    setFontColorName,
+    accentColorName,
+    setAccentColorName,
+    fontFamily,
+    setFontFamily,
   } = useContext(FormContext);
 
   const handleProfilePicUpload = (e) => {
@@ -64,18 +72,20 @@ const Form = () => {
   };
 
   const handleColorChange = (e) => {
-    const currentColor = e.target.value;
-    const colorName = e.target.name;
+    const currentValue = e.target.value;
+    const inputName = e.target.name;
 
-    if (colorName === "bgColor") {
-      setBgColor(currentColor);
-      setBgColorName(currentColor.toUpperCase());
-    } else if (colorName === "fontColor") {
-      setFontColor(currentColor);
-      setFontColorName(currentColor.toUpperCase());
-    } else if (colorName === "accentColor") {
-      setAccentColor(currentColor);
-      setAccentColorName(currentColor.toUpperCase());
+    if (inputName === "bgColor") {
+      setBgColor(currentValue);
+      setBgColorName(currentValue.toUpperCase());
+    } else if (inputName === "fontColor") {
+      setFontColor(currentValue);
+      setFontColorName(currentValue.toUpperCase());
+    } else if (inputName === "accentColor") {
+      setAccentColor(currentValue);
+      setAccentColorName(currentValue.toUpperCase());
+    } else if (inputName === "fontTheme") {
+      setFontFamily(currentValue);
     }
   };
 
@@ -107,9 +117,16 @@ const Form = () => {
   };
 
   return (
-    <div className="flex flex-col items-start gap-6">
-      <p className="text-white text-6xl text-left mb-2 font-medium">Form</p>
-      <p className="text-white text-1xl text-left mb-2 font-normal">
+    <div
+      style={{
+        backgroundColor: bgColor,
+        color: fontColor,
+        fontFamily: fontFamily,
+      }}
+      className="flex flex-col items-start gap-6"
+    >
+      <p className=" text-6xl text-left mb-2 font-medium">Form</p>
+      <p className=" text-1xl text-left mb-2 font-normal">
         Fyll i formuläret nedan för att skapa din personliga portfolio.
         Informationen du skriver in visas direkt i portfolion under formuläret.
         När du är nöjd kan du ladda ner en färdig zip-fil med din portfolio som
@@ -130,60 +147,60 @@ const Form = () => {
               name="fname"
               defaultValue={firstName}
               placeholder="First name"
-              className="outline-none border-t border-b border-[#FF58C7] w-full text-3xl font-light text-[#FF58C7]"
+              className="outline-none border-t border-b border-[#FF58C7] w-full text-3xl font-light"
             />
             <input
               type="text"
               name="lname"
               defaultValue={lastName}
               placeholder="Last name"
-              className="outline-none border-t border-b border-[#FF58C7] w-full text-3xl font-light text-[#FF58C7]"
+              className="outline-none border-t border-b border-[#FF58C7] w-full text-3xl font-light"
             />
             <input
               type="text"
               name="school"
               defaultValue={school}
               placeholder="School"
-              className="outline-none border-t border-b border-white w-full text-3xl font-light text-white"
+              className="outline-none border-t border-b border-white w-full text-3xl font-light "
             />
             <input
               type="text"
               name="education"
               defaultValue={education}
               placeholder="Education"
-              className="outline-none border-t border-b border-white w-full text-3xl font-light text-white"
+              className="outline-none border-t border-b border-white w-full text-3xl font-light "
             />
             <input
               type="email"
               name="email"
               defaultValue={email}
               placeholder="Email"
-              className="outline-none border-t border-b border-white w-full text-3xl font-light text-white"
+              className="outline-none border-t border-b border-white w-full text-3xl font-light "
             />
             <input
               type="tel"
               name="telephone"
               defaultValue={phoneNumber}
               placeholder="Phone number"
-              className="outline-none border-t border-b border-white w-full text-3xl font-light text-white"
+              className="outline-none border-t border-b border-white w-full text-3xl font-light "
             />
             <input
               type="url"
               name="github"
               defaultValue={githubURL}
               placeholder="Github"
-              className="outline-none border-t border-b border-white w-full text-3xl font-light text-white"
+              className="outline-none border-t border-b border-white w-full text-3xl font-light "
             />
             <input
               type="url"
               name="linkedIn"
               defaultValue={linkedInURL}
               placeholder="LinkedIn"
-              className="outline-none border-t border-b border-white w-full text-3xl font-light text-white"
+              className="outline-none border-t border-b border-white w-full text-3xl font-light "
             />
             <div className="flex gap-6 w-full">
               <label className="relative w-full cursor-pointer">
-                <div className="flex justify-between items-center border-t border-b border-white text-3xl font-light text-white">
+                <div className="flex justify-between items-center border-t border-b border-white text-3xl font-light ">
                   {cvFileName ? cvFileName : "Upload CV"} <BsFiletypePdf />
                 </div>
                 <input
@@ -198,7 +215,7 @@ const Form = () => {
               <div className="relative w-full cursor-pointer">
                 <label
                   htmlFor="profilePicture"
-                  className="absolute w-full flex justify-between items-center border-t border-b border-white text-3xl font-light text-white "
+                  className="absolute w-full flex justify-between items-center border-t border-b border-white text-3xl font-light "
                 >
                   {profilePic ? fileName : "Upload profile img"}
                   <BsFiletypeJpg />
@@ -249,12 +266,12 @@ const Form = () => {
             type="text"
             name="about"
             placeholder="Something about you/Cover letter"
-            className="outline-none border-t border-b border-white w-full text-2xl font-thin text-white pb-15 pt-3"
+            className="outline-none border-t border-b border-white w-full text-2xl font-thin  pb-15 pt-3"
           />
         </div>
 
         <div className="flex flex-col mt-30 mb-30">
-          <p className="text-white text-3xl text-left font-normal">
+          <p className=" text-3xl text-left font-normal">
             Upload images of your projects
           </p>
           <div className="grid grid-cols-4 gap-4 border-t border-b border-white pt-3 pb-3 mb-5">
@@ -267,6 +284,7 @@ const Form = () => {
             <div className="bg-gray-300 p-4">Item 7</div>
             <div className="bg-gray-300 p-4">Item 8</div> */}
           </div>
+
           <div className="flex flex-col gap-6 relative">
             {["project1", "project2", "project3", "project4"].map(
               (item, index) => {
@@ -297,20 +315,19 @@ const Form = () => {
                 );
               }
             )}
+
           </div>
         </div>
 
         <div className="flex flex-col mt-30 mb-30 relative">
-          <p className="text-white text-3xl text-left font-normal">
-            Your skills
-          </p>
+          <p className=" text-3xl text-left font-normal">Your skills</p>
           <input
             type="text"
             name="skills"
             value={skillInput}
             onChange={(e) => setSkillInput(e.target.value)}
             placeholder="Write your skills..."
-            className="outline-none  border-t border-b border-white w-full text-3xl font-light text-white py-1 pb-1 mb-5"
+            className="outline-none  border-t border-b border-white w-full text-3xl font-light  py-1 pb-1 mb-5"
           />
           <button
             onClick={handleSkills}
@@ -318,7 +335,7 @@ const Form = () => {
           >
             Add skill
           </button>
-          <div className="flex justify-around border-t border-b border-white w-full text-3xl font-light text-white py-5 pb-5">
+          <div className="flex justify-around border-t border-b border-white w-full text-3xl font-light  py-5 pb-5">
             {skills.map((skill, index) => {
               return <p key={index}>{skill}</p>;
             })}
@@ -326,19 +343,27 @@ const Form = () => {
         </div>
 
         <div className="flex flex-col w-2/3 gap-2.5 mt-30 mb-20">
-          <p className="text-white text-3xl text-left font-normal mb-5">
+          <p className=" text-3xl text-left font-normal mb-5">
             Style your Portfolio
           </p>
           <select
             name="fontTheme"
-            className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1"
+            className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light  pt-1 pb-1"
+            onChange={handleColorChange}
           >
-            <option value="sans">Helvetica</option>
-            <option value="poppins">Poppins</option>
-            <option value="mono">Monospace</option>
+            <option value="Helvetica">Helvetica</option>
+            <option value="Arial">Arial</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Tahoma">Tahoma</option>
+            <option value="Trebuchet MS">Trebuchet MS </option>
+            <option value="Georgia">Georgia</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Courier New">Courier New </option>
+            <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+            <option value="Impact">Impact</option>
           </select>
 
-          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1">
+          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light  pt-1 pb-1">
             {bgColorName}
             <input
               type="color"
@@ -349,7 +374,7 @@ const Form = () => {
             />
           </label>
 
-          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1">
+          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light  pt-1 pb-1">
             {fontColorName}
             <input
               type="color"
@@ -359,7 +384,7 @@ const Form = () => {
               className="opacity-0 cursor-pointer"
             />
           </label>
-          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light text-white pt-1 pb-1">
+          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light  pt-1 pb-1">
             {accentColorName}
             <input
               type="color"
@@ -371,7 +396,7 @@ const Form = () => {
           </label>
         </div>
 
-        <p className="text-white text-1xl text-left mb-2 font-normal w-2/3">
+        <p className=" text-1xl text-left mb-2 font-normal w-2/3">
           Fyll i formuläret nedan för att skapa din personliga portfolio.
           Informationen du skriver in visas direkt i portfolion under
           formuläret. När du är nöjd kan du ladda ner en färdig zip-fil med din
