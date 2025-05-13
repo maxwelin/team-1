@@ -277,7 +277,10 @@ const Form = () => {
                   proj.charAt(0).toUpperCase() + proj.slice(1) + " " + number;
 
                 return (
-                  <div className="w-full flex border-2 border-b-white">
+                  <div
+                    key={index}
+                    className="w-full flex border-2 border-b-white"
+                  >
                     <label
                       htmlFor={item}
                       className={`text-white text-1xl text-left font-light absolute left-0`}
