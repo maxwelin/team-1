@@ -3,12 +3,20 @@ import { useContext } from "react";
 import { FormContext } from "../providers/FormContext";
 import { GoPlus } from "react-icons/go"; // plus icon
 import { HiOutlineMinus } from "react-icons/hi2"; // minus icon
-import { FiMail, FiPhone } from "react-icons/fi"; // icons for email and phone
+import { MdMail, MdLocalPhone, MdLocationOn } from "react-icons/md";
 import { FaGithub, FaLinkedin } from "react-icons/fa"; // icons for GitHub and LinkedIn
 
 const Footer = () => {
-  const { firstName, lastName, email, phoneNumber, githubURL, linkedInURL } =
-    useContext(FormContext);
+  const {
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    githubURL,
+    linkedInURL,
+    location,
+    author,
+  } = useContext(FormContext);
   const [isOpen, setIsOpen] = useState(true);
   const [height, setHeight] = useState(0);
   const contentRef = useRef(null);
@@ -74,7 +82,7 @@ const Footer = () => {
       >
         <div
           ref={contentRef}
-          className="mt-3 flex justify-between pb-8 mx-auto"
+          className="mt-10 flex justify-between pb-15 mx-auto"
           style={{ width: headerWidth }}
         >
           {/* email and phone */}
@@ -83,16 +91,20 @@ const Footer = () => {
               href={`mailto:${email}`}
               className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
             >
-              <FiMail className="text-[#FF58C7]" />
+              <MdMail className="text-[#FF58C7] text-2xl" />
               <span className="underline">{email}</span>
             </a>
             <a
               href={`tel:${phoneNumber}`}
               className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
             >
-              <FiPhone className="text-[#FF58C7]" />
+              <MdLocalPhone className="text-[#FF58C7] text-2xl" />
               <span>{phoneNumber}</span>
             </a>
+            <div className="flex items-center gap-2 mt-10 text-xl">
+              <MdLocationOn className="text-[#FF58C7] text-2xl" />
+              <p>{location}</p>
+            </div>
           </div>
 
           {/* github and linkedin */}
@@ -101,14 +113,14 @@ const Footer = () => {
               href={githubURL}
               className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
             >
-              <FaGithub className="text-[#FF58C7]" />
+              <FaGithub className="text-[#FF58C7] text-2xl" />
               <span>GitHub</span>
             </a>
             <a
               href={linkedInURL}
               className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
             >
-              <FaLinkedin className="text-[#FF58C7]" />
+              <FaLinkedin className="text-[#FF58C7] text-2xl" />
               <span>LinkedIn</span>
             </a>
           </div>
@@ -119,8 +131,8 @@ const Footer = () => {
         className="mx-auto border-b-1 border-[#FF58C7]"
         style={{ width: headerWidth }}
       />
-      <p className="text-center mt-[180px]">
-        Forged with love, sweat & creativity by Team Juan
+      <p className="text-center mt-[180px] tracking-normal">
+        Forged with love, sweat & creativity by {author}
       </p>
     </div>
   );
