@@ -23,10 +23,10 @@ const FormContextProvider = ({ children }) => {
   const [skills, setSkills] = useState([]);
   const [bgColor, setBgColor] = useState("#000000");
   const [fontColor, setFontColor] = useState("#FFFFFF");
-  const [accentColor, setAccentColor] = useState("#1EFF00");
+  const [accentColor, setAccentColor] = useState("#FF58C7");
   const [bgColorName, setBgColorName] = useState("Black #000000");
   const [fontColorName, setFontColorName] = useState("White #FFFFFF");
-  const [accentColorName, setAccentColorName] = useState("Green #1EFF00");
+  const [accentColorName, setAccentColorName] = useState("Pink #FF58C7");
   const [fontFamily, setFontFamily] = useState("Helvetica, sans-serif");
   const [location, setLocation] = useState("Stockholm");
   const [author, setAuthor] = useState("Team Juan");

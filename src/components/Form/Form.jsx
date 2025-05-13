@@ -118,11 +118,12 @@ const Form = () => {
 
   return (
     <div
-      style={{
-        backgroundColor: bgColor,
-        color: fontColor,
-        fontFamily: fontFamily,
-      }}
+      // style={{
+      //   backgroundColor: bgColor,
+      //   color: fontColor,
+      //   fontFamily: fontFamily,
+      //   borderColor: fontColor,
+      // }}
       className="flex flex-col items-start gap-6"
     >
       <p className=" text-6xl text-left mb-2 font-medium">Form</p>
@@ -147,60 +148,62 @@ const Form = () => {
               name="fname"
               defaultValue={firstName}
               placeholder="First name"
-              className="outline-none border-t border-b border-[#FF58C7] w-full text-3xl font-light"
+              style={{ borderColor: accentColor }}
+              className="outline-none border-t border-b w-full text-3xl font-light"
             />
             <input
               type="text"
               name="lname"
               defaultValue={lastName}
               placeholder="Last name"
-              className="outline-none border-t border-b border-[#FF58C7] w-full text-3xl font-light"
+              style={{ borderColor: accentColor }}
+              className="outline-none border-t border-b w-full text-3xl font-light"
             />
             <input
               type="text"
               name="school"
               defaultValue={school}
               placeholder="School"
-              className="outline-none border-t border-b border-white w-full text-3xl font-light "
+              className="outline-none border-t border-b w-full text-3xl font-light "
             />
             <input
               type="text"
               name="education"
               defaultValue={education}
               placeholder="Education"
-              className="outline-none border-t border-b border-white w-full text-3xl font-light "
+              className="outline-none border-t border-b w-full text-3xl font-light "
             />
             <input
               type="email"
               name="email"
               defaultValue={email}
               placeholder="Email"
-              className="outline-none border-t border-b border-white w-full text-3xl font-light "
+              className="outline-none border-t border-b w-full text-3xl font-light "
             />
             <input
               type="tel"
               name="telephone"
               defaultValue={phoneNumber}
               placeholder="Phone number"
-              className="outline-none border-t border-b border-white w-full text-3xl font-light "
+              className="outline-none border-t border-b w-full text-3xl font-light "
             />
             <input
               type="url"
               name="github"
               defaultValue={githubURL}
               placeholder="Github"
-              className="outline-none border-t border-b border-white w-full text-3xl font-light "
+              className="outline-none border-t border-b w-full text-3xl font-light "
             />
             <input
               type="url"
               name="linkedIn"
               defaultValue={linkedInURL}
               placeholder="LinkedIn"
-              className="outline-none border-t border-b border-white w-full text-3xl font-light "
+              className="outline-none border-t border-b w-full text-3xl font-light "
             />
             <div className="flex gap-6 w-full">
               <label className="relative w-full cursor-pointer">
-                <div className="flex justify-between items-center border-t border-b border-white text-3xl font-light ">
+                <div className="flex justify-between items-center border-t border-b text-3xl font-light ">
                   {cvFileName ? cvFileName : "Upload CV"} <BsFiletypePdf />
                 </div>
                 <input
@@ -215,7 +218,7 @@ const Form = () => {
               <div className="relative w-full cursor-pointer">
                 <label
                   htmlFor="profilePicture"
-                  className="absolute w-full flex justify-between items-center border-t border-b border-white text-3xl font-light "
+                  className="absolute w-full flex justify-between items-center border-t border-b text-3xl font-light "
                 >
                   {profilePic ? fileName : "Upload profile img"}
                   <BsFiletypeJpg />
@@ -234,19 +237,25 @@ const Form = () => {
             {profilePic ? (
               <>
                 {/* Offset ram bakom bilden */}
-                <div className="absolute top-4 left-4 w-full h-full border-1 border-[#FF58C7] z-0"></div>
+                <div
+                  style={{ borderColor: accentColor }}
+                  className="absolute top-4 left-4 w-full h-full border-1 z-0"
+                ></div>
 
                 {/* Själva bilden */}
                 <img
-                  className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1 border-white"
+                  className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1"
                   src={profilePic}
                   alt=""
                 />
               </>
             ) : (
               <>
-                <div className="absolute top-4 left-4 w-full h-full border-1 border-[#FF58C7] z-0"></div>
-                <div className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1 bg-black border-white grid place-content-center">
+                <div
+                  style={{ borderColor: accentColor }}
+                  className="absolute top-4 left-4 w-full h-full border-1 z-0"
+                ></div>
+                <div className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1 bg-black grid place-content-center">
                   {/* <CgProfile className="text-white text-[200px]" /> */}
                 </div>
               </>
@@ -260,13 +269,13 @@ const Form = () => {
             name="header"
             defaultValue={header}
             placeholder="Header for about"
-            className="text-white text-3xl text-left font-normal outline-none bg-black"
+            className="text-3xl text-left font-normal outline-none"
           />
           <input
             type="text"
             name="about"
             placeholder="Something about you/Cover letter"
-            className="outline-none border-t border-b border-white w-full text-2xl font-thin  pb-15 pt-3"
+            className="outline-none border-t border-b w-full text-2xl font-thin  pb-15 pt-3"
           />
         </div>
 
@@ -274,7 +283,7 @@ const Form = () => {
           <p className=" text-3xl text-left font-normal">
             Upload images of your projects
           </p>
-          <div className="grid grid-cols-4 gap-4 border-t border-b border-white pt-3 pb-3 mb-5">
+          <div className="grid grid-cols-4 gap-4 border-t border-b pt-3 pb-3 mb-5">
             <div className="bg-gray-300 h-40 p-4">Project 1</div>
             <div className="bg-gray-300 p-4">Project 2</div>
             <div className="bg-gray-300 p-4">Project 3</div>
@@ -315,7 +324,6 @@ const Form = () => {
                 );
               }
             )}
-
           </div>
         </div>
 
@@ -327,15 +335,16 @@ const Form = () => {
             value={skillInput}
             onChange={(e) => setSkillInput(e.target.value)}
             placeholder="Write your skills..."
-            className="outline-none  border-t border-b border-white w-full text-3xl font-light  py-1 pb-1 mb-5"
+            className="outline-none  border-t border-b w-full text-3xl font-light  py-1 pb-1 mb-5"
           />
           <button
             onClick={handleSkills}
-            className="absolute top-15 -translate-y-1/2 right-0 items-center pl-4 pr-4 rounded-4xl  text-black bg-[#FF58C7] transition duration-300 ease-in-out hover:bg-fuchsia-600 cursor-pointer text-2xl font-light "
+            style={{ backgroundColor: accentColor }}
+            className="absolute top-15 -translate-y-1/2 right-0 items-center pl-4 pr-4 rounded-4xl  text-black transition duration-300 ease-in-out hover:bg-fuchsia-600 cursor-pointer text-2xl font-light "
           >
             Add skill
           </button>
-          <div className="flex justify-around border-t border-b border-white w-full text-3xl font-light  py-5 pb-5">
+          <div className="flex justify-around border-t border-b w-full text-3xl font-light  py-5 pb-5">
             {skills.map((skill, index) => {
               return <p key={index}>{skill}</p>;
             })}
@@ -348,7 +357,7 @@ const Form = () => {
           </p>
           <select
             name="fontTheme"
-            className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light  pt-1 pb-1"
+            className="outline-none cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1"
             onChange={handleColorChange}
           >
             <option value="Helvetica">Helvetica</option>
@@ -363,7 +372,7 @@ const Form = () => {
             <option value="Impact">Impact</option>
           </select>
 
-          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light  pt-1 pb-1">
+          <label className="outline-none relative flex items-center cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1">
             {bgColorName}
             <input
               type="color"
@@ -372,9 +381,13 @@ const Form = () => {
               name="bgColor"
               className="opacity-0 cursor-pointer"
             />
+            <span
+              style={{ backgroundColor: bgColor }}
+              className="w-10 h-10 absolute right-0 inline-block border"
+            ></span>
           </label>
 
-          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light  pt-1 pb-1">
+          <label className="outline-none relative flex items-center cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1">
             {fontColorName}
             <input
               type="color"
@@ -383,8 +396,12 @@ const Form = () => {
               name="fontColor"
               className="opacity-0 cursor-pointer"
             />
+            <span
+              style={{ backgroundColor: fontColor }}
+              className="w-10 h-10 absolute right-0 inline-block"
+            ></span>
           </label>
-          <label className="outline-none cursor-pointer border-t border-b border-white w-full text-3xl font-light  pt-1 pb-1">
+          <label className="outline-none relative flex items-center cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1">
             {accentColorName}
             <input
               type="color"
@@ -393,6 +410,10 @@ const Form = () => {
               name="accentColor"
               className="opacity-0 cursor-pointer"
             />
+            <span
+              style={{ backgroundColor: accentColor }}
+              className="w-10 h-10 absolute right-0 inline-block"
+            ></span>
           </label>
         </div>
 
@@ -407,7 +428,8 @@ const Form = () => {
 
         <button
           type="submit"
-          className="cursor-pointer items-center pl-4 pr-4 rounded-4xl mt-20 mb-20 text-black text-2xl bg-[#FF58C7] transition duration-300 ease-in-out hover:bg-fuchsia-600"
+          style={{ backgroundColor: accentColor }}
+          className="cursor-pointer items-center pl-4 pr-4 rounded-4xl mt-20 mb-20 text-black text-2xl transition duration-300 ease-in-out hover:bg-fuchsia-600"
         >
           SUBMIT
         </button>
