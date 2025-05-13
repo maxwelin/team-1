@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { FormContext } from "../providers/FormContext";
 import { BsFiletypePdf, BsFiletypeJpg } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
+import { LuFilePenLine } from "react-icons/lu";
 
 const Form = () => {
   const [skillInput, setSkillInput] = useState("");
@@ -15,6 +16,7 @@ const Form = () => {
     phoneNumber,
     githubURL,
     linkedInURL,
+    header,
     setFirstName,
     setLastName,
     setSchool,
@@ -52,7 +54,7 @@ const Form = () => {
     setFontFamily,
   } = useContext(FormContext);
 
-  const handleImageUpload = (e) => {
+  const handleProfilePicUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       setFileName(file.name);
@@ -104,12 +106,12 @@ const Form = () => {
     setLastName(form.lname.value.toUpperCase());
     setSchool(form.school.value.toUpperCase());
     setEducation(form.education.value.toUpperCase());
-    setEmail(form.email.value.toUpperCase());
-    setPhoneNumber(form.telephone.value.toUpperCase());
-    setGithubURL(form.github.value.toUpperCase());
-    setLinkedInURL(form.linkedIn.value.toUpperCase());
-    setHeader(form.header.value.toUpperCase());
-    setAboutMe(form.about.value.toUpperCase());
+    setEmail(form.email.value);
+    setPhoneNumber(form.telephone.value);
+    setGithubURL(form.github.value);
+    setLinkedInURL(form.linkedIn.value);
+    setHeader(form.header.value);
+    setAboutMe(form.about.value);
 
     setToggleForm(false);
   };
@@ -132,6 +134,12 @@ const Form = () => {
         helst uppdatera fälten för att se ändringar i realtid.
       </p>
       <form onSubmit={handleSubmit} className="w-full">
+        <button
+          type="submit"
+          className="flex bg-white cursor-pointer p-1 pl-3 box-border rounded-3xl w-14 hover:bg-black hover:text-white mb-5"
+        >
+          <LuFilePenLine size={32} />
+        </button>
         <div className="relative flex mb-10">
           <div className="flex flex-col gap-4 w-2/3">
             <input
@@ -217,7 +225,7 @@ const Form = () => {
                   type="file"
                   accept="image/*"
                   name="profilePicture"
-                  onChange={handleImageUpload}
+                  onChange={handleProfilePicUpload}
                 />
               </div>
             </div>
@@ -236,7 +244,12 @@ const Form = () => {
                 />
               </>
             ) : (
-              <CgProfile className="text-white text-[220px]" />
+              <>
+                <div className="absolute top-4 left-4 w-full h-full border-1 border-[#FF58C7] z-0"></div>
+                <div className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1 bg-black border-white grid place-content-center">
+                  {/* <CgProfile className="text-white text-[200px]" /> */}
+                </div>
+              </>
             )}
           </div>
         </div>
@@ -245,6 +258,7 @@ const Form = () => {
           <input
             type="text"
             name="header"
+            defaultValue={header}
             placeholder="Header for about"
             className="text-white text-3xl text-left font-normal outline-none bg-black"
           />
@@ -261,23 +275,47 @@ const Form = () => {
             Upload images of your projects
           </p>
           <div className="grid grid-cols-4 gap-4 border-t border-b border-white pt-3 pb-3 mb-5">
-            <div className="bg-gray-300 h-20 p-4">Item 1</div>
-            <div className="bg-gray-300 p-4">Item 2</div>
-            <div className="bg-gray-300 p-4">Item 3</div>
-            <div className="bg-gray-300 p-4">Item 4</div>
-            <div className="bg-gray-300 h-20 p-4">Item 5</div>
+            <div className="bg-gray-300 h-40 p-4">Project 1</div>
+            <div className="bg-gray-300 p-4">Project 2</div>
+            <div className="bg-gray-300 p-4">Project 3</div>
+            <div className="bg-gray-300 p-4">Project 4</div>
+            {/* <div className="bg-gray-300 h-20 p-4">Item 5</div>
             <div className="bg-gray-300 p-4">Item 6</div>
             <div className="bg-gray-300 p-4">Item 7</div>
-            <div className="bg-gray-300 p-4">Item 8</div>
+            <div className="bg-gray-300 p-4">Item 8</div> */}
           </div>
-          <div className="flex items-end gap-20">
-            <p className=" text-1xl text-left font-light">Project.jpg</p>
-            <input
-              type="url"
-              name="project"
-              placeholder="Link to project ex: url,netlify app or github repo"
-              className="outline-none bg-gray-100 w-full text-1.5xl font-light text-blac pl-4"
-            />
+
+          <div className="flex flex-col gap-6 relative">
+            {["project1", "project2", "project3", "project4"].map(
+              (item, index) => {
+                const splitIndex = item.search(/\d/);
+                const proj = item.slice(0, splitIndex);
+                const number = item.slice(splitIndex);
+                const label =
+                  proj.charAt(0).toUpperCase() + proj.slice(1) + " " + number;
+
+                return (
+                  <div
+                    key={index}
+                    className="w-full flex border-2 border-b-white"
+                  >
+                    <label
+                      htmlFor={item}
+                      className={`text-white text-1xl text-left font-light absolute left-0`}
+                    >
+                      {label}
+                    </label>
+                    <input
+                      type="url"
+                      name={item}
+                      placeholder="Link to project ex: url,netlify app or github repo"
+                      className="outline-none bg-gray-100 w-[90%] text-1.5xl font-light text-black pl-4 ml-auto"
+                    />
+                  </div>
+                );
+              }
+            )}
+
           </div>
         </div>
 

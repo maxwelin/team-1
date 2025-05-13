@@ -16,7 +16,7 @@ const FormContextProvider = ({ children }) => {
   const [aboutMe, setAboutMe] = useState(
     "I'm a passionate developer with a love for clean code and elegant design."
   );
-  const [header, setHeader] = useState("Front End Developer");
+  const [header, setHeader] = useState("Header");
   const [fileName, setFileName] = useState(null);
   const [cvFile, setCvFile] = useState(null);
   const [cvFileName, setCvFileName] = useState(null);
@@ -28,6 +28,8 @@ const FormContextProvider = ({ children }) => {
   const [fontColorName, setFontColorName] = useState("White #FFFFFF");
   const [accentColorName, setAccentColorName] = useState("Green #1EFF00");
   const [fontFamily, setFontFamily] = useState("Helvetica, sans-serif");
+  const [location, setLocation] = useState("Stockholm");
+  const [author, setAuthor] = useState("Team Juan");
 
   return (
     <FormContext.Provider
@@ -55,6 +57,8 @@ const FormContextProvider = ({ children }) => {
         fontColorName,
         accentColorName,
         fontFamily,
+        location,
+        author,
         setToggleForm,
         setFirstName,
         setLastName,
@@ -78,6 +82,8 @@ const FormContextProvider = ({ children }) => {
         setFontColorName,
         setAccentColorName,
         setFontFamily,
+        setLocation,
+        setAuthor,
       }}
     >
       {children}

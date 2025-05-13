@@ -3,15 +3,25 @@ import { useContext } from "react";
 import { FormContext } from "../providers/FormContext";
 import { GoPlus } from "react-icons/go"; // plus icon
 import { HiOutlineMinus } from "react-icons/hi2"; // minus icon
-import { FiMail, FiPhone } from "react-icons/fi"; // icons for email and phone
+import { MdMail, MdLocalPhone, MdLocationOn } from "react-icons/md";
 import { FaGithub, FaLinkedin } from "react-icons/fa"; // icons for GitHub and LinkedIn
 
 const Footer = () => {
-  const { firstName, lastName, email, phoneNumber, githubURL, linkedInURL } =
-    useContext(FormContext);
+  const {
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    githubURL,
+    linkedInURL,
+    location,
+    author,
+  } = useContext(FormContext);
   const [isOpen, setIsOpen] = useState(true);
   const [height, setHeight] = useState(0);
   const contentRef = useRef(null);
+  const headerRef = useRef(null); // Ref for the header to measure its width
+  const [headerWidth, setHeaderWidth] = useState("auto");
 
   const toggleFooter = () => {
     setIsOpen((prev) => !prev);
@@ -23,31 +33,44 @@ const Footer = () => {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    if (headerRef.current) {
+      // Get the width of the "Let's Connect" header
+      setHeaderWidth(`${headerRef.current.offsetWidth + 40}px`);
+    }
+  }, []);
+
   return (
-    <div className="bg-black text-white text-xl mx-10 my-10">
-      <h1 className="text-8xl text-center mb-2">Let's Connect</h1>
-
+    <div className="bg-black text-white text-xl mx-10 my-10 mt-[260px]">
+      <div className="flex justify-center">
+        <h1
+          ref={headerRef}
+          className="text-8xl text-center mb-2 inline-block tracking-tighter"
+        >
+          Let's Connect
+        </h1>
+      </div>
       {/* upper line */}
-      <div className="w-full mx-auto border-b-1 border-[#FF58C7]" />
-
+      <div
+        className="mx-auto border-b-1 border-[#FF58C7]"
+        style={{ width: headerWidth }}
+      />
       {/* clickable area */}
       <div
-        className={`flex justify-between items-center py-1 cursor-pointer transition-all duration-200 ${
-          !isOpen && "hover:pb-2"
-        }`}
+        className="flex justify-between items-center cursor-pointer py-2 mx-auto"
+        style={{ width: headerWidth }}
         onClick={toggleFooter}
       >
         {/* always show firstName and lastName */}
-        <h2 className="text-4xl text-[#FF58C7]">
+        <h2 className="text-2xl text-[#FF58C7] tracking-tighter">
           {firstName} {lastName}
         </h2>
         {isOpen ? (
-          <HiOutlineMinus className="text-2xl text-[#FF58C7]" />
+          <HiOutlineMinus className="text-4xl text-[#FF58C7]" />
         ) : (
-          <GoPlus className="text-2xl text-[#FF58C7]" />
+          <GoPlus className="text-4xl text-[#FF58C7]" />
         )}
       </div>
-
       {/* animated section */}
       <div
         style={{
@@ -57,49 +80,60 @@ const Footer = () => {
           opacity: isOpen ? 1 : 0,
         }}
       >
-        <div ref={contentRef} className="mt-3 flex justify-center pb-8">
-          <div className="flex items-start gap-70">
-            {/* email and phone */}
-            <div className="flex flex-col gap-2">
-              <a
-                href={`mailto:${email}`}
-                className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
-              >
-                <FiMail className="text-[#FF58C7]" />
-                <span className="underline">{email}</span>
-              </a>
-              <a
-                href={`tel:${phoneNumber}`}
-                className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
-              >
-                <FiPhone className="text-[#FF58C7]" />
-                <span>{phoneNumber}</span>
-              </a>
+        <div
+          ref={contentRef}
+          className="mt-10 flex justify-between pb-15 mx-auto"
+          style={{ width: headerWidth }}
+        >
+          {/* email and phone */}
+          <div className="flex flex-col gap-2">
+            <a
+              href={`mailto:${email}`}
+              className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
+            >
+              <MdMail className="text-[#FF58C7] text-2xl" />
+              <span className="underline">{email}</span>
+            </a>
+            <a
+              href={`tel:${phoneNumber}`}
+              className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
+            >
+              <MdLocalPhone className="text-[#FF58C7] text-2xl" />
+              <span>{phoneNumber}</span>
+            </a>
+            <div className="flex items-center gap-2 mt-10 text-xl">
+              <MdLocationOn className="text-[#FF58C7] text-2xl" />
+              <p>{location}</p>
             </div>
+          </div>
 
-            {/* github and linkedin */}
-            <div className="flex gap-7 pt-8">
-              <a
-                href={githubURL}
-                className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
-              >
-                <FaGithub className="text-[#FF58C7]" />
-                <span>GitHub</span>
-              </a>
-              <a
-                href={linkedInURL}
-                className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
-              >
-                <FaLinkedin className="text-[#FF58C7]" />
-                <span>LinkedIn</span>
-              </a>
-            </div>
+          {/* github and linkedin */}
+          <div className="flex flex-col gap-2">
+            <a
+              href={githubURL}
+              className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
+            >
+              <FaGithub className="text-[#FF58C7] text-2xl" />
+              <span>GitHub</span>
+            </a>
+            <a
+              href={linkedInURL}
+              className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
+            >
+              <FaLinkedin className="text-[#FF58C7] text-2xl" />
+              <span>LinkedIn</span>
+            </a>
           </div>
         </div>
       </div>
-
       {/* bottom line */}
-      <div className="w-full mx-auto border-b-1 border-[#FF58C7]" />
+      <div
+        className="mx-auto border-b-1 border-[#FF58C7]"
+        style={{ width: headerWidth }}
+      />
+      <p className="text-center mt-[180px] tracking-normal">
+        Forged with love, sweat & creativity by {author}
+      </p>
     </div>
   );
 };
