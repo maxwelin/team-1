@@ -13,7 +13,7 @@ const Skills = () => {
         <div className="border-t border-b border-white w-full max-w-[100%]">
           <div
             className={`flex justify-between items-center py-1 cursor-pointer transition-all duration-200 ${
-              !isOpen && "hover:pb-5"
+              !isOpen && "hover:pb-2"
             }`}
             onClick={() => setIsOpen(!isOpen)}
           >
