@@ -190,7 +190,7 @@ const Form = () => {
               <div className="relative w-full cursor-pointer">
                 <label
                   htmlFor="profilePicture"
-                  className="absolute w-full flex justify-between items-center border-t border-b border-white text-3xl font-light text-white"
+                  className="absolute w-full flex justify-between items-center border-t border-b border-white text-3xl font-light text-white "
                 >
                   {profilePic ? fileName : "Upload profile img"}
                   <BsFiletypeJpg />
@@ -205,8 +205,22 @@ const Form = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center">
-            <CgProfile className="absolute right-5 text-white text-[300px]" />
+          <div className="shrink-0 relative w-fit mt-[-0%] h-[400px] ml-20">
+            {profilePic ? (
+              <>
+                {/* Offset ram bakom bilden */}
+                <div className="absolute top-4 left-4 w-full h-full border-1 border-[#FF58C7] z-0"></div>
+
+                {/* Själva bilden */}
+                <img
+                  className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1 border-white"
+                  src={profilePic}
+                  alt=""
+                />
+              </>
+            ) : (
+              <CgProfile className="text-white text-[220px]" />
+            )}
           </div>
         </div>
 

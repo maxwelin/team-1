@@ -52,7 +52,7 @@ const Hero = () => {
 
                 {/* Själva bilden */}
                 <img
-                  className="relative z-10 h-[400px] w-[300px] object-center object-cover"
+                  className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1 border-white"
                   src={profilePic}
                   alt=""
                 />
