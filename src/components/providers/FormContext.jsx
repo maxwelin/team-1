@@ -21,6 +21,13 @@ const FormContextProvider = ({ children }) => {
   const [cvFile, setCvFile] = useState(null);
   const [cvFileName, setCvFileName] = useState(null);
   const [skills, setSkills] = useState([]);
+  const [bgColor, setBgColor] = useState("#000000");
+  const [fontColor, setFontColor] = useState("#FFFFFF");
+  const [accentColor, setAccentColor] = useState("#1EFF00");
+  const [bgColorName, setBgColorName] = useState("Black #000000");
+  const [fontColorName, setFontColorName] = useState("White #FFFFFF");
+  const [accentColorName, setAccentColorName] = useState("Green #1EFF00");
+  const [fontFamily, setFontFamily] = useState("Helvetica, sans-serif");
 
   return (
     <FormContext.Provider
@@ -41,6 +48,13 @@ const FormContextProvider = ({ children }) => {
         cvFile,
         cvFileName,
         skills,
+        bgColor,
+        fontColor,
+        accentColor,
+        bgColorName,
+        fontColorName,
+        accentColorName,
+        fontFamily,
         setToggleForm,
         setFirstName,
         setLastName,
@@ -57,6 +71,13 @@ const FormContextProvider = ({ children }) => {
         setCvFile,
         setCvFileName,
         setSkills,
+        setBgColor,
+        setFontColor,
+        setAccentColor,
+        setBgColorName,
+        setFontColorName,
+        setAccentColorName,
+        setFontFamily,
       }}
     >
       {children}
