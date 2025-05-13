@@ -9,10 +9,10 @@ const Quote = () => {
 
   return (
     <div className="bg-black text-4xl text-white py-6 mt-[200px] relative">
-      <h1 className="text-8xl mb-2 tracking-tighter mb-10">
+      <h1 className="text-8xl tracking-tighter mb-10 italic">
         "Well, it is what it is because he who is who he is"
       </h1>
-      <p className="text-lg justify-end absolute right-0 italic">-Joe Biden</p>
+      <p className="text-lg justify-end absolute right-0">-Joe Biden</p>
     </div>
   );
 };
