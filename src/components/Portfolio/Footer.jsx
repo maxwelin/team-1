@@ -54,7 +54,7 @@ const Footer = () => {
         onClick={toggleFooter}
       >
         {/* always show firstName and lastName */}
-        <h2 className="text-2xl text-[#FF58C7]">
+        <h2 className="text-2xl text-[#FF58C7] tracking-tighter">
           {firstName} {lastName}
         </h2>
         {isOpen ? (
