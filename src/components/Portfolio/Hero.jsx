@@ -13,7 +13,7 @@ const Hero = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="mt-10 mb-[300px]">
+    <section className="mt-10 mb-[200px] 3xl:mb-[120px]">
       <div className="bg-black text-white text-6xl tracking-tighter">
         <div className="flex justify-between items-start">
           <div className="flex flex-col">
@@ -52,13 +52,18 @@ const Hero = () => {
 
                 {/* Själva bilden */}
                 <img
-                  className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1 border-white"
+                  className="relative z-10 h-[400px] w-[300px] 3xl:h-[480px] 3xl:w-[360px] object-center object-cover border-1 border-white"
                   src={profilePic}
                   alt=""
                 />
               </>
             ) : (
-              <CgProfile className="text-white text-[220px]" />
+              <>
+                <div className="absolute top-4 left-4 w-full h-full border-1 border-[#FF58C7] z-0"></div>
+                <div className="relative z-10 h-[400px] w-[300px] 3xl:h-[480px] 3xl:w-[360px] object-center object-cover border-1 bg-black border-white grid place-content-center">
+                  {/* <CgProfile className="text-white text-[200px]" /> */}
+                </div>
+              </>
             )}
           </div>
         </div>

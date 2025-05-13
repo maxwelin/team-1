@@ -16,7 +16,7 @@ const FormContextProvider = ({ children }) => {
   const [aboutMe, setAboutMe] = useState(
     "I'm a passionate developer with a love for clean code and elegant design."
   );
-  const [header, setHeader] = useState("Front End Developer");
+  const [header, setHeader] = useState("Header");
   const [fileName, setFileName] = useState(null);
   const [cvFile, setCvFile] = useState(null);
   const [cvFileName, setCvFileName] = useState(null);

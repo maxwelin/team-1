@@ -7,7 +7,7 @@ function App() {
   return (
     <FormContextProvider>
       <div className="grid grid-cols-9 bg-black">
-        <div className="col-start-2 col-end-9 pt-[200px]">
+        <div className="col-start-2 col-end-9 pt-[120px]">
           <Main />
         </div>
       </div>
