@@ -46,7 +46,7 @@ const Form = () => {
     setSkills,
   } = useContext(FormContext);
 
-  const handleImageUpload = (e) => {
+  const handleProfilePicUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       setFileName(file.name);
@@ -208,7 +208,7 @@ const Form = () => {
                   type="file"
                   accept="image/*"
                   name="profilePicture"
-                  onChange={handleImageUpload}
+                  onChange={handleProfilePicUpload}
                 />
               </div>
             </div>
@@ -258,25 +258,42 @@ const Form = () => {
             Upload images of your projects
           </p>
           <div className="grid grid-cols-4 gap-4 border-t border-b border-white pt-3 pb-3 mb-5">
-            <div className="bg-gray-300 h-20 p-4">Item 1</div>
-            <div className="bg-gray-300 p-4">Item 2</div>
-            <div className="bg-gray-300 p-4">Item 3</div>
-            <div className="bg-gray-300 p-4">Item 4</div>
-            <div className="bg-gray-300 h-20 p-4">Item 5</div>
+            <div className="bg-gray-300 h-40 p-4">Project 1</div>
+            <div className="bg-gray-300 p-4">Project 2</div>
+            <div className="bg-gray-300 p-4">Project 3</div>
+            <div className="bg-gray-300 p-4">Project 4</div>
+            {/* <div className="bg-gray-300 h-20 p-4">Item 5</div>
             <div className="bg-gray-300 p-4">Item 6</div>
             <div className="bg-gray-300 p-4">Item 7</div>
-            <div className="bg-gray-300 p-4">Item 8</div>
+            <div className="bg-gray-300 p-4">Item 8</div> */}
           </div>
-          <div className="flex items-end gap-20">
-            <p className="text-white text-1xl text-left font-light">
-              Project.jpg
-            </p>
-            <input
-              type="url"
-              name="project"
-              placeholder="Link to project ex: url,netlify app or github repo"
-              className="outline-none bg-gray-100 w-full text-1.5xl font-light text-blac pl-4"
-            />
+          <div className="flex flex-col gap-6 relative">
+            {["project1", "project2", "project3", "project4"].map(
+              (item, index) => {
+                const splitIndex = item.search(/\d/);
+                const proj = item.slice(0, splitIndex);
+                const number = item.slice(splitIndex);
+                const label =
+                  proj.charAt(0).toUpperCase() + proj.slice(1) + " " + number;
+
+                return (
+                  <div className="w-full flex border-2 border-b-white">
+                    <label
+                      htmlFor={item}
+                      className={`text-white text-1xl text-left font-light absolute left-0`}
+                    >
+                      {label}
+                    </label>
+                    <input
+                      type="url"
+                      name={item}
+                      placeholder="Link to project ex: url,netlify app or github repo"
+                      className="outline-none bg-gray-100 w-[90%] text-1.5xl font-light text-black pl-4 ml-auto"
+                    />
+                  </div>
+                );
+              }
+            )}
           </div>
         </div>
 

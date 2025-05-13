@@ -7,14 +7,8 @@ import { FiMail, FiPhone } from "react-icons/fi"; // icons for email and phone
 import { FaGithub, FaLinkedin } from "react-icons/fa"; // icons for GitHub and LinkedIn
 
 const Footer = () => {
-  const {
-    firstName,
-    lastName,
-    email,
-    phoneNumber,
-    githubURL,
-    linkedInURL,
-  } = useContext(FormContext);
+  const { firstName, lastName, email, phoneNumber, githubURL, linkedInURL } =
+    useContext(FormContext);
   const [isOpen, setIsOpen] = useState(true);
   const [height, setHeight] = useState(0);
   const contentRef = useRef(null);
@@ -34,24 +28,25 @@ const Footer = () => {
   useEffect(() => {
     if (headerRef.current) {
       // Get the width of the "Let's Connect" header
-      setHeaderWidth(`${headerRef.current.offsetWidth}px`);
+      setHeaderWidth(`${headerRef.current.offsetWidth + 40}px`);
     }
   }, []);
 
   return (
-    <div className="bg-black text-white text-xl mx-10 my-10">
+    <div className="bg-black text-white text-xl mx-10 my-10 mt-[260px]">
       <div className="flex justify-center">
-        <h1 ref={headerRef} className="text-8xl text-center mb-2 inline-block">
+        <h1
+          ref={headerRef}
+          className="text-8xl text-center mb-2 inline-block tracking-tighter"
+        >
           Let's Connect
         </h1>
       </div>
-
       {/* upper line */}
       <div
         className="mx-auto border-b-1 border-[#FF58C7]"
         style={{ width: headerWidth }}
       />
-
       {/* clickable area */}
       <div
         className="flex justify-between items-center cursor-pointer py-2 mx-auto"
@@ -68,7 +63,6 @@ const Footer = () => {
           <GoPlus className="text-4xl text-[#FF58C7]" />
         )}
       </div>
-
       {/* animated section */}
       <div
         style={{
@@ -120,12 +114,14 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
       {/* bottom line */}
       <div
         className="mx-auto border-b-1 border-[#FF58C7]"
         style={{ width: headerWidth }}
       />
+      <p className="text-center mt-[180px]">
+        Forged with love, sweat & creativity by Team Juan
+      </p>
     </div>
   );
 };

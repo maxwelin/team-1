@@ -34,7 +34,7 @@ const Hero = () => {
                   }`}
                   onClick={() => setIsOpen(!isOpen)}
                 >
-                  <span className="text-4xl">CV</span>
+                  <span className="text-2xl">CV</span>
                   <span className="text-4xl transition-all">
                     {isOpen ? <HiOutlineMinus /> : <GoPlus />}
                   </span>

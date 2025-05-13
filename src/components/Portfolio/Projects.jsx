@@ -30,7 +30,7 @@ const Projects = () => {
               }`}
               onClick={() => setIsOpen(!isOpen)}
             >
-              <span className="text-4xl">MY PROJECTS</span>
+              <span className="text-2xl tracking-tighter">MY PROJECTS</span>
               <span className="text-4xl ">
                 {isOpen ? <HiOutlineMinus /> : <GoPlus />}
               </span>
@@ -51,10 +51,10 @@ const Projects = () => {
                 <Slider ref={sliderRef} {...settings}>
                   {["Lorem", "Ipsum", "För", "Helvete"].map((text, i) => (
                     <div className="bg-[#D9D9D9] w-[660px] h-[330px] relative">
-                      <h3 className="absolute left-1/2 -translate-x-1/2 -top-15 z-10 text-5xl">
+                      <h3 className="absolute left-1/2 -translate-x-1/2 -top-15 z-10 text-5xl tracking-tighter">
                         {text}
                       </h3>
-                      <h3 className="absolute left-1/2 -translate-x-1/2 -bottom-15 z-10 text-5xl">
+                      <h3 className="absolute left-1/2 -translate-x-1/2 -bottom-15 z-10 text-5xl tracking-tighter">
                         {text}
                       </h3>
                     </div>

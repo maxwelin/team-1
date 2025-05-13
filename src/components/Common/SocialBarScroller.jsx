@@ -15,7 +15,7 @@ const SocialBar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowButton(window.scrollY > 300);
+      setShowButton(window.scrollY > 200);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -52,7 +52,7 @@ const SocialBar = () => {
   ];
 
   return (
-    <div className="fixed top-1/3 left-0 z-50 hidden md:flex flex-col gap-4">
+    <div className="fixed top-1/3 left-8 z-50 hidden md:flex flex-col gap-4">
       {socials.map((item, index) => (
         <div key={index} className="group relative">
           {item.href ? (
