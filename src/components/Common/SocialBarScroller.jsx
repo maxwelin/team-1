@@ -21,8 +21,16 @@ const SocialBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const { toggleForm, email, githubURL, linkedInURL, cvFile, cvFileName } =
-    useContext(FormContext);
+  const {
+    toggleForm,
+    email,
+    githubURL,
+    linkedInURL,
+    cvFile,
+    cvFileName,
+    fontColor,
+    accentColor,
+  } = useContext(FormContext);
 
   if (toggleForm || !showButton) return null;
 
@@ -64,11 +72,25 @@ const SocialBar = () => {
               className={`flex items-center pl-2 pr-4 py-2 rounded-r-full transition-all duration-600 hover:translate-x-2 ${
                 item.href === "#" ? "opacity-50 pointer-events-none" : ""
               }`}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              <span className="text-white group-hover:text-[#FF58C7] transition-transform duration-600 group-hover:scale-150">
+              <span
+                style={{
+                  color: hoveredIndex === index ? accentColor : fontColor,
+                  transform:
+                    hoveredIndex === index ? "scale(1.25)" : "scale(1)",
+                  transition: "all 0.3s ease",
+                }}
+              >
                 {item.icon}
               </span>
-              <span className="ml-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-800 text-sm whitespace-nowrap">
+              <span
+                className="ml-6 opacity-0 group-hover:opacity-100 transition-opacity duration-800 text-sm whitespace-nowrap"
+                style={{
+                  color: hoveredIndex === index ? accentColor : fontColor,
+                }}
+              >
                 {item.text}
               </span>
             </a>
@@ -84,17 +106,35 @@ const SocialBar = () => {
               className="flex items-center pl-2 pr-4 py-2 rounded-r-full transition-all duration-800 hover:translate-x-2"
             >
               <span
-                className={`whitespace-nowrap transition-all duration-300 group-hover:scale-125 ${
-                  copiedIndex === index
-                    ? "text-[#00FF1E] scale-105"
-                    : "text-white group-hover:text-[#FF58C7]"
-                }`}
+                style={{
+                  color:
+                    copiedIndex === index
+                      ? "#00FF1E"
+                      : hoveredIndex === index
+                      ? accentColor
+                      : fontColor,
+                  transform:
+                    hoveredIndex === index || copiedIndex === index
+                      ? "scale(1.25)"
+                      : "scale(1)",
+                  transition: "all 0.3s ease",
+                }}
               >
                 {hoveredIndex === index || copiedIndex === index
                   ? item.hoverIcon
                   : item.icon}
               </span>
-              <span className="ml-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-800 text-sm whitespace-nowrap">
+              <span
+                className="ml-6 opacity-0 group-hover:opacity-100 transition-opacity duration-800 text-sm whitespace-nowrap"
+                style={{
+                  color:
+                    copiedIndex === index
+                      ? "#00FF1E"
+                      : hoveredIndex === index
+                      ? accentColor
+                      : fontColor,
+                }}
+              >
                 {copiedIndex === index ? email : item.text}
               </span>
             </button>

@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 
+import { useContext } from "react";
+import { FormContext } from "../providers/FormContext";
+
 import { FiArrowUpCircle } from "react-icons/fi";
 
 const ScrollToTop = () => {
   const [showButton, setShowButton] = useState(false);
+  const { fontColor, accentColor } = useContext(FormContext);
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +30,14 @@ const ScrollToTop = () => {
       {showButton && (
         <button
           onClick={scrollToTop}
-          className="cursor-pointer hidden lg:flex fixed bottom-20 right-14 w-10 h-10 text-white rounded-full items-center justify-center shadow-lg hover:text-[#FF58C7] hover:scale-110 transition-all duration-300"
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+          style={{
+            color: isHovering ? accentColor : fontColor,
+            transform: isHovering ? "scale(1.25)" : "scale(1)",
+            transition: "all 0.3s ease",
+          }}
+          className="cursor-pointer hidden lg:flex fixed bottom-20 right-14 w-10 h-10 rounded-full items-center justify-center shadow-lg transition-all duration-300"
         >
           <FiArrowUpCircle className="w-10 h-10" />
         </button>
