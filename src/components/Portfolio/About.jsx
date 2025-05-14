@@ -8,8 +8,8 @@ const About = () => {
   const { aboutMe, header } = useContext(FormContext);
 
   return (
-    <div className="bg-black text-4xl text-white py-6 mb-[260px]">
-      <h1 className="text-8xl mb-4 tracking-tighter">{header}</h1>
+    <div className="bg-black text-white py-6 mb-[260px]">
+      <h1 className="text-9xl mb-4 tracking-tighter">{header}</h1>
       <div className="flex justify-between items-start gap-10">
         <div className="border-t border-b border-white w-full max-w-[100%]">
           <div

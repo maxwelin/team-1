@@ -46,7 +46,7 @@ const Footer = () => {
       <div className="flex justify-center">
         <h1
           ref={headerRef}
-          className="text-8xl text-center mb-2 inline-block tracking-tighter"
+          className="text-9xl text-center mb-2 inline-block tracking-tighter"
         >
           Let's Connect
         </h1>
@@ -87,17 +87,17 @@ const Footer = () => {
           style={{ width: headerWidth, "--hover-color": accentColor }}
         >
           {/* email and phone */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-4">
             <a
               href={`mailto:${email}`}
-              className="flex items-center gap-2 text-xl hover:text-[var(--hover-color)] transition-colors"
+              className="flex items-center gap-4 text-xl hover:text-[var(--hover-color)] transition-colors"
             >
               <MdMail style={{ color: accentColor }} className="text-2xl" />
               <span className="underline">{email}</span>
             </a>
             <a
               href={`tel:${phoneNumber}`}
-              className="flex items-center gap-2 text-xl hover:text-[var(--hover-color)] transition-colors"
+              className="flex items-center gap-4 text-xl hover:text-[var(--hover-color)] transition-colors"
             >
               <MdLocalPhone
                 style={{ color: accentColor }}
@@ -105,7 +105,7 @@ const Footer = () => {
               />
               <span>{phoneNumber}</span>
             </a>
-            <div className="flex items-center gap-2 mt-10 text-xl">
+            <div className="flex items-center gap-4 mt-10 text-xl">
               <MdLocationOn
                 style={{ color: accentColor }}
                 className="text-2xl"
@@ -115,17 +115,17 @@ const Footer = () => {
           </div>
 
           {/* github and linkedin */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-4">
             <a
               href={githubURL}
-              className="flex items-center gap-2 text-xl hover:text-[var(--hover-color)] transition-colors"
+              className="flex items-center gap-4 text-xl hover:text-[var(--hover-color)] transition-colors"
             >
               <FaGithub style={{ color: accentColor }} className="text-2xl" />
               <span>GitHub</span>
             </a>
             <a
               href={linkedInURL}
-              className="flex items-center gap-2 text-xl hover:text-[var(--hover-color)] transition-colors"
+              className="flex items-center gap-4 text-xl hover:text-[var(--hover-color)] transition-colors"
             >
               <FaLinkedin style={{ color: accentColor }} className="text-2xl" />
               <span>LinkedIn</span>
