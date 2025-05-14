@@ -1,10 +1,13 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 
 import { GoPlus } from "react-icons/go";
 import { HiOutlineMinus } from "react-icons/hi2";
 import Slider from "react-slick";
+import { FormContext } from "../providers/FormContext";
 
 const Projects = () => {
+  const { accentColor } = useContext(FormContext);
+
   const [isOpen, setIsOpen] = useState(false);
 
   var settings = {
@@ -21,10 +24,14 @@ const Projects = () => {
 
   return (
     <section className="mb-2">
-      <div className="bg-black text-white text-6xl">
+      <div className="  text-6xl">
         <div className="flex justify-between items-start gap-10">
-          <div className="border-t border-b border-white w-full max-w-[100%]">
+          <div
+            style={{ borderColor: accentColor }}
+            className="border-t border-b  w-full max-w-[100%]"
+          >
             <div
+              style={{ color: accentColor }}
               className={`flex justify-between items-center py-1 cursor-pointer transition-all duration-200 ${
                 !isOpen && "hover:pb-2"
               }`}
@@ -44,7 +51,7 @@ const Projects = () => {
               <div className="relative text-center pb-50 overflow-visible">
                 <button
                   onClick={() => sliderRef.current.slickPrev()}
-                  className="absolute left-35 top-[30%] text-black bg-white text-[14px] z-10 md:text-[20px] tracking-widest rotate-[-90deg] hover:bg-transparent hover:text-white px-1 py-0.5 rounded cursor-pointer"
+                  className="absolute left-35 top-[30%] text-black bg-white text-[14px] z-10 md:text-[20px] tracking-widest rotate-[-90deg] hover:bg-transparent hover: px-1 py-0.5 rounded cursor-pointer"
                 >
                   BACK
                 </button>
@@ -54,7 +61,7 @@ const Projects = () => {
                       <h3 className="absolute left-1/2 -translate-x-1/2 -top-13 z-10 text-4xl tracking-tighter">
                         {text}
                       </h3>
-                      <h3 className="absolute left-1/2 -translate-x-1/2 -bottom-18 z-10 text-xl tracking-tighter">
+                      <h3 className="absolute left-1/2 -translate-x-1/2 -bottom-22 z-10 text-xl tracking-tighter">
                         Lorem, ipsum dolor sit amet consectetur adipisicing
                         elit. Atque, eligendi.
                       </h3>
@@ -63,7 +70,7 @@ const Projects = () => {
                 </Slider>
                 <button
                   onClick={() => sliderRef.current.slickNext()}
-                  className="absolute right-35 top-[30%] text-black bg-white text-[14px] md:text-[20px] hover:bg-transparent  hover:text-white z-10 tracking-widest rotate-[-90deg] bg-black px-1 py-0.5 rounded cursor-pointer"
+                  className="absolute right-35 top-[30%] text-black bg-white text-[14px] md:text-[20px] hover:bg-transparent  hover: z-10 tracking-widest rotate-[-90deg]  px-1 py-0.5 rounded cursor-pointer"
                 >
                   NEXT
                 </button>

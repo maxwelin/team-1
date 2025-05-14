@@ -8,7 +8,7 @@ const Quote = () => {
   const { QuoteMe, header } = useContext(FormContext);
 
   return (
-    <div className="bg-black text-4xl text-white py-6 mt-[200px] relative">
+    <div className=" text-4xl  py-6 mt-[200px] relative">
       <h1 className="text-8xl tracking-tighter mb-10 italic">
         "Well, it is what it is because he who is who he is"
       </h1>

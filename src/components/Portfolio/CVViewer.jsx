@@ -2,10 +2,14 @@ import { useContext } from "react";
 import { FormContext } from "../providers/FormContext";
 
 const CVViewer = () => {
-  const { cvFile } = useContext(FormContext);
+  const { cvFile, fontColor } = useContext(FormContext);
 
   if (!cvFile) {
-    return <p className="text-white">Inget CV uppladdat ännu.</p>;
+    return (
+      <p style={{ color: fontColor }} className="">
+        Inget CV uppladdat ännu.
+      </p>
+    );
   }
 
   const pdfUrl = URL.createObjectURL(cvFile);
