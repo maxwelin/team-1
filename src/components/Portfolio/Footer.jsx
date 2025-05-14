@@ -16,6 +16,7 @@ const Footer = () => {
     linkedInURL,
     location,
     author,
+    accentColor,
   } = useContext(FormContext);
   const [isOpen, setIsOpen] = useState(true);
   const [height, setHeight] = useState(0);
@@ -41,7 +42,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <div className="bg-black text-white text-xl mx-10 my-10 mt-[260px]">
+    <div className="text-xl mx-10 my-10 mt-[260px]">
       <div className="flex justify-center">
         <h1
           ref={headerRef}
@@ -52,23 +53,23 @@ const Footer = () => {
       </div>
       {/* upper line */}
       <div
-        className="mx-auto border-b-1 border-[#FF58C7]"
-        style={{ width: headerWidth }}
+        className="mx-auto border-b-1"
+        style={{ width: headerWidth, borderColor: accentColor }}
       />
       {/* clickable area */}
       <div
         className="flex justify-between items-center cursor-pointer py-2 mx-auto"
-        style={{ width: headerWidth }}
+        style={{ width: headerWidth, color: accentColor }}
         onClick={toggleFooter}
       >
         {/* always show firstName and lastName */}
-        <h2 className="text-2xl text-[#FF58C7] tracking-tighter">
+        <h2 className="text-2xl tracking-tighter">
           {firstName} {lastName}
         </h2>
         {isOpen ? (
-          <HiOutlineMinus className="text-4xl text-[#FF58C7]" />
+          <HiOutlineMinus className="text-4xl" />
         ) : (
-          <GoPlus className="text-4xl text-[#FF58C7]" />
+          <GoPlus className="text-4xl" />
         )}
       </div>
       {/* animated section */}
@@ -83,26 +84,32 @@ const Footer = () => {
         <div
           ref={contentRef}
           className="mt-10 flex justify-between pb-15 mx-auto"
-          style={{ width: headerWidth }}
+          style={{ width: headerWidth, "--hover-color": accentColor }}
         >
           {/* email and phone */}
           <div className="flex flex-col gap-2">
             <a
               href={`mailto:${email}`}
-              className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
+              className="flex items-center gap-2 text-xl hover:text-[var(--hover-color)] transition-colors"
             >
-              <MdMail className="text-[#FF58C7] text-2xl" />
+              <MdMail style={{ color: accentColor }} className="text-2xl" />
               <span className="underline">{email}</span>
             </a>
             <a
               href={`tel:${phoneNumber}`}
-              className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
+              className="flex items-center gap-2 text-xl hover:text-[var(--hover-color)] transition-colors"
             >
-              <MdLocalPhone className="text-[#FF58C7] text-2xl" />
+              <MdLocalPhone
+                style={{ color: accentColor }}
+                className="text-2xl"
+              />
               <span>{phoneNumber}</span>
             </a>
             <div className="flex items-center gap-2 mt-10 text-xl">
-              <MdLocationOn className="text-[#FF58C7] text-2xl" />
+              <MdLocationOn
+                style={{ color: accentColor }}
+                className="text-2xl"
+              />
               <p>{location}</p>
             </div>
           </div>
@@ -111,16 +118,16 @@ const Footer = () => {
           <div className="flex flex-col gap-2">
             <a
               href={githubURL}
-              className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
+              className="flex items-center gap-2 text-xl hover:text-[var(--hover-color)] transition-colors"
             >
-              <FaGithub className="text-[#FF58C7] text-2xl" />
+              <FaGithub style={{ color: accentColor }} className="text-2xl" />
               <span>GitHub</span>
             </a>
             <a
               href={linkedInURL}
-              className="flex items-center gap-2 text-xl hover:text-[#FF58C7] transition-colors"
+              className="flex items-center gap-2 text-xl hover:text-[var(--hover-color)] transition-colors"
             >
-              <FaLinkedin className="text-[#FF58C7] text-2xl" />
+              <FaLinkedin style={{ color: accentColor }} className="text-2xl" />
               <span>LinkedIn</span>
             </a>
           </div>
@@ -128,8 +135,8 @@ const Footer = () => {
       </div>
       {/* bottom line */}
       <div
-        className="mx-auto border-b-1 border-[#FF58C7]"
-        style={{ width: headerWidth }}
+        className="mx-auto border-b-1"
+        style={{ width: headerWidth, borderColor: accentColor }}
       />
       <p className="text-center mt-[180px] tracking-normal">
         Forged with love, sweat & creativity by {author}

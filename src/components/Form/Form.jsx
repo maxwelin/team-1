@@ -3,6 +3,7 @@ import { FormContext } from "../providers/FormContext";
 import { BsFiletypePdf, BsFiletypeJpg } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { LuFilePenLine } from "react-icons/lu";
+import { VscDebugRestart } from "react-icons/vsc";
 
 const Form = () => {
   const [skillInput, setSkillInput] = useState("");
@@ -98,6 +99,13 @@ const Form = () => {
     }
   };
 
+  const handleStyleReset = (e) => {
+    e.preventDefault();
+    setBgColor("#000000");
+    setFontColor("#FFFFFF");
+    setAccentColor("#FF58C7");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -117,15 +125,7 @@ const Form = () => {
   };
 
   return (
-    <div
-      // style={{
-      //   backgroundColor: bgColor,
-      //   color: fontColor,
-      //   fontFamily: fontFamily,
-      //   borderColor: fontColor,
-      // }}
-      className="flex flex-col items-start gap-6"
-    >
+    <div className="flex flex-col items-start gap-6">
       <p className=" text-6xl text-left mb-2 font-medium">Form</p>
       <p className=" text-1xl text-left mb-2 font-normal">
         Fyll i formuläret nedan för att skapa din personliga portfolio.
@@ -255,7 +255,7 @@ const Form = () => {
                   style={{ borderColor: accentColor }}
                   className="absolute top-4 left-4 w-full h-full border-1 z-0"
                 ></div>
-                <div className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1 bg-black grid place-content-center">
+                <div className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1 grid place-content-center">
                   {/* <CgProfile className="text-white text-[200px]" /> */}
                 </div>
               </>
@@ -352,7 +352,7 @@ const Form = () => {
         </div>
 
         <div className="flex flex-col w-2/3 gap-2.5 mt-30 mb-20">
-          <p className=" text-3xl text-left font-normal mb-5">
+          <p className="text-3xl text-left font-normal mb-5">
             Style your Portfolio
           </p>
           <select
@@ -383,7 +383,7 @@ const Form = () => {
             />
             <span
               style={{ backgroundColor: bgColor }}
-              className="w-10 h-10 absolute right-0 inline-block border"
+              className="w-10 h-10 absolute right-0 inline-block border rounded-md"
             ></span>
           </label>
 
@@ -398,7 +398,7 @@ const Form = () => {
             />
             <span
               style={{ backgroundColor: fontColor }}
-              className="w-10 h-10 absolute right-0 inline-block"
+              className="w-10 h-10 absolute right-0 inline-block rounded-md"
             ></span>
           </label>
           <label className="outline-none relative flex items-center cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1">
@@ -412,9 +412,18 @@ const Form = () => {
             />
             <span
               style={{ backgroundColor: accentColor }}
-              className="w-10 h-10 absolute right-0 inline-block"
+              className="w-10 h-10 absolute right-0 inline-block rounded-md"
             ></span>
           </label>
+          <div className="flex justify-end">
+            <button
+              onClick={handleStyleReset}
+              style={{ "--hover-color": accentColor }}
+              className="flex max-w-fit items-end gap-3 cursor-pointer font-light hover:text-[var(--hover-color)]"
+            >
+              Reset styling <VscDebugRestart className="h-8 w-8" />
+            </button>
+          </div>
         </div>
 
         <p className=" text-1xl text-left mb-2 font-normal w-2/3">
