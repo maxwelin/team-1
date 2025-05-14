@@ -9,22 +9,30 @@ const Main = () => {
     useContext(FormContext);
   const [showButton, setShowButton] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
-
   let scrollTimeout = null;
 
   useEffect(() => {
     const handleScroll = () => {
       setShowButton(false);
       clearTimeout(scrollTimeout);
-
       scrollTimeout = setTimeout(() => {
         setShowButton(true);
-      }, 300); // visar igen 300ms efter att man slutat scrolla
+      }, 300);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const containerStyle = {
+    color: isHovered ? fontColor : accentColor,
+    transition: "color 0.3s ease",
+  };
+
+  const iconStyle = {
+    transform: isHovered ? "translateX(-4px)" : "translateX(0)",
+    transition: "transform 0.3s ease",
+  };
 
   return (
     <>
@@ -34,21 +42,16 @@ const Main = () => {
         <>
           {showButton && (
             <div
-              className="fixed top-8 left-10 transform -translate-x-1 z-50 cursor-pointer text-xl font-medium transition-colors duration-300 flex items-center gap-2"
-              style={{
-                color: isHovered ? fontColor : accentColor,
+              className="fixed top-8 left-10 transform -translate-x-1 z-50 cursor-pointer text-xl font-medium flex items-center gap-2"
+              style={containerStyle}
+              onClick={() => {
+                setToggleForm(!toggleForm);
+                setIsHovered(false);
               }}
-              onClick={() => setToggleForm(!toggleForm)}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <FiArrowLeft
-                size={30}
-                style={{
-                  transform: isHovered ? "translateX(-4px)" : "translateX(0)",
-                  transition: "transform 0.3s ease",
-                }}
-              />
+              <FiArrowLeft size={30} style={iconStyle} />
               <span>Back to form</span>
             </div>
           )}
