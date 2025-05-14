@@ -427,7 +427,7 @@ const Form = () => {
           </div>
         </div>
 
-        <p className=" text-1xl text-left mb-2 font-normal w-2/3">
+        <p className="text-1xl text-left mb-2 font-normal w-2/3">
           Fyll i formuläret nedan för att skapa din personliga portfolio.
           Informationen du skriver in visas direkt i portfolion under
           formuläret. När du är nöjd kan du ladda ner en färdig zip-fil med din
