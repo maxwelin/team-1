@@ -86,7 +86,7 @@ const SocialBar = () => {
                 {item.icon}
               </span>
               <span
-                className="ml-6 opacity-0 group-hover:opacity-100 transition-opacity duration-800 text-sm whitespace-nowrap"
+                className="ml-6 opacity-0 group-hover:opacity-100 transition-opacity duration-800 text-base whitespace-nowrap"
                 style={{
                   color: hoveredIndex === index ? accentColor : fontColor,
                 }}
@@ -125,7 +125,7 @@ const SocialBar = () => {
                   : item.icon}
               </span>
               <span
-                className="ml-6 opacity-0 group-hover:opacity-100 transition-opacity duration-800 text-sm whitespace-nowrap"
+                className="ml-6 opacity-0 group-hover:opacity-100 transition-opacity duration-800 text-base whitespace-nowrap"
                 style={{
                   color:
                     copiedIndex === index
