@@ -5,13 +5,17 @@ import { FormContext } from "../providers/FormContext";
 
 const Skills = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { skills } = useContext(FormContext);
+  const { skills, accentColor } = useContext(FormContext);
 
   return (
-    <div className="bg-black text-4xl text-white py-6">
+    <div className="text-4xl py-6">
       <div className="flex justify-between items-start gap-10">
-        <div className="border-t border-b border-white w-full max-w-[100%]">
+        <div
+          style={{ borderColor: accentColor }}
+          className="border-t border-b w-full max-w-[100%]"
+        >
           <div
+            style={{ color: accentColor }}
             className={`flex justify-between items-center py-1 cursor-pointer transition-all duration-200 ${
               !isOpen && "hover:pb-2"
             }`}
