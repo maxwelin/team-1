@@ -5,8 +5,13 @@ import { FormContext } from "../providers/FormContext";
 import { FiArrowLeft } from "react-icons/fi";
 
 const Main = () => {
-  const { toggleForm, setToggleForm, fontColor, accentColor } =
-    useContext(FormContext);
+  const {
+    toggleForm,
+    setToggleForm,
+    fontColor,
+    accentColor,
+    SetFirstTimeUser,
+  } = useContext(FormContext);
   const [showButton, setShowButton] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   let scrollTimeout = null;
@@ -45,6 +50,7 @@ const Main = () => {
               className="fixed top-8 left-10 transform -translate-x-1 z-50 cursor-pointer text-xl font-medium flex items-center gap-2"
               style={containerStyle}
               onClick={() => {
+                SetFirstTimeUser(false);
                 setToggleForm(!toggleForm);
                 setIsHovered(false);
               }}

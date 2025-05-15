@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FormContext } from "../providers/FormContext";
 
 const AboveFold = () => {
-  const { accentColor, bgColor, formRef } = useContext(FormContext);
+  const { accentColor, bgColor, fontColor, formRef } = useContext(FormContext);
+
+  const [hover, setHover] = useState(false);
 
   const handleClick = () => {
     if (formRef.current) {
@@ -25,11 +27,18 @@ const AboveFold = () => {
         then customize the style to make the portfolio truly your own.
       </p>
       <button
-        style={{ backgroundColor: accentColor, color: bgColor }}
-        className="h-15 w-[300px] rounded-4xl text-2xl cursor-pointer tracking-tighter"
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
         onClick={handleClick}
+        style={{
+          backgroundColor: hover ? bgColor : accentColor,
+          color: hover ? fontColor : bgColor,
+          borderColor: hover ? fontColor : accentColor,
+          transition: "all 0.2s ease-in-out",
+        }}
+        className="cursor-pointer h-13 w-[300px] items-center border-2 border- rounded-4xl text-2xl "
       >
-        Get Started
+        GET STARTED
       </button>
     </div>
   );

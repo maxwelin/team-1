@@ -9,6 +9,10 @@ import AboveFold from "./AboveFold";
 const Form = () => {
   const [skillInput, setSkillInput] = useState("");
   const [imgUrl, setImgUrl] = useState("");
+  const [hoverSubmit, setHoverSubmit] = useState(false);
+  const [hoverReset, setHoverReset] = useState(false);
+  const [hoverProj, setHoverProj] = useState(false);
+  const [hoverAdd, setHoverAdd] = useState(false);
 
   const {
     firstName,
@@ -20,6 +24,7 @@ const Form = () => {
     githubURL,
     linkedInURL,
     header,
+    firstTimeUser,
     setFirstName,
     setLastName,
     setSchool,
@@ -137,10 +142,10 @@ const Form = () => {
     setBgColor("#FFFFFF");
     setFontColor("#000000");
     setAccentColor("#FF6200");
+    setFontFamily("Helvetica, sans-serif");
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     const form = e.target;
 
     setFirstName(form.fname.value.toUpperCase());
@@ -157,35 +162,84 @@ const Form = () => {
     setToggleForm(false);
   };
 
+  const handleResetAll = (e) => {
+    handleStyleReset(e);
+    setFirstName("");
+    setLastName("");
+    setSchool("");
+    setEducation("");
+    setEmail("");
+    setPhoneNumber("");
+    setGithubURL("https://github.com/");
+    setLinkedInURL("https://linkedin.com/");
+    setHeader("");
+    setAboutMe("");
+
+    const form = formRefTwo.current;
+
+    form.fname.value = "";
+    form.lname.value = "";
+    form.school.value = "";
+    form.education.value = "";
+    form.email.value = "";
+    form.telephone.value = "";
+    form.github.value = "";
+    form.linkedIn.value = "";
+    form.header.value = "";
+    form.about.value = "";
+
+    setProjList([]);
+    setProfilePic(null);
+
+    if (formRef.current) {
+      const offset = 50;
+      const top =
+        formRef.current.getBoundingClientRect().top +
+        window.pageYOffset -
+        offset;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
   const projRef = useRef();
   const descRef = useRef();
   const linkRef = useRef();
   const imageRef = useRef();
+  const formRefTwo = useRef();
 
   return (
     <>
-      <AboveFold />
+      {firstTimeUser && <AboveFold />}
       <div className="flex flex-col items-start gap-6">
         <h1
           ref={formRef}
-          className=" text-6xl text-center w-full mb-2 font-medium"
+          className=" text-5xl text-center w-full mb-2 font-medium"
         >
           Tell Us About Yourself
         </h1>
-        <p className=" text-1xl text-center mb-2 w-full font-normal">
-          Fill in all the fields below to build your personal portfolio. Add
-          your name, contact details, school, education, and links to GitHub and
-          LinkedIn. Don’t forget to upload your CV and profile picture –
-          everything is required to make your portfolio complete and ready to
-          use.
+        <p className=" text-lg text-center mb-2 w-full font-normal">
+          Fill in all the fields below to build your personal portfolio. <br />{" "}
+          Add your name, contact details, school, education, and links to GitHub
+          and LinkedIn. <br /> Don’t forget to upload your CV and profile
+          picture – everything is required to make your portfolio complete and
+          ready to use.
         </p>
-        <form onSubmit={handleSubmit} className="w-full">
+        <form ref={formRefTwo} onSubmit={handleSubmit} className="w-full">
           <button
+            onMouseEnter={() => setHoverSubmit(true)}
+            onMouseLeave={() => setHoverSubmit(false)}
             type="submit"
-            className="flex bg-white cursor-pointer p-1 pl-3 box-border rounded-3xl w-14 hover:bg-black hover:text-white mb-5"
+            style={{
+              backgroundColor: hoverSubmit ? bgColor : accentColor,
+              color: hoverSubmit ? fontColor : bgColor,
+              borderColor: hoverSubmit ? fontColor : accentColor,
+              transition: "all 0.2s ease-in-out",
+            }}
+            className="cursor-pointer h-13 w-[100px] flex justify-around pt-2 border-2 rounded-4xl mt-20 mb-20 text-2xl "
           >
             <LuFilePenLine size={32} />
           </button>
+
           <div className="relative flex mb-10">
             <div className="flex flex-col gap-4 w-2/3">
               <input
@@ -311,31 +365,34 @@ const Form = () => {
               )}
             </div>
           </div>
-
-          <div className="flex flex-col mt-30 mb-30 gap-1">
-            <p className=" text-3xl text-left font-normal">
-              Your Personal Introduction
+          <div className="flex flex-col mt-50 mb-30 gap-1">
+            <h3 className=" text-5xl text-center font-normal">
+              What Are You Looking For?
+            </h3>
+            <p className="text-lg text-center mb-2">
+              Write your availability and what you’re open to – internship, job,
+              or freelance?
             </p>
             <input
               type="text"
               name="header"
               defaultValue={header}
-              placeholder="Ex: Seeking LIA 2025 - Open to Opportunities"
+              placeholder="Seeking LIA 2025 - Open to Opportunities"
               className="text-3xl text-left font-normal outline-none border-t pt-2"
             />
             <input
               type="text"
               name="about"
-              placeholder="Ex: I am studying Frontend development at..."
+              placeholder="I'm a passionate developer with a love for clean code and elegant design..."
               className="outline-none border-t border-b w-full text-2xl font-thin  pb-15 pt-3"
             />
           </div>
 
-          <div className="flex flex-col mt-30 mb-30">
-            <h3 className=" text-3xl text-center font-normal">
+          <div className="flex flex-col mt-50 mb-30">
+            <h3 className=" text-5xl text-center font-normal">
               Upload images of your projects
             </h3>
-            <p className="text-center pt-4 mb-3">
+            <p className="text-center text-lg pt-4 mb-3">
               Upload an image, write a short description, and share a link to
               your GitHub or live demo.
             </p>
@@ -419,13 +476,21 @@ const Form = () => {
                   className="outline-none border-t border-b text-3xl font-light py-1 pb-1 mb-4"
                 />
                 <button
-                  style={{ backgroundColor: accentColor, color: bgColor }}
+                  onMouseEnter={() => setHoverProj(true)}
+                  onMouseLeave={() => setHoverProj(false)}
                   onClick={handleSaveProject}
-                  className="cursor-pointer h-11 items-center pl-4 pr-4 rounded-4xl text-black text-2xl transition duration-300 ease-in-out hover:bg-fuchsia-600"
+                  style={{
+                    backgroundColor: hoverProj ? bgColor : accentColor,
+                    color: hoverProj ? fontColor : bgColor,
+                    borderColor: hoverProj ? fontColor : accentColor,
+                    transition: "all 0.2s ease-in-out",
+                  }}
+                  className="cursor-pointer h-13 w-full items-center border-2 border- rounded-4xl text-2xl "
                 >
                   SAVE PROJECT
                 </button>
               </div>
+
               {/* {projList.length > 0 && (
               <div className="w-1/2 mt-7">
                 <p>
@@ -445,7 +510,7 @@ const Form = () => {
               {/* </div> */}
             </div>
 
-            <div className="flex flex-col mt-30 mb-30 relative">
+            <div className="flex flex-col mt-50 mb-30 relative">
               <p className=" text-3xl text-left font-normal">Your skills</p>
               <input
                 type="text"
@@ -456,11 +521,19 @@ const Form = () => {
                 className="outline-none  border-t border-b w-full text-3xl font-light  py-1 pb-1 mb-5"
               />
               <button
+                onMouseEnter={() => setHoverAdd(true)}
+                onMouseLeave={() => setHoverAdd(false)}
                 onClick={handleSkills}
-                style={{ backgroundColor: accentColor, color: bgColor }}
-                className="absolute top-15 -translate-y-1/2 right-0 items-center pl-4 pr-4 rounded-4xl  text-black transition duration-300 ease-in-out hover:bg-fuchsia-600 cursor-pointer text-2xl font-light "
+                style={{
+                  backgroundColor: hoverAdd ? bgColor : accentColor,
+                  color: hoverAdd ? fontColor : bgColor,
+                  borderColor: hoverAdd ? fontColor : accentColor,
+                  transition: "all 0.2s ease-in-out",
+                }}
+                className="absolute top-14.5 -translate-y-1/2 right-0 items-center pl-4 pr-4 h-9 w-[100px] border-2 border-
+          rounded-4xl text-2xl cursor-pointer"
               >
-                Add skill
+                ADD
               </button>
               <div className="flex justify-around border-t border-b w-full text-3xl font-light  py-5 pb-5">
                 {skills.map((skill, index) => {
@@ -470,8 +543,8 @@ const Form = () => {
             </div>
           </div>
 
-          <div className="flex flex-col w-2/3 gap-2.5 mt-30 mb-20">
-            <p className="text-3xl text-left font-normal mb-5">
+          <div className="flex flex-col w-full gap-2.5 mt-50 mb-20">
+            <p className="text-5xl text-center font-normal mb-5">
               Style your Portfolio
             </p>
             <select
@@ -545,14 +618,38 @@ const Form = () => {
               </button>
             </div>
           </div>
+          <div className="flex justify-between">
+            <button
+              onMouseEnter={() => setHoverReset(true)}
+              onMouseLeave={() => setHoverReset(false)}
+              type="button"
+              onClick={handleResetAll}
+              style={{
+                backgroundColor: hoverReset ? accentColor : bgColor,
+                color: hoverReset ? bgColor : fontColor,
+                borderColor: hoverReset ? accentColor : fontColor,
+                transition: "all 0.2s ease-in-out",
+              }}
+              className="cursor-pointer h-13 w-[200px] items-center border-2 border- rounded-4xl mt-20 mb-20 text-2xl "
+            >
+              RESET ALL
+            </button>
 
-          <button
-            type="submit"
-            style={{ backgroundColor: accentColor, color: bgColor }}
-            className="cursor-pointer items-center pl-4 pr-4 rounded-4xl mt-20 mb-20 text-black text-2xl transition duration-300 ease-in-out hover:bg-fuchsia-600"
-          >
-            SUBMIT
-          </button>
+            <button
+              onMouseEnter={() => setHoverSubmit(true)}
+              onMouseLeave={() => setHoverSubmit(false)}
+              type="submit"
+              style={{
+                backgroundColor: hoverSubmit ? bgColor : accentColor,
+                color: hoverSubmit ? fontColor : bgColor,
+                borderColor: hoverSubmit ? fontColor : accentColor,
+                transition: "all 0.2s ease-in-out",
+              }}
+              className="cursor-pointer h-13 w-[200px] items-center border-2 border- rounded-4xl mt-20 mb-20 text-2xl "
+            >
+              SUBMIT
+            </button>
+          </div>
         </form>
       </div>
     </>

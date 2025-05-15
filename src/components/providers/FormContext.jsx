@@ -31,6 +31,7 @@ const FormContextProvider = ({ children }) => {
   const [location, setLocation] = useState("Stockholm");
   const [author, setAuthor] = useState("Team Juan");
   const [projList, setProjList] = useState([]);
+  const [firstTimeUser, SetFirstTimeUser] = useState(true);
 
   const formRef = useRef(null);
 
@@ -64,6 +65,7 @@ const FormContextProvider = ({ children }) => {
         author,
         projList,
         formRef,
+        firstTimeUser,
         setToggleForm,
         setFirstName,
         setLastName,
@@ -90,6 +92,7 @@ const FormContextProvider = ({ children }) => {
         setLocation,
         setAuthor,
         setProjList,
+        SetFirstTimeUser,
       }}
     >
       {children}
