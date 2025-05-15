@@ -5,6 +5,7 @@ import { HiCloudArrowUp } from "react-icons/hi2";
 import { LuFilePenLine } from "react-icons/lu";
 import { VscDebugRestart } from "react-icons/vsc";
 import AboveFold from "./AboveFold";
+import FormToggleBtn from "../Common/FormToggleBtn";
 
 const Form = () => {
   const [skillInput, setSkillInput] = useState("");
@@ -225,21 +226,6 @@ const Form = () => {
           ready to use.
         </p>
         <form ref={formRefTwo} onSubmit={handleSubmit} className="w-full">
-          <button
-            onMouseEnter={() => setHoverSubmit(true)}
-            onMouseLeave={() => setHoverSubmit(false)}
-            type="submit"
-            style={{
-              backgroundColor: hoverSubmit ? bgColor : accentColor,
-              color: hoverSubmit ? fontColor : bgColor,
-              borderColor: hoverSubmit ? fontColor : accentColor,
-              transition: "all 0.2s ease-in-out",
-            }}
-            className="cursor-pointer h-13 w-[100px] flex justify-around pt-2 border-2 rounded-4xl mt-20 mb-20 text-2xl "
-          >
-            <LuFilePenLine size={32} />
-          </button>
-
           <div className="relative flex mb-10">
             <div className="flex flex-col gap-4 w-2/3">
               <input
@@ -476,6 +462,7 @@ const Form = () => {
                   className="outline-none border-t border-b text-3xl font-light py-1 pb-1 mb-4"
                 />
                 <button
+                  type="button"
                   onMouseEnter={() => setHoverProj(true)}
                   onMouseLeave={() => setHoverProj(false)}
                   onClick={handleSaveProject}
@@ -515,10 +502,16 @@ const Form = () => {
                 name="skills"
                 value={skillInput}
                 onChange={(e) => setSkillInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSkills(e);
+                  }
+                }}
                 placeholder="Write your skills..."
                 className="outline-none  border-t border-b w-full text-3xl font-light  py-1 pb-1 mb-5"
               />
               <button
+                type="button"
                 onMouseEnter={() => setHoverAdd(true)}
                 onMouseLeave={() => setHoverAdd(false)}
                 onClick={handleSkills}
@@ -608,6 +601,7 @@ const Form = () => {
             </label>
             <div className="flex justify-end">
               <button
+                type="button"
                 onClick={handleStyleReset}
                 style={{ "--hover-color": accentColor }}
                 className="flex max-w-fit items-end gap-3 cursor-pointer font-light hover:text-[var(--hover-color)]"
@@ -647,6 +641,12 @@ const Form = () => {
             >
               SUBMIT
             </button>
+            <FormToggleBtn
+              text="Preview portfolio"
+              posY="top-8"
+              posX="right-10"
+              direction="right"
+            />
           </div>
         </form>
       </div>
