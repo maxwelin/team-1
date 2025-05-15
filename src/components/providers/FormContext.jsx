@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useRef, useState } from "react";
 
 const FormContext = createContext(undefined);
 
@@ -32,6 +32,8 @@ const FormContextProvider = ({ children }) => {
   const [author, setAuthor] = useState("Team Juan");
   const [projList, setProjList] = useState([]);
 
+  const formRef = useRef(null);
+
   return (
     <FormContext.Provider
       value={{
@@ -61,6 +63,7 @@ const FormContextProvider = ({ children }) => {
         location,
         author,
         projList,
+        formRef,
         setToggleForm,
         setFirstName,
         setLastName,
