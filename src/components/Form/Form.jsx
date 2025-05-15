@@ -134,9 +134,9 @@ const Form = () => {
 
   const handleStyleReset = (e) => {
     e.preventDefault();
-    setBgColor("#000000");
-    setFontColor("#FFFFFF");
-    setAccentColor("#FF58C7");
+    setBgColor("#FFFFFF");
+    setFontColor("#000000");
+    setAccentColor("#FF6200");
   };
 
   const handleSubmit = (e) => {
