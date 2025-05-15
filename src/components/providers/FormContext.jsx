@@ -1,15 +1,15 @@
-import { createContext, useState } from "react";
+import { createContext, useRef, useState } from "react";
 
 const FormContext = createContext(undefined);
 
 const FormContextProvider = ({ children }) => {
   const [toggleForm, setToggleForm] = useState(true);
-  const [firstName, setFirstName] = useState("First name");
-  const [lastName, setLastName] = useState("Last name");
-  const [school, setSchool] = useState("School");
-  const [education, setEducation] = useState("Education");
-  const [email, setEmail] = useState("Example@email.com");
-  const [phoneNumber, setPhoneNumber] = useState("Phone number");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [school, setSchool] = useState("");
+  const [education, setEducation] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [githubURL, setGithubURL] = useState("https://github.com/");
   const [linkedInURL, setLinkedInURL] = useState("https://linkedin.com/");
   const [profilePic, setProfilePic] = useState(null);
@@ -30,6 +30,9 @@ const FormContextProvider = ({ children }) => {
   const [fontFamily, setFontFamily] = useState("Helvetica, sans-serif");
   const [location, setLocation] = useState("Stockholm");
   const [author, setAuthor] = useState("Team Juan");
+  const [projList, setProjList] = useState([]);
+
+  const formRef = useRef(null);
 
   return (
     <FormContext.Provider
@@ -59,6 +62,8 @@ const FormContextProvider = ({ children }) => {
         fontFamily,
         location,
         author,
+        projList,
+        formRef,
         setToggleForm,
         setFirstName,
         setLastName,
@@ -84,6 +89,7 @@ const FormContextProvider = ({ children }) => {
         setFontFamily,
         setLocation,
         setAuthor,
+        setProjList,
       }}
     >
       {children}

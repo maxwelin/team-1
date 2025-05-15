@@ -13,63 +13,76 @@ const Hero = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="mt-30 mb-20">
-      <div className="  text-6xl tracking-tighter">
-        <div className="flex justify-between items-start">
-          <div className="flex flex-col">
-            <h1 className="font-bold">
-              <span className="">HI. I'M </span>
-              <span style={{ color: accentColor }} className="">
-                {firstName} {lastName}
-              </span>
-            </h1>
-            <h2 className="text-4xl font-light mt-3">STUDENT @ {school}</h2>
-            <h2 className="text-5xl tracking-tight font-bold mb-8 mt-3">
-              ({education})
-            </h2>
+    <section className="mt-[10%] mb-[5%]  max-w-full">
+      <div className="flex flex-col-reverse xl:flex-row items-start gap-10">
+        {/* 📝 TEXT */}
+        <div className="w-full xl:w-[80%]">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight leading-tight">
+            <span>HI! I'M </span>
+            <span className="whitespace-nowrap" style={{ color: accentColor }}>
+              {firstName} {lastName}
+            </span>
+          </h1>
 
-            <div style={{ color: accentColor }} className="">
-              <div className="border-t border-b w-full max-w-[900px]">
-                <div
-                  className={`flex justify-between items-center py-1 cursor-pointer transition-all duration-200 ${
-                    !isOpen && "hover:pb-2"
-                  }`}
-                  onClick={() => setIsOpen(!isOpen)}
-                >
-                  <span className="text-2xl">CV</span>
-                  <span className="text-4xl transition-all">
-                    {isOpen ? <HiOutlineMinus /> : <GoPlus />}
-                  </span>
-                </div>
-                {isOpen && <CVViewer />}
+          <h2 className="text-xl sm:text-2xl md:text-3xl xl:text-4xl font-light mt-2">
+            STUDENT @ {school}
+          </h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold mt-3 mb-8">
+            ({education})
+          </h2>
+
+          {/* 📎 CV-länk */}
+          <div style={{ color: accentColor }}>
+            <div className="border-t border-b w-full max-w-full">
+              <div
+                className={`flex justify-between items-center py-1 cursor-pointer transition-all duration-200 ${
+                  !isOpen && "hover:pb-2"
+                }`}
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <span className="text-xl sm:text-2xl">CV</span>
+                <span className="text-3xl sm:text-4xl transition-all">
+                  {isOpen ? <HiOutlineMinus /> : <GoPlus />}
+                </span>
               </div>
+              {isOpen && <CVViewer />}
             </div>
           </div>
+        </div>
 
-          <div className="shrink-0 relative w-fit mt-[-0%]">
+        {/* 🖼️ BILD */}
+        <div className="w-full xl:w-1/2 flex justify-center xl:justify-end mb-10">
+          <div className="relative w-fit">
             {profilePic ? (
               <>
-                {/* Offset ram bakom bilden */}
                 <div
                   style={{ borderColor: accentColor }}
                   className="absolute top-4 left-4 w-full h-full border-2 rounded-2xl z-0"
                 ></div>
-
-                {/* Själva bilden */}
                 <img
-                  className="relative z-10 border-1 w-[180px] h-[240px] sm:w-[220px] sm:h-[280px] md:w-[260px] md:h-[340px] xl:w-[300px] xl:h-[400px] object-cover rounded-xl"
+                  className="relative z-10 object-cover rounded-xl
+                    w-[220px] h-[280px]
+                    sm:w-[220px] sm:h-[280px]
+                    md:w-[260px] md:h-[340px]
+                    xl:w-[300px] xl:h-[400px]"
                   src={profilePic}
-                  alt=""
+                  alt="Profile"
                 />
               </>
             ) : (
               <>
                 <div
                   style={{ borderColor: accentColor }}
-                  className="absolute top-4 left-4 w-full h-full border-1 ] z-0"
+                  className="absolute top-4 left-4 w-full h-full border-2 rounded-2xl z-0"
                 ></div>
-                <div className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1   grid place-content-center">
-                  {/* <CgProfile className=" text-[200px]" /> */}
+                <div
+                  className="relative z-10 grid place-content-center bg-gray-100 rounded-xl
+                    w-[220px] h-[280px]
+                    sm:w-[220px] sm:h-[280px]
+                    md:w-[260px] md:h-[340px]
+                    xl:w-[300px] xl:h-[400px]"
+                >
+                  <CgProfile className="text-[100px] sm:text-[140px] text-gray-400" />
                 </div>
               </>
             )}
