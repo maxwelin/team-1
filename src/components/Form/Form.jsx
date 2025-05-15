@@ -159,8 +159,8 @@ const Form = () => {
     setFontFamily("Helvetica, sans-serif");
   };
 
-  const handleSubmit = (e) => {
-    const form = e.target;
+  const handleSubmit = () => {
+    const form = formRefTwo.current;
 
     setFirstName(form.fname.value.toUpperCase());
     setLastName(form.lname.value.toUpperCase());
@@ -661,6 +661,7 @@ const Form = () => {
               posY="top-8"
               posX="right-10"
               direction="right"
+              func={handleSubmit}
             />
           )}
         </form>

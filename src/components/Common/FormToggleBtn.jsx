@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { FormContext } from "../providers/FormContext";
 
-const FormToggleBtn = ({ text, posY, posX, direction }) => {
+const FormToggleBtn = ({ text, posY, posX, direction, func }) => {
   const {
     toggleForm,
     setToggleForm,
@@ -43,17 +43,23 @@ const FormToggleBtn = ({ text, posY, posX, direction }) => {
     transition: "transform 0.3s ease",
   };
 
+  const handleClick = () => {
+    SetFirstTimeUser(false);
+    setToggleForm(!toggleForm);
+    setIsHovered(false);
+
+    if (direction === "right" && typeof func === "function") {
+      func();
+    }
+  };
+
   return (
     <div>
       {showButton && (
         <div
           className={`fixed ${posY} ${posX} transform -translate-x-1 z-50 cursor-pointer text-xl font-medium flex items-center gap-2`}
           style={containerStyle}
-          onClick={() => {
-            SetFirstTimeUser(false);
-            setToggleForm(!toggleForm);
-            setIsHovered(false);
-          }}
+          onClick={handleClick}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
