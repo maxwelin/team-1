@@ -454,6 +454,26 @@ const Form = () => {
               })}
             </div>
           </div>
+        </div>
+
+        <div className="flex flex-col mt-30 mb-30 gap-1">
+          <p className=" text-3xl text-left font-normal">
+            Your Personal Introduction
+          </p>
+          <input
+            type="text"
+            name="header"
+            defaultValue={header}
+            placeholder="Ex: Seeking LIA 2025 - Open to Opportunities"
+            className="text-3xl text-left font-normal outline-none border-t pt-2"
+          />
+          <input
+            type="text"
+            name="about"
+            placeholder="Ex: I am studying Frontend development at..."
+            className="outline-none border-t border-b w-full text-2xl font-thin  pb-15 pt-3"
+          />
+        </div>
 
           <div className="flex flex-col w-2/3 gap-2.5 mt-30 mb-20">
             <p className="text-3xl text-left font-normal mb-5">
@@ -531,14 +551,16 @@ const Form = () => {
             </div>
           </div>
 
-          <p className="text-1xl text-left mb-2 font-normal w-2/3">
-            Fyll i formuläret nedan för att skapa din personliga portfolio.
-            Informationen du skriver in visas direkt i portfolion under
-            formuläret. När du är nöjd kan du ladda ner en färdig zip-fil med
-            din portfolio som du kan använda, visa upp eller fortsätta bygga
-            vidare på. Du kan när som helst uppdatera fälten för att se
-            ändringar i realtid.
-          </p>
+        <div className="flex flex-col mt-30 mb-30 relative">
+          <p className=" text-3xl text-left font-normal">Technical skills</p>
+          <input
+            type="text"
+            name="skills"
+            value={skillInput}
+            onChange={(e) => setSkillInput(e.target.value)}
+            placeholder="Ex: React..."
+            className="outline-none  border-t border-b w-full text-3xl font-light  py-1 pb-1 mb-5"
+          />
 
           <button
             type="submit"
@@ -547,9 +569,109 @@ const Form = () => {
           >
             SUBMIT
           </button>
-        </form>
-      </div>
-    </>
+
+          <div className="flex justify-around border-t border-b w-full text-3xl font-light  py-5 pb-5">
+            {skills.map((skill, index) => {
+              return <p key={index}>{skill}</p>;
+            })}
+          </div>
+        </div>
+
+        <div className="flex flex-col w-2/3 gap-2.5 mt-30 mb-20">
+          <p className="text-3xl text-left font-normal mb-5">
+            Style your Portfolio
+          </p>
+          <select
+            style={{ backgroundColor: bgColor }}
+            name="fontTheme"
+            className="outline-none cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1 "
+            onChange={handleColorChange}
+          >
+            <option value="Helvetica">Helvetica</option>
+            <option value="EB Garamond">EB Garamond</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Tahoma">Tahoma</option>
+            <option value="Trebuchet MS">Trebuchet MS </option>
+            <option value="Georgia">Georgia</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Courier New">Courier New </option>
+            <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+            <option value="Impact">Impact</option>
+          </select>
+
+          <label className="outline-none relative flex items-center cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1">
+            {bgColorName}
+            <input
+              type="color"
+              value={bgColor}
+              onChange={handleColorChange}
+              name="bgColor"
+              className="opacity-0 cursor-pointer"
+            />
+            <span
+              style={{ backgroundColor: bgColor }}
+              className="w-10 h-10 absolute right-0 inline-block border rounded-md"
+            ></span>
+          </label>
+
+          <label className="outline-none relative flex items-center cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1">
+            {fontColorName}
+            <input
+              type="color"
+              value={fontColor}
+              onChange={handleColorChange}
+              name="fontColor"
+              className="opacity-0 cursor-pointer"
+            />
+            <span
+              style={{ backgroundColor: fontColor }}
+              className="w-10 h-10 absolute right-0 inline-block rounded-md"
+            ></span>
+          </label>
+          <label className="outline-none relative flex items-center cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1">
+            {accentColorName}
+            <input
+              type="color"
+              value={accentColor}
+              onChange={handleColorChange}
+              name="accentColor"
+              className="opacity-0 cursor-pointer"
+            />
+            <span
+              style={{ backgroundColor: accentColor }}
+              className="w-10 h-10 absolute right-0 inline-block rounded-md"
+            ></span>
+          </label>
+          <div className="flex justify-end">
+            <button
+              onClick={handleStyleReset}
+              style={{ "--hover-color": accentColor }}
+              className="flex max-w-fit items-end gap-3 cursor-pointer font-light hover:text-[var(--hover-color)]"
+            >
+              Reset styling <VscDebugRestart className="h-8 w-8" />
+            </button>
+          </div>
+        </div>
+
+        <p className="text-1xl text-left mb-2 font-normal w-2/3">
+          Fyll i formuläret nedan för att skapa din personliga portfolio.
+          Informationen du skriver in visas direkt i portfolion under
+          formuläret. När du är nöjd kan du ladda ner en färdig zip-fil med din
+          portfolio som du kan använda, visa upp eller fortsätta bygga vidare
+          på. Du kan när som helst uppdatera fälten för att se ändringar i
+          realtid.
+        </p>
+
+        <button
+          type="submit"
+          style={{ backgroundColor: accentColor }}
+          className="cursor-pointer items-center pl-4 pr-4 rounded-4xl mt-20 mb-20 text-black text-2xl transition duration-300 ease-in-out hover:bg-fuchsia-600"
+        >
+          SUBMIT
+        </button>
+      </form>
+    </div>
+
   );
 };
 
