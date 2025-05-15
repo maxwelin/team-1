@@ -623,9 +623,9 @@ const Form = () => {
               type="button"
               onClick={handleResetAll}
               style={{
-                backgroundColor: hoverReset ? accentColor : bgColor,
+                backgroundColor: hoverReset ? fontColor : bgColor,
                 color: hoverReset ? bgColor : fontColor,
-                borderColor: hoverReset ? accentColor : fontColor,
+                borderColor: hoverReset ? fontColor : fontColor,
                 transition: "all 0.2s ease-in-out",
               }}
               className="cursor-pointer h-13 w-[200px] items-center border-2 border- rounded-4xl mt-20 mb-20 text-2xl "
