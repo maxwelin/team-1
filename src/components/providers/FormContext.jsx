@@ -21,7 +21,7 @@ const FormContextProvider = ({ children }) => {
   const [cvFile, setCvFile] = useState(null);
   const [cvFileName, setCvFileName] = useState(null);
   const [skills, setSkills] = useState([]);
-  const [bgColor, setBgColor] = useState("#F8F8F8");
+  const [bgColor, setBgColor] = useState("#FFFFFF");
   const [fontColor, setFontColor] = useState("#000000");
   const [accentColor, setAccentColor] = useState("#FF6200");
   const [bgColorName, setBgColorName] = useState("White #FFFFFF");
