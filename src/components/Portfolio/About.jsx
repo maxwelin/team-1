@@ -8,10 +8,10 @@ const About = () => {
   const { aboutMe, header } = useContext(FormContext);
 
   return (
-    <div className="bg-black text-white py-6 mb-[260px]">
+    <div className="py-6 mb-[260px]">
       <h1 className="text-9xl mb-4 tracking-tighter">{header}</h1>
       <div className="flex justify-between items-start gap-10">
-        <div className="border-t border-b border-white w-full max-w-[100%]">
+        <div className="border-t border-b w-full max-w-[100%]">
           <div
             className={`flex justify-between items-center py-1 cursor-pointer transition-all duration-200 ${
               !isOpen && "hover:pb-2"
@@ -29,7 +29,7 @@ const About = () => {
               isOpen ? "max-h-[1000px] pt-6" : "max-h-0"
             }`}
           >
-            <div className="w-full text-white p-4 rounded-md text-lg">
+            <div className="w-full p-4 rounded-md text-lg">
               {aboutMe || "Ingen text angiven."}
             </div>
           </div>
