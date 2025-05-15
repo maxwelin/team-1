@@ -546,7 +546,18 @@ const Form = () => {
             </div>
           </div>
 
-          <div className="flex flex-col w-full gap-2.5 mt-80 mb-20">
+          <div className="w-full text-center mt-80">
+            <p className="text-lg">
+              Great! You've filled in all the details – now it’s time to make
+              the portfolio truly yours. <br /> Customize the style to match
+              your personality and see your changes instantly. You can always go
+              back and make edits at any time. <br /> When you're happy with how
+              it looks, hit "Generate Portfolio" to save or "Reset All" to start
+              over.
+            </p>
+          </div>
+
+          <div className="flex flex-col w-full gap-2.5 mt-30 mb-20">
             <p className="text-5xl text-center font-normal mb-5">
               Style Your Portfolio
             </p>
