@@ -389,7 +389,7 @@ const Form = () => {
 
           <div className="flex flex-col mt-50 mb-30">
             <h3 className=" text-5xl text-center font-normal">
-              Upload images of your projects
+              Got Any Projects To Show?
             </h3>
             <p className="text-center text-lg pt-4 mb-3">
               Upload an image, write a short description, and share a link to
@@ -549,7 +549,7 @@ const Form = () => {
 
           <div className="flex flex-col w-full gap-2.5 mt-50 mb-20">
             <p className="text-5xl text-center font-normal mb-5">
-              Style your Portfolio
+              Style Your Portfolio
             </p>
             <select
               style={{ backgroundColor: bgColor }}
