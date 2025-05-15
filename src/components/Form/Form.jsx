@@ -2,7 +2,6 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { FormContext } from "../providers/FormContext";
 import { BsFiletypePdf, BsFiletypeJpg } from "react-icons/bs";
 import { HiCloudArrowUp } from "react-icons/hi2";
-import { LuFilePenLine } from "react-icons/lu";
 import { VscDebugRestart } from "react-icons/vsc";
 import AboveFold from "./AboveFold";
 import FormToggleBtn from "../Common/FormToggleBtn";
@@ -246,60 +245,60 @@ const Form = () => {
                 name="fname"
                 defaultValue={firstName}
                 placeholder="First name"
-                className="outline-none border-t border-b w-full text-3xl font-light"
+                className="outline-none  border-b w-full text-3xl font-light"
               />
               <input
                 type="text"
                 name="lname"
                 defaultValue={lastName}
                 placeholder="Last name"
-                className="outline-none border-t border-b w-full text-3xl font-light"
+                className="outline-none  border-b w-full text-3xl font-light"
               />
               <input
                 type="text"
                 name="school"
                 defaultValue={school}
                 placeholder="School"
-                className="outline-none border-t border-b w-full text-3xl font-light "
+                className="outline-none  border-b w-full text-3xl font-light "
               />
               <input
                 type="text"
                 name="education"
                 defaultValue={education}
                 placeholder="Education"
-                className="outline-none border-t border-b w-full text-3xl font-light "
+                className="outline-none  border-b w-full text-3xl font-light "
               />
               <input
                 type="email"
                 name="email"
                 defaultValue={email}
                 placeholder="Email"
-                className="outline-none border-t border-b w-full text-3xl font-light "
+                className="outline-none  border-b w-full text-3xl font-light "
               />
               <input
                 type="tel"
                 name="telephone"
                 defaultValue={phoneNumber}
                 placeholder="Phone number"
-                className="outline-none border-t border-b w-full text-3xl font-light "
+                className="outline-none  border-b w-full text-3xl font-light "
               />
               <input
                 type="url"
                 name="github"
                 defaultValue={githubURL}
                 placeholder="Github"
-                className="outline-none border-t border-b w-full text-3xl font-light "
+                className="outline-none  border-b w-full text-3xl font-light "
               />
               <input
                 type="url"
                 name="linkedIn"
                 defaultValue={linkedInURL}
                 placeholder="LinkedIn"
-                className="outline-none border-t border-b w-full text-3xl font-light "
+                className="outline-none  border-b w-full text-3xl font-light "
               />
               <div className="flex gap-6 w-full">
                 <label className="relative w-full cursor-pointer">
-                  <div className="flex justify-between items-center border-t border-b text-3xl font-light ">
+                  <div className="flex justify-between items-center border-b text-3xl font-light ">
                     {cvFileName ? cvFileName : "Upload CV"} <BsFiletypePdf />
                   </div>
                   <input
@@ -458,21 +457,21 @@ const Form = () => {
                   name="projTitle"
                   placeholder="Project title"
                   ref={projRef}
-                  className="outline-none border-t border-b text-3xl font-light py-1 pb-1 mb-3"
+                  className="outline-none border-b text-3xl font-light py-1 pb-1 mb-3"
                 />
                 <input
                   type="text"
                   name="projDescription"
                   placeholder="Short description"
                   ref={descRef}
-                  className="outline-none border-t border-b text-3xl font-light py-1 pb-1 mb-3"
+                  className="outline-none border-b text-3xl font-light py-1 pb-1 mb-3"
                 />
                 <input
-                  type="text"
+                  type="url"
                   name="projLink"
                   placeholder="Link to /url"
                   ref={linkRef}
-                  className="outline-none border-t border-b text-3xl font-light py-1 pb-1 mb-4"
+                  className="outline-none border-b text-3xl font-light py-1 pb-1 mb-4"
                 />
                 <button
                   type="button"
@@ -554,7 +553,7 @@ const Form = () => {
             <select
               style={{ backgroundColor: bgColor }}
               name="fontTheme"
-              className="outline-none cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1 "
+              className="outline-none cursor-pointer border-b w-full text-3xl font-light  pt-1 pb-1 "
               onChange={handleColorChange}
             >
               <option value="Helvetica">Helvetica</option>
@@ -569,7 +568,7 @@ const Form = () => {
               <option value="Impact">Impact</option>
             </select>
 
-            <label className="outline-none relative flex items-center cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1">
+            <label className="outline-none relative flex items-center cursor-pointer border-b w-full text-3xl font-light  pt-1 pb-1">
               {bgColorName}
               <input
                 type="color"
@@ -584,7 +583,7 @@ const Form = () => {
               ></span>
             </label>
 
-            <label className="outline-none relative flex items-center cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1">
+            <label className="outline-none relative flex items-center cursor-pointer border-b w-full text-3xl font-light  pt-1 pb-1">
               {fontColorName}
               <input
                 type="color"
@@ -598,7 +597,7 @@ const Form = () => {
                 className="w-10 h-10 absolute right-0 inline-block border border-black rounded-md"
               ></span>
             </label>
-            <label className="outline-none relative flex items-center cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1">
+            <label className="outline-none relative flex items-center cursor-pointer border-b w-full text-3xl font-light  pt-1 pb-1">
               {accentColorName}
               <input
                 type="color"

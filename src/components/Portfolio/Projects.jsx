@@ -10,11 +10,13 @@ import Slider from "react-slick";
 import { FormContext } from "../providers/FormContext";
 
 const Projects = () => {
-  const { accentColor, projList, bgColor, fontColor } = useContext(FormContext);
+  const { accentColor, projList, fontColor } = useContext(FormContext);
 
   const [isOpen, setIsOpen] = useState(false);
   const [hoverNext, setHoverNext] = useState(false);
   const [hoverBack, setHoverBack] = useState(false);
+
+  console.log(projList);
 
   var settings = {
     centerMode: true,
@@ -72,7 +74,12 @@ const Projects = () => {
                     </button>
                     <Slider ref={sliderRef} {...settings}>
                       {projList.map((proj, i) => (
-                        <div className="bg-[#D9D9D9] w-[600px] h-[300px] relative">
+                        <a
+                          href={proj.link}
+                          target="_blank"
+                          key={i}
+                          className="bg-[#D9D9D9] w-[600px] h-[300px] relative"
+                        >
                           <img
                             src={proj.img}
                             alt=""
@@ -84,7 +91,7 @@ const Projects = () => {
                           <h3 className="absolute left-1/2 -translate-x-1/2 -bottom-22 z-10 text-xl tracking-tighter">
                             {proj.desc}
                           </h3>
-                        </div>
+                        </a>
                       ))}
                     </Slider>
                     <button
