@@ -1,12 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { FormContext } from "../providers/FormContext";
 import { BsFiletypePdf, BsFiletypeJpg } from "react-icons/bs";
-import { CgProfile } from "react-icons/cg";
+import { HiCloudArrowUp } from "react-icons/hi2";
 import { LuFilePenLine } from "react-icons/lu";
 import { VscDebugRestart } from "react-icons/vsc";
 
 const Form = () => {
   const [skillInput, setSkillInput] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
 
   const {
     firstName,
@@ -32,6 +33,7 @@ const Form = () => {
     setProfilePic,
     setToggleForm,
     fileName,
+    projList,
     setFileName,
     cvFile,
     setCvFile,
@@ -53,6 +55,7 @@ const Form = () => {
     setAccentColorName,
     fontFamily,
     setFontFamily,
+    setProjList,
   } = useContext(FormContext);
 
   const handleProfilePicUpload = (e) => {
@@ -64,12 +67,40 @@ const Form = () => {
     }
   };
 
+  const handleProjImgUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setImgUrl(imageUrl);
+    }
+  };
+
   const handleCVUpload = (e) => {
     const file = e.target.files[0];
     if (file && file.type === "application/pdf") {
       setCvFile(file);
       setCvFileName(file.name);
     }
+  };
+
+  const handleSaveProject = (e) => {
+    e.preventDefault();
+
+    const projObject = {
+      title: projRef.current.value,
+      desc: descRef.current.value,
+      link: linkRef.current.value,
+      img: imgUrl,
+    };
+
+    setProjList([...projList, projObject]);
+
+    console.log(projList);
+
+    setImgUrl("");
+    projRef.current.value = "";
+    descRef.current.value = "";
+    linkRef.current.value = "";
   };
 
   const handleColorChange = (e) => {
@@ -123,6 +154,11 @@ const Form = () => {
 
     setToggleForm(false);
   };
+
+  const projRef = useRef();
+  const descRef = useRef();
+  const linkRef = useRef();
+  const imageRef = useRef();
 
   return (
     <div className="flex flex-col items-start gap-6">
@@ -280,50 +316,94 @@ const Form = () => {
         </div>
 
         <div className="flex flex-col mt-30 mb-30">
-          <p className=" text-3xl text-left font-normal">
+          <h3 className=" text-3xl text-center font-normal">
             Upload images of your projects
+          </h3>
+          <p className="text-center pt-4 mb-3">
+            Upload an image, write a short description, and share a link to your
+            GitHub or live demo.
           </p>
-          <div className="grid grid-cols-4 gap-4 border-t border-b pt-3 pb-3 mb-5">
-            <div className="bg-gray-300 h-40 p-4">Project 1</div>
-            <div className="bg-gray-300 p-4">Project 2</div>
-            <div className="bg-gray-300 p-4">Project 3</div>
-            <div className="bg-gray-300 p-4">Project 4</div>
-            {/* <div className="bg-gray-300 h-20 p-4">Item 5</div>
-            <div className="bg-gray-300 p-4">Item 6</div>
-            <div className="bg-gray-300 p-4">Item 7</div>
-            <div className="bg-gray-300 p-4">Item 8</div> */}
-          </div>
-
-          <div className="flex flex-col gap-6 relative">
-            {["project1", "project2", "project3", "project4"].map(
-              (item, index) => {
-                const splitIndex = item.search(/\d/);
-                const proj = item.slice(0, splitIndex);
-                const number = item.slice(splitIndex);
-                const label =
-                  proj.charAt(0).toUpperCase() + proj.slice(1) + " " + number;
-
-                return (
-                  <div
-                    key={index}
-                    className="w-full flex border-2 border-b-white"
-                  >
-                    <label
-                      htmlFor={item}
-                      className={`text-white text-1xl text-left font-light absolute left-0`}
-                    >
-                      {label}
-                    </label>
-                    <input
-                      type="url"
-                      name={item}
-                      placeholder="Link to project ex: url,netlify app or github repo"
-                      className="outline-none bg-gray-100 w-[90%] text-1.5xl font-light text-black pl-4 ml-auto"
-                    />
+          <div className="relative flex flex-col items-center border-t w-full border-b pt-7 pb-7 mb-5 justify-around">
+            {imgUrl ? (
+              <>
+                <label
+                  htmlFor="projectImg"
+                  className="absolute top-7 w-1/2 pointer-events-none"
+                  style={{ color: bgColor }}
+                >
+                  {" "}
+                  <img
+                    className="h-[350px] w-full rounded-2xl w-1/2 mb-7 object-cover object-center"
+                    src={imgUrl}
+                  />
+                </label>
+                <input
+                  className=" h-[350px] border-b-2 rounded-2xl w-1/2 cursor-pointer mb-7"
+                  style={{ backgroundColor: fontColor }}
+                  type="file"
+                  accept="image/*"
+                  name="projectImg"
+                  ref={imageRef}
+                  onChange={handleProjImgUpload}
+                />
+              </>
+            ) : (
+              <>
+                <label
+                  htmlFor="projectImg"
+                  className="absolute top-37 pointer-events-none"
+                  style={{ color: bgColor }}
+                >
+                  {" "}
+                  <div className="flex flex-col text-center">
+                    <HiCloudArrowUp className="text-6xl ml-auto mr-auto" />
+                    <h3 className="text-2xl font-semibold">Upload image</h3>
+                    <p className="text-sm">Image must be in .jpg or .png</p>
                   </div>
-                );
-              }
+                </label>
+                <input
+                  className=" h-[350px] border-b-2 rounded-2xl w-1/2 cursor-pointer mb-7"
+                  style={{ backgroundColor: fontColor }}
+                  type="file"
+                  accept="image/*"
+                  name="projectImg"
+                  ref={imageRef}
+                  onChange={handleProjImgUpload}
+                />
+              </>
             )}
+
+            <div className="flex flex-col w-1/2 tracking-tighter">
+              <input
+                type="text"
+                name="projTitle"
+                placeholder="Project title"
+                ref={projRef}
+                className="outline-none border-t border-b text-3xl font-light py-1 pb-1 mb-3"
+              />
+              <input
+                type="text"
+                name="projDescription"
+                placeholder="Short description"
+                ref={descRef}
+                className="outline-none border-t border-b text-3xl font-light py-1 pb-1 mb-3"
+              />
+              <input
+                type="text"
+                name="projLink"
+                placeholder="Link to /url"
+                ref={linkRef}
+                className="outline-none border-t border-b text-3xl font-light py-1 pb-1 mb-4"
+              />
+              <button
+                style={{ backgroundColor: accentColor }}
+                onClick={handleSaveProject}
+                className="cursor-pointer h-11 items-center pl-4 pr-4 rounded-4xl text-black text-2xl transition duration-300 ease-in-out hover:bg-fuchsia-600"
+              >
+                SAVE PROJECT
+              </button>
+            </div>
+            {projList && <p>{projList[0]?.title}</p>}
           </div>
         </div>
 
