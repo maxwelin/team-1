@@ -567,7 +567,7 @@ const Form = () => {
               />
               <span
                 style={{ backgroundColor: bgColor }}
-                className="w-10 h-10 absolute right-0 inline-block border rounded-md"
+                className="w-10 h-10 absolute right-0 inline-block border border-black rounded-md"
               ></span>
             </label>
 
@@ -582,7 +582,7 @@ const Form = () => {
               />
               <span
                 style={{ backgroundColor: fontColor }}
-                className="w-10 h-10 absolute right-0 inline-block rounded-md"
+                className="w-10 h-10 absolute right-0 inline-block border border-black rounded-md"
               ></span>
             </label>
             <label className="outline-none relative flex items-center cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1">
@@ -596,7 +596,7 @@ const Form = () => {
               />
               <span
                 style={{ backgroundColor: accentColor }}
-                className="w-10 h-10 absolute right-0 inline-block rounded-md"
+                className="w-10 h-10 absolute right-0 inline-block border border-black rounded-md"
               ></span>
             </label>
             <div className="flex justify-end">
@@ -641,13 +641,13 @@ const Form = () => {
             >
               SUBMIT
             </button>
-            <FormToggleBtn
-              text="Preview portfolio"
-              posY="top-8"
-              posX="right-10"
-              direction="right"
-            />
           </div>
+          <FormToggleBtn
+            text="Preview portfolio"
+            posY="top-8"
+            posX="right-10"
+            direction="right"
+          />
         </form>
       </div>
     </>

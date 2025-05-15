@@ -33,10 +33,16 @@ const FormToggleBtn = ({ text, posY, posX, direction }) => {
     transition: "color 0.3s ease",
   };
 
-  const iconStyle = {
+  const iconStyleLeft = {
     transform: isHovered ? "translateX(-4px)" : "translateX(0)",
     transition: "transform 0.3s ease",
   };
+
+  const iconStyleRight = {
+    transform: isHovered ? "translateX(+4px)" : "translateX(0)",
+    transition: "transform 0.3s ease",
+  };
+
   return (
     <div>
       {showButton && (
@@ -53,13 +59,13 @@ const FormToggleBtn = ({ text, posY, posX, direction }) => {
         >
           {direction == "left" ? (
             <>
-              <FiArrowLeft size={30} style={iconStyle} />
+              <FiArrowLeft size={30} style={iconStyleLeft} />
               <span>{text}</span>
             </>
           ) : (
             <>
               <span>{text}</span>
-              <FiArrowRight size={30} style={iconStyle} />
+              <FiArrowRight size={30} style={iconStyleRight} />
             </>
           )}
         </div>
