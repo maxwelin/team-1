@@ -183,8 +183,8 @@ const Form = () => {
     form.education.value = "";
     form.email.value = "";
     form.telephone.value = "";
-    form.github.value = "";
-    form.linkedIn.value = "";
+    form.github.value = "https://github.com/";
+    form.linkedIn.value = "https://linkedin.com/";
     form.header.value = "";
     form.about.value = "";
 
