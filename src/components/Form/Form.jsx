@@ -491,23 +491,21 @@ const Form = () => {
                 </button>
               </div>
 
-              {/* {projList.length > 0 && (
-              <div className="w-1/2 mt-7">
-                <p>
-                  {projList.map((item, index) => {
-                    return (
-                      <div className="flex">
-                        <p key={index} className="text-xl">
-                          {item.title}
-                        </p>
-                        <button className="ml-auto">X</button>
-                      </div>
-                    );
-                  })}
-                </p>
-              </div>
-            )} */}
-              {/* </div> */}
+              {projList.length > 0 && (
+                <ul className="w-1/2 mt-7">
+                  <p>
+                    {projList.map((item, index) => {
+                      return (
+                        <li className="flex">
+                          <p key={index} className="text-xl pb-2">
+                            {index + 1}. {item.title}
+                          </p>
+                        </li>
+                      );
+                    })}
+                  </p>
+                </ul>
+              )}
             </div>
 
             <div className="flex flex-col mt-50 mb-30 relative">
@@ -645,7 +643,7 @@ const Form = () => {
                 borderColor: hoverSubmit ? fontColor : accentColor,
                 transition: "all 0.2s ease-in-out",
               }}
-              className="cursor-pointer h-13 w-[200px] items-center border-2 border- rounded-4xl mt-20 mb-20 text-2xl "
+              className="cursor-pointer h-13 w-[400px] items-center border-2 border- rounded-4xl mt-20 mb-20 text-2xl "
             >
               SUBMIT
             </button>
