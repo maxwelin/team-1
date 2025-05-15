@@ -363,7 +363,7 @@ const Form = () => {
               )}
             </div>
           </div>
-          <div className="flex flex-col mt-50 mb-30 gap-1">
+          <div className="flex flex-col mt-80 mb-30 gap-1">
             <h3 className=" text-5xl text-center font-normal">
               What Are You Looking For?
             </h3>
@@ -386,7 +386,7 @@ const Form = () => {
             />
           </div>
 
-          <div className="flex flex-col mt-50 mb-30">
+          <div className="flex flex-col mt-80 mb-30">
             <h3 className=" text-5xl text-center font-normal">
               Got Any Projects To Show?
             </h3>
@@ -507,7 +507,7 @@ const Form = () => {
               )}
             </div>
 
-            <div className="flex flex-col mt-50 mb-30 relative">
+            <div className="flex flex-col mt-80 mb-30 relative">
               <p className=" text-3xl text-left font-normal">Your skills</p>
               <input
                 type="text"
@@ -546,7 +546,7 @@ const Form = () => {
             </div>
           </div>
 
-          <div className="flex flex-col w-full gap-2.5 mt-50 mb-20">
+          <div className="flex flex-col w-full gap-2.5 mt-80 mb-20">
             <p className="text-5xl text-center font-normal mb-5">
               Style Your Portfolio
             </p>
