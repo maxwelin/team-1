@@ -263,18 +263,21 @@ const Form = () => {
           </div>
         </div>
 
-        <div className="flex flex-col mt-30 mb-30">
+        <div className="flex flex-col mt-30 mb-30 gap-1">
+          <p className=" text-3xl text-left font-normal">
+            Your Personal Introduction
+          </p>
           <input
             type="text"
             name="header"
             defaultValue={header}
-            placeholder="Header for about"
-            className="text-3xl text-left font-normal outline-none"
+            placeholder="Ex: Seeking LIA 2025 - Open to Opportunities"
+            className="text-3xl text-left font-normal outline-none border-t pt-2"
           />
           <input
             type="text"
             name="about"
-            placeholder="Something about you/Cover letter"
+            placeholder="Ex: I am studying Frontend development at..."
             className="outline-none border-t border-b w-full text-2xl font-thin  pb-15 pt-3"
           />
         </div>
@@ -328,13 +331,13 @@ const Form = () => {
         </div>
 
         <div className="flex flex-col mt-30 mb-30 relative">
-          <p className=" text-3xl text-left font-normal">Your skills</p>
+          <p className=" text-3xl text-left font-normal">Technical skills</p>
           <input
             type="text"
             name="skills"
             value={skillInput}
             onChange={(e) => setSkillInput(e.target.value)}
-            placeholder="Write your skills..."
+            placeholder="Ex: React..."
             className="outline-none  border-t border-b w-full text-3xl font-light  py-1 pb-1 mb-5"
           />
           <button
@@ -362,7 +365,7 @@ const Form = () => {
             onChange={handleColorChange}
           >
             <option value="Helvetica">Helvetica</option>
-            <option value="Arial">Arial</option>
+            <option value="EB Garamond">EB Garamond</option>
             <option value="Verdana">Verdana</option>
             <option value="Tahoma">Tahoma</option>
             <option value="Trebuchet MS">Trebuchet MS </option>
