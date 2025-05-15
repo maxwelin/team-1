@@ -14,6 +14,7 @@ const Form = () => {
   const [hoverProj, setHoverProj] = useState(false);
   const [hoverAdd, setHoverAdd] = useState(false);
   const [toggleBtn, setToggleBtn] = useState(false);
+  const [expInput, setExpInput] = useState("");
 
   useEffect(() => {
     if (firstTimeUser) {
@@ -53,6 +54,7 @@ const Form = () => {
     setToggleForm,
     fileName,
     projList,
+    experience,
     setFileName,
     cvFile,
     formRef,
@@ -76,6 +78,7 @@ const Form = () => {
     fontFamily,
     setFontFamily,
     setProjList,
+    setExperience,
   } = useContext(FormContext);
 
   const handleProfilePicUpload = (e) => {
@@ -146,8 +149,12 @@ const Form = () => {
     if (skillInput.trim() !== "") {
       setSkills([...skills, skillInput]);
       setSkillInput("");
-      console.log("Cleared input");
     }
+    if (expInput.trim() !== "") {
+      setExperience(expInput);
+      setExpInput("");
+    }
+    console.log("Cleared input");
   };
 
   const handleStyleReset = (e) => {
@@ -156,6 +163,12 @@ const Form = () => {
     setFontColor("#000000");
     setAccentColor("#FF6200");
     setFontFamily("Helvetica, sans-serif");
+  };
+
+  const handleSkillReset = (e) => {
+    e.preventDefault();
+    setExperience("");
+    setSkills("");
   };
 
   const handleSubmit = () => {
@@ -508,7 +521,11 @@ const Form = () => {
             </div>
 
             <div className="flex flex-col mt-80 mb-30 relative">
-              <p className=" text-3xl text-left font-normal">Your skills</p>
+              <p className=" text-5xl text-center font-normal">Your skills</p>
+              <p className="text-center text-lg pt-4 mb-8">
+                What are you good at? Add one skill at a time - like "React",
+                "Figma" or "CSS"
+              </p>
               <input
                 type="text"
                 name="skills"
@@ -520,7 +537,20 @@ const Form = () => {
                   }
                 }}
                 placeholder="Write your skills..."
-                className="outline-none  border-t border-b w-full text-3xl font-light  py-1 pb-1 mb-5"
+                className="outline-none w-full text-3xl font-light py-1 pb-1"
+              />
+              <input
+                type="text"
+                name="experience"
+                value={expInput}
+                onChange={(e) => setExpInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSkills(e);
+                  }
+                }}
+                placeholder="Write your skills..."
+                className="outline-none border-t border-b w-full text-2xl font-light py-1 pb-1 mb-5"
               />
               <button
                 type="button"
@@ -533,15 +563,58 @@ const Form = () => {
                   borderColor: hoverAdd ? fontColor : accentColor,
                   transition: "all 0.2s ease-in-out",
                 }}
-                className="absolute top-14.5 -translate-y-1/2 right-0 items-center pl-4 pr-4 h-9 w-[100px] border-2 border-
+                className="absolute top-35 -translate-y-1/2 right-0 items-center pl-4 pr-4 h-9 w-[100px] border-2 border-
           rounded-4xl text-xl cursor-pointer"
               >
                 ADD
               </button>
-              <div className="flex justify-around border-t border-b w-full text-3xl font-light  py-5 pb-5">
-                {skills.map((skill, index) => {
-                  return <p key={index}>{skill}</p>;
-                })}
+              <div className="flex flex-col border-b w-full h-fit-content font-light justify-center">
+                {skills.length === 0 ? (
+                  <div className="flex flex-col justify-center items-center relative h-[300px]">
+                    <div className="flex justify-center">
+                      <p className="text-6xl">Write your skills</p>
+                    </div>
+                    <div className="bottom-0 left-0 absolute">
+                      <p
+                        style={{ color: accentColor }}
+                        className="text-md text-left mb-4"
+                      >
+                        Write something about your skills or experience
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-8 py-7 pb-7">
+                    <div className="flex flex-wrap items-center justify-around">
+                      {skills.map((skill, index) => (
+                        <p
+                          key={index}
+                          className="text-5xl font-bold flex-grow-0 flex-shrink-0 basis-1/5"
+                        >
+                          {skill}
+                        </p>
+                      ))}
+                    </div>
+                    {experience && (
+                      <span
+                        style={{ color: accentColor }}
+                        className="text-md w-1/2 mt-2"
+                      >
+                        {experience}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
+              <div className="flex justify-end mt-3">
+                <button
+                  type="button"
+                  onClick={handleSkillReset}
+                  style={{ "--hover-color": accentColor }}
+                  className="flex max-w-fit items-end gap-3 cursor-pointer font-light hover:text-[var(--hover-color)]"
+                >
+                  Reset skills <VscDebugRestart className="h-8 w-8" />
+                </button>
               </div>
             </div>
           </div>
