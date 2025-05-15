@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FormContext } from "../providers/FormContext";
 import { BsFiletypePdf, BsFiletypeJpg } from "react-icons/bs";
 import { HiCloudArrowUp } from "react-icons/hi2";
@@ -14,6 +14,19 @@ const Form = () => {
   const [hoverReset, setHoverReset] = useState(false);
   const [hoverProj, setHoverProj] = useState(false);
   const [hoverAdd, setHoverAdd] = useState(false);
+  const [toggleBtn, setToggleBtn] = useState(false);
+
+  useEffect(() => {
+    if (firstTimeUser) {
+      const handleScroll = () => {
+        setToggleBtn(window.scrollY > 500);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    } else {
+      setToggleBtn(true);
+    }
+  }, []);
 
   const {
     firstName,
@@ -642,12 +655,14 @@ const Form = () => {
               GENERATE PORTFOLIO
             </button>
           </div>
-          <FormToggleBtn
-            text="Preview portfolio"
-            posY="top-8"
-            posX="right-10"
-            direction="right"
-          />
+          {toggleBtn && (
+            <FormToggleBtn
+              text="Preview portfolio"
+              posY="top-8"
+              posX="right-10"
+              direction="right"
+            />
+          )}
         </form>
       </div>
     </>
