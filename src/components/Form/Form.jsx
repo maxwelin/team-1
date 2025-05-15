@@ -265,7 +265,7 @@ const Form = () => {
                   {/* Offset ram bakom bilden */}
                   <div
                     style={{ borderColor: accentColor }}
-                    className="absolute top-4 left-4 w-full h-full border-1 z-0"
+                    className="absolute top-4 left-4 w-full h-full border-2 z-0"
                   ></div>
 
                   {/* Själva bilden */}
@@ -279,13 +279,13 @@ const Form = () => {
                 <>
                   <div
                     style={{ borderColor: accentColor }}
-                    className="absolute top-4 left-4 w-full h-full border-1 z-0"
+                    className="absolute top-4 left-4 w-full h-full border-2 z-0"
                   ></div>
 
                   <label
                     htmlFor="projectImg"
                     className="absolute w-full h-full z-100 top-1/3 pointer-events-none"
-                    style={{ color: bgColor }}
+                    style={{ color: fontColor }}
                   >
                     {" "}
                     <div className="flex flex-col text-center">
@@ -296,7 +296,11 @@ const Form = () => {
                   </label>
                   <input
                     className=" relative z-10 h-[400px] w-[300px] object-center object-cover border-1 grid place-content-center cursor-pointer"
-                    style={{ backgroundColor: fontColor }}
+                    style={{
+                      borderColor: fontColor,
+                      backgroundColor: bgColor,
+                      color: bgColor,
+                    }}
                     type="file"
                     accept="image/*"
                     name="projectImg"
@@ -367,15 +371,22 @@ const Form = () => {
                     style={{ color: bgColor }}
                   >
                     {" "}
-                    <div className="flex flex-col text-center">
+                    <div
+                      className="flex flex-col text-center"
+                      style={{ color: fontColor }}
+                    >
                       <HiCloudArrowUp className="text-6xl ml-auto mr-auto" />
                       <h3 className="text-2xl font-semibold">Upload image</h3>
                       <p className="text-sm">Image must be in .jpg or .png</p>
                     </div>
                   </label>
                   <input
-                    className=" h-[350px] border-b-2 rounded-2xl w-1/2 cursor-pointer mb-7"
-                    style={{ backgroundColor: fontColor }}
+                    className=" h-[350px] border-1 rounded-2xl w-1/2 cursor-pointer mb-7"
+                    style={{
+                      borderColor: fontColor,
+                      backgroundColor: bgColor,
+                      color: bgColor,
+                    }}
                     type="file"
                     accept="image/*"
                     name="projectImg"
@@ -408,7 +419,7 @@ const Form = () => {
                   className="outline-none border-t border-b text-3xl font-light py-1 pb-1 mb-4"
                 />
                 <button
-                  style={{ backgroundColor: accentColor }}
+                  style={{ backgroundColor: accentColor, color: bgColor }}
                   onClick={handleSaveProject}
                   className="cursor-pointer h-11 items-center pl-4 pr-4 rounded-4xl text-black text-2xl transition duration-300 ease-in-out hover:bg-fuchsia-600"
                 >
@@ -446,7 +457,7 @@ const Form = () => {
               />
               <button
                 onClick={handleSkills}
-                style={{ backgroundColor: accentColor }}
+                style={{ backgroundColor: accentColor, color: bgColor }}
                 className="absolute top-15 -translate-y-1/2 right-0 items-center pl-4 pr-4 rounded-4xl  text-black transition duration-300 ease-in-out hover:bg-fuchsia-600 cursor-pointer text-2xl font-light "
               >
                 Add skill
@@ -535,111 +546,9 @@ const Form = () => {
             </div>
           </div>
 
-          <div className="flex flex-col mt-30 mb-30 relative">
-            <p className=" text-3xl text-left font-normal">Technical skills</p>
-            <input
-              type="text"
-              name="skills"
-              value={skillInput}
-              onChange={(e) => setSkillInput(e.target.value)}
-              placeholder="Ex: React..."
-              className="outline-none  border-t border-b w-full text-3xl font-light  py-1 pb-1 mb-5"
-            />
-
-            <button
-              type="submit"
-              style={{ backgroundColor: accentColor }}
-              className="cursor-pointer items-center pl-4 pr-4 rounded-4xl mt-20 mb-20 text-black text-2xl transition duration-300 ease-in-out hover:bg-fuchsia-600"
-            >
-              SUBMIT
-            </button>
-
-            <div className="flex justify-around border-t border-b w-full text-3xl font-light  py-5 pb-5">
-              {skills.map((skill, index) => {
-                return <p key={index}>{skill}</p>;
-              })}
-            </div>
-          </div>
-
-          <div className="flex flex-col w-2/3 gap-2.5 mt-30 mb-20">
-            <p className="text-3xl text-left font-normal mb-5">
-              Style your Portfolio
-            </p>
-            <select
-              style={{ backgroundColor: bgColor }}
-              name="fontTheme"
-              className="outline-none cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1 "
-              onChange={handleColorChange}
-            >
-              <option value="Helvetica">Helvetica</option>
-              <option value="EB Garamond">EB Garamond</option>
-              <option value="Verdana">Verdana</option>
-              <option value="Tahoma">Tahoma</option>
-              <option value="Trebuchet MS">Trebuchet MS </option>
-              <option value="Georgia">Georgia</option>
-              <option value="Times New Roman">Times New Roman</option>
-              <option value="Courier New">Courier New </option>
-              <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
-              <option value="Impact">Impact</option>
-            </select>
-
-            <label className="outline-none relative flex items-center cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1">
-              {bgColorName}
-              <input
-                type="color"
-                value={bgColor}
-                onChange={handleColorChange}
-                name="bgColor"
-                className="opacity-0 cursor-pointer"
-              />
-              <span
-                style={{ backgroundColor: bgColor }}
-                className="w-10 h-10 absolute right-0 inline-block border rounded-md"
-              ></span>
-            </label>
-
-            <label className="outline-none relative flex items-center cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1">
-              {fontColorName}
-              <input
-                type="color"
-                value={fontColor}
-                onChange={handleColorChange}
-                name="fontColor"
-                className="opacity-0 cursor-pointer"
-              />
-              <span
-                style={{ backgroundColor: fontColor }}
-                className="w-10 h-10 absolute right-0 inline-block rounded-md"
-              ></span>
-            </label>
-            <label className="outline-none relative flex items-center cursor-pointer border-t border-b w-full text-3xl font-light  pt-1 pb-1">
-              {accentColorName}
-              <input
-                type="color"
-                value={accentColor}
-                onChange={handleColorChange}
-                name="accentColor"
-                className="opacity-0 cursor-pointer"
-              />
-              <span
-                style={{ backgroundColor: accentColor }}
-                className="w-10 h-10 absolute right-0 inline-block rounded-md"
-              ></span>
-            </label>
-            <div className="flex justify-end">
-              <button
-                onClick={handleStyleReset}
-                style={{ "--hover-color": accentColor }}
-                className="flex max-w-fit items-end gap-3 cursor-pointer font-light hover:text-[var(--hover-color)]"
-              >
-                Reset styling <VscDebugRestart className="h-8 w-8" />
-              </button>
-            </div>
-          </div>
-
           <button
             type="submit"
-            style={{ backgroundColor: accentColor }}
+            style={{ backgroundColor: accentColor, color: bgColor }}
             className="cursor-pointer items-center pl-4 pr-4 rounded-4xl mt-20 mb-20 text-black text-2xl transition duration-300 ease-in-out hover:bg-fuchsia-600"
           >
             SUBMIT
