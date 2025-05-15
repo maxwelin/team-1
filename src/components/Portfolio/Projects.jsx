@@ -37,7 +37,7 @@ const Projects = () => {
               }`}
               onClick={() => setIsOpen(!isOpen)}
             >
-              <span className="text-2xl tracking-tighter">MY PROJECTS</span>
+              <span className="text-2xl tracking-tighter">My projects</span>
               <span className="text-4xl ">
                 {isOpen ? <HiOutlineMinus /> : <GoPlus />}
               </span>

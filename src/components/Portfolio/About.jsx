@@ -18,7 +18,7 @@ const About = () => {
             }`}
             onClick={() => setIsOpen(!isOpen)}
           >
-            <span className="text-2xl tracking-tighter">ABOUT ME</span>
+            <span className="text-2xl tracking-tighter">About me</span>
             <span className="text-4xl">
               {isOpen ? <HiOutlineMinus /> : <GoPlus />}
             </span>

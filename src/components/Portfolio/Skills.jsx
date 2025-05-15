@@ -21,7 +21,7 @@ const Skills = () => {
             }`}
             onClick={() => setIsOpen(!isOpen)}
           >
-            <span className="text-2xl">TECHNICAL SKILLS</span>
+            <span className="text-2xl">Technical skills</span>
             <span className="text-4xl">
               {isOpen ? <HiOutlineMinus /> : <GoPlus />}
             </span>
