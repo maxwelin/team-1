@@ -3,8 +3,8 @@ import { useState, useRef, useContext } from "react";
 import { GoPlus } from "react-icons/go";
 import { HiOutlineMinus } from "react-icons/hi2";
 import {
-  IoIosArrowDroprightCircle,
   IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle,
 } from "react-icons/io";
 import Slider from "react-slick";
 import { FormContext } from "../providers/FormContext";
@@ -58,15 +58,15 @@ const Projects = () => {
                 {projList.length > 1 ? (
                   <>
                     <button
+                      onClick={() => sliderRef.current.slickPrev()}
                       onMouseEnter={() => setHoverBack(true)}
                       onMouseLeave={() => setHoverBack(false)}
                       style={{
-                        color: hoverBack ? fontColor : accentColor,
-                        borderColor: hoverBack ? fontColor : accentColor,
-                        transition: "all 0.2s ease-in-out",
+                        color: hoverBack ? accentColor : fontColor,
+                        transform: hoverBack ? "scale(1)" : "scale(0.8)",
+                        transition: "all 0.3s ease",
                       }}
-                      onClick={() => sliderRef.current.slickPrev()}
-                      className="absolute bottom-2/3 left-40 text-6xl z-10 cursor-pointer"
+                      className="cursor-pointer z-10 absolute bottom-2/3 left-40 rounded-full items-center justify-center shadow-lg transition-all duration-300"
                     >
                       <IoIosArrowDropleftCircle />
                     </button>
@@ -88,15 +88,15 @@ const Projects = () => {
                       ))}
                     </Slider>
                     <button
+                      onClick={() => sliderRef.current.slickNext()}
                       onMouseEnter={() => setHoverNext(true)}
                       onMouseLeave={() => setHoverNext(false)}
                       style={{
-                        color: hoverNext ? fontColor : accentColor,
-                        borderColor: hoverNext ? fontColor : accentColor,
-                        transition: "all 0.2s ease-in-out",
+                        color: hoverNext ? accentColor : fontColor,
+                        transform: hoverNext ? "scale(1)" : "scale(0.8)",
+                        transition: "all 0.3s ease",
                       }}
-                      onClick={() => sliderRef.current.slickNext()}
-                      className="absolute bottom-2/3 right-40 text-6xl z-10 cursor-pointer"
+                      className="cursor-pointer z-10 absolute bottom-2/3 right-40 rounded-full items-center justify-center shadow-lg transition-all duration-300"
                     >
                       <IoIosArrowDroprightCircle />
                     </button>
