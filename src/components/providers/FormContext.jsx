@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useRef, useState } from "react";
 
 const FormContext = createContext(undefined);
 
@@ -21,16 +21,19 @@ const FormContextProvider = ({ children }) => {
   const [cvFile, setCvFile] = useState(null);
   const [cvFileName, setCvFileName] = useState(null);
   const [skills, setSkills] = useState([]);
-  const [bgColor, setBgColor] = useState("#000000");
-  const [fontColor, setFontColor] = useState("#FFFFFF");
-  const [accentColor, setAccentColor] = useState("#FF58C7");
-  const [bgColorName, setBgColorName] = useState("Black #000000");
-  const [fontColorName, setFontColorName] = useState("White #FFFFFF");
-  const [accentColorName, setAccentColorName] = useState("Pink #FF58C7");
+  const [bgColor, setBgColor] = useState("#FFFFFF");
+  const [fontColor, setFontColor] = useState("#000000");
+  const [accentColor, setAccentColor] = useState("#FF6200");
+  const [bgColorName, setBgColorName] = useState("White #FFFFFF");
+  const [fontColorName, setFontColorName] = useState("Black #000000");
+  const [accentColorName, setAccentColorName] = useState("Orange #FF6200");
   const [fontFamily, setFontFamily] = useState("Helvetica, sans-serif");
   const [location, setLocation] = useState("Stockholm");
   const [author, setAuthor] = useState("Team Juan");
   const [projList, setProjList] = useState([]);
+  const [firstTimeUser, SetFirstTimeUser] = useState(true);
+
+  const formRef = useRef(null);
 
   return (
     <FormContext.Provider
@@ -61,6 +64,8 @@ const FormContextProvider = ({ children }) => {
         location,
         author,
         projList,
+        formRef,
+        firstTimeUser,
         setToggleForm,
         setFirstName,
         setLastName,
@@ -87,6 +92,7 @@ const FormContextProvider = ({ children }) => {
         setLocation,
         setAuthor,
         setProjList,
+        SetFirstTimeUser,
       }}
     >
       {children}

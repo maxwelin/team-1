@@ -2,13 +2,21 @@ import { useState, useRef, useContext } from "react";
 
 import { GoPlus } from "react-icons/go";
 import { HiOutlineMinus } from "react-icons/hi2";
+import {
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle,
+} from "react-icons/io";
 import Slider from "react-slick";
 import { FormContext } from "../providers/FormContext";
 
 const Projects = () => {
-  const { accentColor, projList } = useContext(FormContext);
+  const { accentColor, projList, fontColor } = useContext(FormContext);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [hoverNext, setHoverNext] = useState(false);
+  const [hoverBack, setHoverBack] = useState(false);
+
+  console.log(projList);
 
   var settings = {
     centerMode: true,
@@ -53,13 +61,25 @@ const Projects = () => {
                   <>
                     <button
                       onClick={() => sliderRef.current.slickPrev()}
-                      className="absolute left-35 top-[30%] text-black bg-white text-[14px] z-10 md:text-[20px] tracking-widest rotate-[-90deg] hover:bg-transparent hover: px-1 py-0.5 rounded cursor-pointer"
+                      onMouseEnter={() => setHoverBack(true)}
+                      onMouseLeave={() => setHoverBack(false)}
+                      style={{
+                        color: hoverBack ? accentColor : fontColor,
+                        transform: hoverBack ? "scale(1)" : "scale(0.8)",
+                        transition: "all 0.3s ease",
+                      }}
+                      className="cursor-pointer z-10 absolute bottom-2/3 left-40 rounded-full items-center justify-center shadow-lg transition-all duration-300"
                     >
-                      BACK
+                      <IoIosArrowDropleftCircle />
                     </button>
                     <Slider ref={sliderRef} {...settings}>
                       {projList.map((proj, i) => (
-                        <div className="bg-[#D9D9D9] w-[600px] h-[300px] relative">
+                        <a
+                          href={proj.link}
+                          target="_blank"
+                          key={i}
+                          className="bg-[#D9D9D9] w-[600px] h-[300px] relative"
+                        >
                           <img
                             src={proj.img}
                             alt=""
@@ -71,14 +91,21 @@ const Projects = () => {
                           <h3 className="absolute left-1/2 -translate-x-1/2 -bottom-22 z-10 text-xl tracking-tighter">
                             {proj.desc}
                           </h3>
-                        </div>
+                        </a>
                       ))}
                     </Slider>
                     <button
                       onClick={() => sliderRef.current.slickNext()}
-                      className="absolute right-35 top-[30%] text-black bg-white text-[14px] md:text-[20px] hover:bg-transparent  hover: z-10 tracking-widest rotate-[-90deg]  px-1 py-0.5 rounded cursor-pointer"
+                      onMouseEnter={() => setHoverNext(true)}
+                      onMouseLeave={() => setHoverNext(false)}
+                      style={{
+                        color: hoverNext ? accentColor : fontColor,
+                        transform: hoverNext ? "scale(1)" : "scale(0.8)",
+                        transition: "all 0.3s ease",
+                      }}
+                      className="cursor-pointer z-10 absolute bottom-2/3 right-40 rounded-full items-center justify-center shadow-lg transition-all duration-300"
                     >
-                      NEXT
+                      <IoIosArrowDroprightCircle />
                     </button>
                   </>
                 ) : (

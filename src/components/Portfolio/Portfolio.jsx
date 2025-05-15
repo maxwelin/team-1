@@ -3,10 +3,13 @@ import Projects from "./Projects";
 import Hero from "./Hero";
 import Skills from "./Skills";
 import Footer from "./Footer";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Quote from "./Quote";
+import { FormContext } from "../providers/FormContext";
 
 const Portfolio = () => {
+  const { projList } = useContext(FormContext);
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -22,7 +25,7 @@ const Portfolio = () => {
         <About />
       </div>
       <div className="col-span-full">
-        <Projects />
+        {projList.length > 0 && <Projects />}
         <Skills />
       </div>
       <div className="col-start-3 col-span-full">
