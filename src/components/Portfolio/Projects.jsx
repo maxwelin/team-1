@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import { FormContext } from "../providers/FormContext";
 
 const Projects = () => {
-  const { accentColor } = useContext(FormContext);
+  const { accentColor, projList } = useContext(FormContext);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -49,31 +49,55 @@ const Projects = () => {
               }`}
             >
               <div className="relative text-center pb-50 overflow-visible">
-                <button
-                  onClick={() => sliderRef.current.slickPrev()}
-                  className="absolute left-35 top-[30%] text-black bg-white text-[14px] z-10 md:text-[20px] tracking-widest rotate-[-90deg] hover:bg-transparent hover: px-1 py-0.5 rounded cursor-pointer"
-                >
-                  BACK
-                </button>
-                <Slider ref={sliderRef} {...settings}>
-                  {["Lorem", "Ipsum", "För", "Helvete"].map((text, i) => (
-                    <div className="bg-[#D9D9D9] w-[600px] h-[300px] relative">
+                {projList.length > 1 ? (
+                  <>
+                    <button
+                      onClick={() => sliderRef.current.slickPrev()}
+                      className="absolute left-35 top-[30%] text-black bg-white text-[14px] z-10 md:text-[20px] tracking-widest rotate-[-90deg] hover:bg-transparent hover: px-1 py-0.5 rounded cursor-pointer"
+                    >
+                      BACK
+                    </button>
+                    <Slider ref={sliderRef} {...settings}>
+                      {projList.map((proj, i) => (
+                        <div className="bg-[#D9D9D9] w-[600px] h-[300px] relative">
+                          <img
+                            src={proj.img}
+                            alt=""
+                            className="object-cover w-full  max-h-full"
+                          />
+                          <h3 className="absolute left-1/2 -translate-x-1/2 -top-13 z-10 text-4xl tracking-tighter">
+                            {proj.title}
+                          </h3>
+                          <h3 className="absolute left-1/2 -translate-x-1/2 -bottom-22 z-10 text-xl tracking-tighter">
+                            {proj.desc}
+                          </h3>
+                        </div>
+                      ))}
+                    </Slider>
+                    <button
+                      onClick={() => sliderRef.current.slickNext()}
+                      className="absolute right-35 top-[30%] text-black bg-white text-[14px] md:text-[20px] hover:bg-transparent  hover: z-10 tracking-widest rotate-[-90deg]  px-1 py-0.5 rounded cursor-pointer"
+                    >
+                      NEXT
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <div className=" w-[900px] h-[450px] relative ml-auto mr-auto">
+                      <img
+                        src={projList[0]?.img}
+                        alt=""
+                        className="object-cover w-full  max-h-full"
+                      />
                       <h3 className="absolute left-1/2 -translate-x-1/2 -top-13 z-10 text-4xl tracking-tighter">
-                        {text}
+                        {projList[0]?.title}
                       </h3>
                       <h3 className="absolute left-1/2 -translate-x-1/2 -bottom-22 z-10 text-xl tracking-tighter">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Atque, eligendi.
+                        {projList[0]?.desc}
                       </h3>
                     </div>
-                  ))}
-                </Slider>
-                <button
-                  onClick={() => sliderRef.current.slickNext()}
-                  className="absolute right-35 top-[30%] text-black bg-white text-[14px] md:text-[20px] hover:bg-transparent  hover: z-10 tracking-widest rotate-[-90deg]  px-1 py-0.5 rounded cursor-pointer"
-                >
-                  NEXT
-                </button>
+                  </>
+                )}
               </div>
             </div>
           </div>
