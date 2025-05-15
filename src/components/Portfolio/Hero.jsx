@@ -33,7 +33,7 @@ const Hero = () => {
 
           {/* 📎 CV-länk */}
           <div style={{ color: accentColor }}>
-            <div className="border-t border-b w-full max-w-full">
+            <div className="border-t-2 border-b-2 w-full max-w-full">
               <div
                 className={`flex justify-between items-center py-1 cursor-pointer transition-all duration-200 ${
                   !isOpen && "hover:pb-2"
