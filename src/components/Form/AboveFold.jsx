@@ -36,7 +36,7 @@ const AboveFold = () => {
           borderColor: hover ? fontColor : accentColor,
           transition: "all 0.2s ease-in-out",
         }}
-        className="cursor-pointer h-13 w-[300px] items-center border-2 border- rounded-4xl text-2xl "
+        className="cursor-pointer h-10 w-[300px] items-center border-2 border- rounded-4xl text-xl "
       >
         GET STARTED
       </button>

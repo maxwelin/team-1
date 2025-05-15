@@ -485,7 +485,7 @@ const Form = () => {
                     borderColor: hoverProj ? fontColor : accentColor,
                     transition: "all 0.2s ease-in-out",
                   }}
-                  className="cursor-pointer h-13 w-full items-center border-2 border- rounded-4xl text-2xl "
+                  className="cursor-pointer h-10 w-full items-center border-2 border- rounded-4xl text-xl "
                 >
                   SAVE PROJECT
                 </button>
@@ -535,7 +535,7 @@ const Form = () => {
                   transition: "all 0.2s ease-in-out",
                 }}
                 className="absolute top-14.5 -translate-y-1/2 right-0 items-center pl-4 pr-4 h-9 w-[100px] border-2 border-
-          rounded-4xl text-2xl cursor-pointer"
+          rounded-4xl text-xl cursor-pointer"
               >
                 ADD
               </button>
@@ -635,7 +635,7 @@ const Form = () => {
                 borderColor: hoverReset ? fontColor : fontColor,
                 transition: "all 0.2s ease-in-out",
               }}
-              className="cursor-pointer h-13 w-[200px] items-center border-2 border- rounded-4xl mt-20 mb-20 text-2xl "
+              className="cursor-pointer h-10 w-[200px] items-center border-2 border- rounded-4xl mt-20 mb-20 text-xl "
             >
               RESET ALL
             </button>
@@ -650,7 +650,7 @@ const Form = () => {
                 borderColor: hoverSubmit ? fontColor : accentColor,
                 transition: "all 0.2s ease-in-out",
               }}
-              className="cursor-pointer h-13 w-[400px] items-center border-2 border- rounded-4xl mt-20 mb-20 text-2xl "
+              className="cursor-pointer h-10 w-[300px] items-center border-2 border- rounded-4xl mt-20 mb-20 text-xl "
             >
               GENERATE PORTFOLIO
             </button>
