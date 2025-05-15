@@ -639,7 +639,7 @@ const Form = () => {
               }}
               className="cursor-pointer h-13 w-[400px] items-center border-2 border- rounded-4xl mt-20 mb-20 text-2xl "
             >
-              SUBMIT
+              GENERATE PORTFOLIO
             </button>
           </div>
           <FormToggleBtn
