@@ -3,6 +3,7 @@ import Form from "../Form/Form";
 import Portfolio from "../Portfolio/Portfolio";
 import { FormContext } from "../providers/FormContext";
 import FormToggleBtn from "./FormToggleBtn";
+import AboveFold from "../Form/AboveFold";
 
 const Main = () => {
   const { toggleForm } = useContext(FormContext);
@@ -10,7 +11,9 @@ const Main = () => {
   return (
     <>
       {toggleForm ? (
-        <Form />
+        <>
+          <Form />
+        </>
       ) : (
         <>
           <FormToggleBtn

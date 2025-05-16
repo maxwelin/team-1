@@ -18,7 +18,10 @@ const AboveFold = () => {
   };
 
   return (
-    <div className="min-h-[90vh]  w-full flex flex-col pt-60 items-center mb-20">
+    <div
+      // style={{ backgroundImage: "url(/psycho.webp)"}}
+      className="min-h-[100vh] w-full flex flex-col pt-[20%] items-center mb-20 "
+    >
       <h1 className="text-7xl mb-10 tracking-tighter">
         Generate Your Personal Portfolio
       </h1>

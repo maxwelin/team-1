@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import { useContext, useState } from "react";
+import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import { FormContext } from "../providers/FormContext";
 
 const FormToggleBtn = ({ text, posY, posX, direction, func }) => {
@@ -11,22 +11,7 @@ const FormToggleBtn = ({ text, posY, posX, direction, func }) => {
     SetFirstTimeUser,
   } = useContext(FormContext);
 
-  const [showButton, setShowButton] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
-  let scrollTimeout = null;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowButton(false);
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        setShowButton(true);
-      }, 300);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const containerStyle = {
     color: isHovered ? fontColor : accentColor,
@@ -55,27 +40,25 @@ const FormToggleBtn = ({ text, posY, posX, direction, func }) => {
 
   return (
     <div>
-      {showButton && (
-        <div
-          className={`fixed ${posY} ${posX} transform -translate-x-1 z-50 cursor-pointer text-xl font-medium flex items-center gap-2`}
-          style={containerStyle}
-          onClick={handleClick}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          {direction == "left" ? (
-            <>
-              <FiArrowLeft size={30} style={iconStyleLeft} />
-              <span>{text}</span>
-            </>
-          ) : (
-            <>
-              <span>{text}</span>
-              <FiArrowRight size={30} style={iconStyleRight} />
-            </>
-          )}
-        </div>
-      )}
+      <div
+        className={`fixed ${posY} ${posX} transform -translate-x-1 z-50 cursor-pointer text-xl font-medium flex items-center gap-2`}
+        style={containerStyle}
+        onClick={handleClick}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {direction == "left" ? (
+          <>
+            <FiArrowLeftCircle size={30} style={iconStyleLeft} />
+            <span>{text}</span>
+          </>
+        ) : (
+          <>
+            <span>{text}</span>
+            <FiArrowRightCircle size={30} style={iconStyleRight} />
+          </>
+        )}
+      </div>
     </div>
   );
 };
