@@ -43,6 +43,7 @@ const Form = () => {
     quote,
     source,
     firstTimeUser,
+    setFirstTimeUser,
     setFirstName,
     setLastName,
     setSchool,
@@ -177,6 +178,7 @@ const Form = () => {
 
   const handleSubmit = () => {
     const form = formRefTwo.current;
+    setFirstTimeUser(false);
 
     setFirstName(form.fname.value.toUpperCase());
     setLastName(form.lname.value.toUpperCase());
