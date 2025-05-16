@@ -250,7 +250,7 @@ const Form = () => {
         ref={formRef}
         className=" text-5xl text-center w-full mb-2 font-medium"
       >
-        Tell Us About Yourself
+        Introduce Yourself
       </h1>
       <p className=" text-lg text-center mb-2 w-full font-normal">
         Fill in all the fields below to build your personal portfolio. <br />{" "}
@@ -273,7 +273,7 @@ const Form = () => {
 
                   {/* Själva bilden */}
                   <img
-                    className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1"
+                    className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1 rounded-2xl"
                     src={profilePic}
                     alt=""
                   />
@@ -282,7 +282,7 @@ const Form = () => {
                 <>
                   <div
                     style={{ borderColor: accentColor }}
-                    className="absolute top-4 left-4 w-full h-full border-2 z-0"
+                    className="absolute top-4 left-4 w-full h-full border-2 z-0 rounded-2xl"
                   ></div>
 
                   <label
@@ -300,7 +300,7 @@ const Form = () => {
                     </div>
                   </label>
                   <input
-                    className=" relative z-10 h-[400px] w-[300px] object-center object-cover border-1 grid place-content-center cursor-pointer"
+                    className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1 rounded-2xl grid place-content-center cursor-pointer"
                     style={{
                       borderColor: fontColor,
                       backgroundColor: bgColor,
@@ -442,7 +442,7 @@ const Form = () => {
                   />
                 </label>
                 <input
-                  className=" h-[350px] border-b-2 rounded-2xl cursor-pointer mb-7"
+                  className=" h-[350px] border-b-2 rounded-2xl cursor-pointer mb-8"
                   style={{ backgroundColor: fontColor }}
                   type="file"
                   accept="image/*"
