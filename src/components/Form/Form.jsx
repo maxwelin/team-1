@@ -192,6 +192,8 @@ const Form = () => {
     setHeader(form.header.value);
     setAbout(form.about.value);
     setLocation(form.location.value);
+    setQuote(form.quote.value);
+    setSource(form.source.value);
 
     setToggleForm(false);
   };
@@ -209,6 +211,8 @@ const Form = () => {
     setHeader("");
     setAbout("");
     setLocation("");
+    setQuote("The hardest problem in web development? Centering a div.");
+    setSource("Every web developer, at some point");
 
     const form = formRefTwo.current;
 
