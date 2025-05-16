@@ -381,6 +381,7 @@ const Form = () => {
             <input
               type="text"
               name="about"
+              defaultValue={about}
               placeholder="I'm a passionate developer with a love for clean code and elegant design..."
               className="outline-none border-t border-b w-full text-2xl font-thin  pb-15 pt-3"
             />
