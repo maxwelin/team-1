@@ -5,7 +5,7 @@ import { FormContext } from "../providers/FormContext";
 
 const Skills = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { skills, accentColor } = useContext(FormContext);
+  const { skills, accentColor, experience } = useContext(FormContext);
 
   return (
     <div className="text-4xl py-6">
@@ -31,9 +31,26 @@ const Skills = () => {
               isOpen ? "max-h-[1000px] pt-20" : "max-h-0"
             }`}
           >
-            {skills.map((skill, index) => {
-              return <p key={index}>{skill}</p>;
-            })}
+            <div className="flex flex-col gap-8">
+              <div className="flex flex-wrap items-center justify-around">
+                {skills.map((skill, index) => (
+                  <p
+                    key={index}
+                    className="text-5xl font-bold flex-grow-0 flex-shrink-0 basis-1/5"
+                  >
+                    {skill}
+                  </p>
+                ))}
+              </div>
+              {experience && (
+                <span
+                  style={{ color: accentColor }}
+                  className="text-lg w-1/2 mt-2"
+                >
+                  {experience}
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>
