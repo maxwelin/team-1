@@ -28,6 +28,10 @@ const FormContextProvider = ({ children }) => {
   const [fontFamily, setFontFamily] = useState("Helvetica, sans-serif");
   const [location, setLocation] = useState("");
   const [author, setAuthor] = useState("Team Juan");
+  const [quote, setQuote] = useState(
+    "The hardest problem in web development? Centering a div."
+  );
+  const [source, setSource] = useState("Every web developer, at some point");
   const [projList, setProjList] = useState([]);
   const [firstTimeUser, SetFirstTimeUser] = useState(true);
   const [experience, setExperience] = useState("");
@@ -48,6 +52,8 @@ const FormContextProvider = ({ children }) => {
         linkedInURL,
         profilePic,
         about,
+        quote,
+        source,
         header,
         fileName,
         cvFile,
@@ -78,6 +84,8 @@ const FormContextProvider = ({ children }) => {
         setProfilePic,
         setAbout,
         setHeader,
+        setQuote,
+        setSource,
         setFileName,
         setCvFile,
         setCvFileName,

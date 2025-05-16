@@ -40,6 +40,8 @@ const Form = () => {
     linkedInURL,
     header,
     about,
+    quote,
+    source,
     firstTimeUser,
     setFirstName,
     setLastName,
@@ -79,6 +81,8 @@ const Form = () => {
     accentColorName,
     setAccentColorName,
     fontFamily,
+    setQuote,
+    setSource,
     setFontFamily,
     setProjList,
     setExperience,
@@ -257,8 +261,61 @@ const Form = () => {
           ready to use.
         </p>
         <form ref={formRefTwo} onSubmit={handleSubmit} className="w-full">
-          <div className="relative flex mb-10">
-            <div className="flex flex-col gap-4 w-2/3">
+          <div className="relative flex w-1/2 mr-auto ml-auto mb-10">
+            <div className="flex flex-col gap-4 w-full">
+              <div className="shrink-0 relative mr-auto ml-auto w-fit mt-5 mb-10 h-[400px]">
+                {profilePic ? (
+                  <>
+                    {/* Offset ram bakom bilden */}
+                    <div
+                      style={{ borderColor: accentColor }}
+                      className="absolute top-4 left-4 w-full h-full border-2 z-0"
+                    ></div>
+
+                    {/* Själva bilden */}
+                    <img
+                      className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1"
+                      src={profilePic}
+                      alt=""
+                    />
+                  </>
+                ) : (
+                  <>
+                    <div
+                      style={{ borderColor: accentColor }}
+                      className="absolute top-4 left-4 w-full h-full border-2 z-0"
+                    ></div>
+
+                    <label
+                      htmlFor="projectImg"
+                      className="absolute w-full h-full z-100 top-1/3 pointer-events-none"
+                      style={{ color: fontColor }}
+                    >
+                      {" "}
+                      <div className="flex flex-col text-center">
+                        <HiCloudArrowUp className="text-6xl ml-auto mr-auto" />
+                        <h3 className="text-2xl font-semibold">
+                          Upload Profile Picture
+                        </h3>
+                        <p className="text-sm">Image must be in .jpg or .png</p>
+                      </div>
+                    </label>
+                    <input
+                      className=" relative z-10 h-[400px] w-[300px] object-center object-cover border-1 grid place-content-center cursor-pointer"
+                      style={{
+                        borderColor: fontColor,
+                        backgroundColor: bgColor,
+                        color: bgColor,
+                      }}
+                      type="file"
+                      accept="image/*"
+                      name="projectImg"
+                      ref={imageRef}
+                      onChange={handleProfilePicUpload}
+                    />
+                  </>
+                )}
+              </div>
               <input
                 type="text"
                 name="fname"
@@ -337,63 +394,13 @@ const Form = () => {
                 </label>
               </div>
             </div>
-            <div className="shrink-0 relative w-fit mt-[-0%] h-[400px] ml-20">
-              {profilePic ? (
-                <>
-                  {/* Offset ram bakom bilden */}
-                  <div
-                    style={{ borderColor: accentColor }}
-                    className="absolute top-4 left-4 w-full h-full border-2 z-0"
-                  ></div>
-
-                  {/* Själva bilden */}
-                  <img
-                    className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1"
-                    src={profilePic}
-                    alt=""
-                  />
-                </>
-              ) : (
-                <>
-                  <div
-                    style={{ borderColor: accentColor }}
-                    className="absolute top-4 left-4 w-full h-full border-2 z-0"
-                  ></div>
-
-                  <label
-                    htmlFor="projectImg"
-                    className="absolute w-full h-full z-100 top-1/3 pointer-events-none"
-                    style={{ color: fontColor }}
-                  >
-                    {" "}
-                    <div className="flex flex-col text-center">
-                      <HiCloudArrowUp className="text-6xl ml-auto mr-auto" />
-                      <h3 className="text-2xl font-semibold">Upload image</h3>
-                      <p className="text-sm">Image must be in .jpg or .png</p>
-                    </div>
-                  </label>
-                  <input
-                    className=" relative z-10 h-[400px] w-[300px] object-center object-cover border-1 grid place-content-center cursor-pointer"
-                    style={{
-                      borderColor: fontColor,
-                      backgroundColor: bgColor,
-                      color: bgColor,
-                    }}
-                    type="file"
-                    accept="image/*"
-                    name="projectImg"
-                    ref={imageRef}
-                    onChange={handleProfilePicUpload}
-                  />
-                </>
-              )}
-            </div>
           </div>
-          <div className="flex flex-col mt-80 mb-30 gap-1">
-            <h3 className=" text-5xl text-center font-normal">
+
+          <div className="flex flex-col w-1/2 mr-auto ml-auto mt-80 mb-30 gap-1">
+            <h3 className=" text-5xl text-center font-normal mb-5">
               What Are You Looking For?
             </h3>
-            <p className="text-lg text-center mb-2">
+            <p className="text-lg text-center mb-3">
               Write your availability and what you’re open to – internship, job,
               or freelance?
             </p>
@@ -408,7 +415,7 @@ const Form = () => {
               type="text"
               name="about"
               defaultValue={about}
-              placeholder="I'm a passionate developer with a love for clean code and elegant design..."
+              placeholder="I'm a passionate developer with a love for clean code and..."
               className="outline-none border-t border-b w-full text-2xl font-thin  pb-15 pt-3"
             />
           </div>
@@ -421,22 +428,22 @@ const Form = () => {
               Upload an image, write a short description, and share a link to
               your GitHub or live demo.
             </p>
-            <div className="relative flex flex-col items-center border-t w-full border-b pt-7 pb-7 mb-5 justify-around">
+            <div className="relative flex flex-col items-center border-t w-1/2 mr-auto ml-auto border-b pt-7 pb-7 mb-5 justify-around">
               {imgUrl ? (
                 <>
                   <label
                     htmlFor="projectImg"
-                    className="absolute top-7 w-1/2 pointer-events-none"
+                    className="absolute top-7 pointer-events-none h-[350px] w-full"
                     style={{ color: bgColor }}
                   >
                     {" "}
                     <img
-                      className="h-[350px] rounded-2xl w-full mb-7 object-cover object-center"
+                      className="h-[350px] rounded-2xl min-w-full mb-7 object-cover max-h-full"
                       src={imgUrl}
                     />
                   </label>
                   <input
-                    className=" h-[350px] border-b-2 rounded-2xl w-1/2 cursor-pointer mb-7"
+                    className=" h-[350px] border-b-2 rounded-2xl cursor-pointer mb-7"
                     style={{ backgroundColor: fontColor }}
                     type="file"
                     accept="image/*"
@@ -458,12 +465,12 @@ const Form = () => {
                       style={{ color: fontColor }}
                     >
                       <HiCloudArrowUp className="text-6xl ml-auto mr-auto" />
-                      <h3 className="text-2xl font-semibold">Upload image</h3>
+                      <h3 className="text-2xl wfont-semibold">Upload image</h3>
                       <p className="text-sm">Image must be in .jpg or .png</p>
                     </div>
                   </label>
                   <input
-                    className=" h-[350px] border-1 rounded-2xl w-1/2 cursor-pointer mb-7"
+                    className=" h-[350px] border-1 w-full rounded-2xl cursor-pointer mb-7"
                     style={{
                       borderColor: fontColor,
                       backgroundColor: bgColor,
@@ -478,7 +485,7 @@ const Form = () => {
                 </>
               )}
 
-              <div className="flex flex-col w-1/2 tracking-tighter">
+              <div className="flex flex-col w-full tracking-tighter">
                 <input
                   type="text"
                   name="projTitle"
@@ -518,7 +525,7 @@ const Form = () => {
               </div>
 
               {projList.length > 0 && (
-                <ul className="w-1/2 mt-7">
+                <ul className="w-full mt-7">
                   <p>
                     {projList.map((item, index) => {
                       return (
@@ -532,7 +539,7 @@ const Form = () => {
                   </p>
                 </ul>
               )}
-              <div className="flex w-1/2 justify-end mt-3">
+              <div className="flex w-full justify-end mt-3">
                 <button
                   type="button"
                   onClick={() => setProjList([])}
@@ -544,7 +551,7 @@ const Form = () => {
               </div>
             </div>
 
-            <div className="flex flex-col mt-80 mb-30 relative">
+            <div className="flex flex-col w-1/2 mr-auto ml-auto mt-80 mb-30 relative">
               <p className=" text-5xl text-center font-normal">Your skills</p>
               <p className="text-center text-lg pt-4 mb-8">
                 What are you good at? Add one skill at a time - like "React",
@@ -643,20 +650,56 @@ const Form = () => {
             </div>
           </div>
 
-          <div className="w-full text-center mt-80">
-            <p className="text-lg">
+          <div className="w-1/2 text-center mt-80 ml-auto mr-auto">
+            <h3 className="text-5xl mb-5">Your Quote</h3>
+            <p className="text-lg text-center mb-10">
+              Share a quote that inspires you – lyrics, a saying, or something
+              personal. <br /> Include who said it, if you want. Both fields are
+              optional.
+            </p>
+            <input
+              type="text"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  setQuote(e.target.value);
+                }
+              }}
+              name="quote"
+              placeholder="Quote"
+              className="outline-none border-b w-full text-3xl font-light "
+            />
+            <h3 className="text-7xl text-left italic overflow-hidden opacity-25 tracking-tighter mt-10 mb-50">
+              "{quote}"
+            </h3>
+            <input
+              type="text"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  setSource(e.target.value);
+                }
+              }}
+              name="source"
+              placeholder="Who said it?"
+              className="outline-none border-b w-full text-3xl font-light "
+            />
+            <h4 className="text-right text-3xl opacity-30 tracking-tighter">
+              -{source}
+            </h4>
+          </div>
+
+          <div className="flex flex-col w-1/2 ml-auto mr-auto gap-2.5 mt-80 mb-30">
+            <h3 className="text-5xl text-center font-normal mb-5">
+              Style Your Portfolio
+            </h3>
+            <p className="text-lg text-center mb-10">
               Great! You've filled in all the details – now it’s time to make
               the portfolio truly yours. <br /> Customize the style to match
               your personality and see your changes instantly. You can always go
               back and make edits at any time. <br /> When you're happy with how
               it looks, hit "Generate Portfolio" to save or "Reset All" to start
               over.
-            </p>
-          </div>
-
-          <div className="flex flex-col w-full gap-2.5 mt-30 mb-20">
-            <p className="text-5xl text-center font-normal mb-5">
-              Style Your Portfolio
             </p>
             <select
               style={{ backgroundColor: bgColor }}
@@ -730,7 +773,7 @@ const Form = () => {
               </button>
             </div>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between w-1/2 mr-auto ml-auto">
             <button
               onMouseEnter={() => setHoverReset(true)}
               onMouseLeave={() => setHoverReset(false)}
