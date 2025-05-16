@@ -33,7 +33,7 @@ const FormContextProvider = ({ children }) => {
   );
   const [source, setSource] = useState("Every web developer, at some point");
   const [projList, setProjList] = useState([]);
-  const [firstTimeUser, SetFirstTimeUser] = useState(true);
+  const [firstTimeUser, setFirstTimeUser] = useState(true);
   const [experience, setExperience] = useState("");
 
   const formRef = useRef(null);
@@ -100,7 +100,7 @@ const FormContextProvider = ({ children }) => {
         setLocation,
         setAuthor,
         setProjList,
-        SetFirstTimeUser,
+        setFirstTimeUser,
         setExperience,
       }}
     >

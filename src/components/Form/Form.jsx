@@ -706,7 +706,7 @@ const Form = () => {
             className="outline-none cursor-pointer border-b w-full text-3xl font-light  pt-1 pb-1 "
             onChange={handleColorChange}
           >
-            <option value="" disabled selected hidden>
+            <option disabled selected hidden>
               Font style
             </option>
             <option style={{ fontFamily: "Helvetica" }} value="Helvetica">

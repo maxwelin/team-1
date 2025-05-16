@@ -8,7 +8,7 @@ const FormToggleBtn = ({ text, posY, posX, direction, func }) => {
     setToggleForm,
     fontColor,
     accentColor,
-    SetFirstTimeUser,
+    setFirstTimeUser,
   } = useContext(FormContext);
 
   const [isHovered, setIsHovered] = useState(false);
@@ -29,7 +29,7 @@ const FormToggleBtn = ({ text, posY, posX, direction, func }) => {
   };
 
   const handleClick = () => {
-    SetFirstTimeUser(false);
+    setFirstTimeUser(false);
     setToggleForm(!toggleForm);
     setIsHovered(false);
 
