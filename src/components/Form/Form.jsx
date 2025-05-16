@@ -707,16 +707,42 @@ const Form = () => {
             <option value="" disabled selected hidden>
               Font style
             </option>
-            <option value="Helvetica">Helvetica</option>
-            <option value="Arial">Arial</option>
-            <option value="Verdana">Verdana</option>
-            <option value="Tahoma">Tahoma</option>
-            <option value="Trebuchet MS">Trebuchet MS </option>
-            <option value="Georgia">Georgia</option>
-            <option value="Times New Roman">Times New Roman</option>
-            <option value="Courier New">Courier New </option>
-            <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
-            <option value="Impact">Impact</option>
+            <option style={{ fontFamily: "Helvetica" }} value="Helvetica">
+              Helvetica
+            </option>
+            <option style={{ fontFamily: "Arial" }} value="Arial">
+              Arial
+            </option>
+            <option style={{ fontFamily: "Verdana" }} value="Verdana">
+              Verdana
+            </option>
+            <option style={{ fontFamily: "Tahoma" }} value="Tahoma">
+              Tahoma
+            </option>
+            <option style={{ fontFamily: "Trebuchet MS" }} value="Trebuchet MS">
+              Trebuchet MS{" "}
+            </option>
+            <option style={{ fontFamily: "Georgia" }} value="Georgia">
+              Georgia
+            </option>
+            <option
+              style={{ fontFamily: "Times New Roman" }}
+              value="Times New Roman"
+            >
+              Times New Roman
+            </option>
+            <option style={{ fontFamily: "Courier New" }} value="Courier New">
+              Courier New{" "}
+            </option>
+            <option
+              style={{ fontFamily: "Lucida Sans Unicode" }}
+              value="Lucida Sans Unicode"
+            >
+              Lucida Sans Unicode
+            </option>
+            <option style={{ fontFamily: "Impact" }} value="Impact">
+              Impact
+            </option>
           </select>
 
           <label className="outline-none relative flex items-center cursor-pointer border-b w-full text-3xl font-light  pt-1 pb-1">
