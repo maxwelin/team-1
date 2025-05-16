@@ -25,10 +25,10 @@ const Hero = () => {
           </h1>
 
           <h2 className="text-xl sm:text-2xl md:text-3xl xl:text-4xl font-light mt-2">
-            STUDENT @ {school}
+            {school}
           </h2>
           <h2 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold mt-3 mb-8">
-            ({education})
+            {education}
           </h2>
 
           {/* 📎 CV-länk */}
