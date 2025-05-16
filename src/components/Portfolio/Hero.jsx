@@ -60,7 +60,7 @@ const Hero = () => {
                   className="absolute top-4 left-4 w-full h-full border-2 rounded-2xl z-0"
                 ></div>
                 <img
-                  className="relative z-10 object-cover rounded-xl
+                  className="relative z-10 object-cover rounded-2xl
                     w-[220px] h-[280px]
                     sm:w-[220px] sm:h-[280px]
                     md:w-[260px] md:h-[340px]
