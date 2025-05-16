@@ -37,7 +37,7 @@ const Footer = () => {
   useEffect(() => {
     if (headerRef.current) {
       // Get the width of the "Let's Connect" header
-      setHeaderWidth(`${headerRef.current.offsetWidth + 40}px`);
+      setHeaderWidth(`${headerRef.current.offsetWidth + 60}px`);
     }
   }, []);
 
@@ -53,12 +53,12 @@ const Footer = () => {
       </div>
       {/* upper line */}
       <div
-        className="mx-auto border-b-1"
+        className="mx-auto border-b-2"
         style={{ width: headerWidth, borderColor: accentColor }}
       />
       {/* clickable area */}
       <div
-        className="flex justify-between items-center cursor-pointer py-2 mx-auto"
+        className="flex justify-between items-center cursor-pointer py-1 mx-auto"
         style={{ width: headerWidth, color: accentColor }}
         onClick={toggleFooter}
       >
@@ -135,7 +135,7 @@ const Footer = () => {
       </div>
       {/* bottom line */}
       <div
-        className="mx-auto border-b-1"
+        className="mx-auto border-b-2"
         style={{ width: headerWidth, borderColor: accentColor }}
       />
       <p className="text-center mt-[180px] tracking-normal">

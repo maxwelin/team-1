@@ -13,9 +13,7 @@ const FormContextProvider = ({ children }) => {
   const [githubURL, setGithubURL] = useState("https://github.com/");
   const [linkedInURL, setLinkedInURL] = useState("https://linkedin.com/");
   const [profilePic, setProfilePic] = useState(null);
-  const [aboutMe, setAboutMe] = useState(
-    "I'm a passionate developer with a love for clean code and elegant design."
-  );
+  const [about, setAbout] = useState("");
   const [header, setHeader] = useState("");
   const [fileName, setFileName] = useState(null);
   const [cvFile, setCvFile] = useState(null);
@@ -28,7 +26,7 @@ const FormContextProvider = ({ children }) => {
   const [fontColorName, setFontColorName] = useState("Black #000000");
   const [accentColorName, setAccentColorName] = useState("Orange #FF6200");
   const [fontFamily, setFontFamily] = useState("Helvetica, sans-serif");
-  const [location, setLocation] = useState("Stockholm");
+  const [location, setLocation] = useState("");
   const [author, setAuthor] = useState("Team Juan");
   const [projList, setProjList] = useState([]);
   const [firstTimeUser, SetFirstTimeUser] = useState(true);
@@ -49,7 +47,7 @@ const FormContextProvider = ({ children }) => {
         githubURL,
         linkedInURL,
         profilePic,
-        aboutMe,
+        about,
         header,
         fileName,
         cvFile,
@@ -78,7 +76,7 @@ const FormContextProvider = ({ children }) => {
         setGithubURL,
         setLinkedInURL,
         setProfilePic,
-        setAboutMe,
+        setAbout,
         setHeader,
         setFileName,
         setCvFile,

@@ -6,7 +6,7 @@ const CVViewer = () => {
 
   if (!cvFile) {
     return (
-      <p style={{ color: fontColor }} className="">
+      <p style={{ color: fontColor }} className="text-lg py-4">
         Inget CV uppladdat ännu.
       </p>
     );

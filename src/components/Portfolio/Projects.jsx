@@ -36,7 +36,7 @@ const Projects = () => {
         <div className="flex justify-between items-start gap-10">
           <div
             style={{ borderColor: accentColor }}
-            className="border-t border-b  w-full max-w-[100%]"
+            className="border-t-2 border-b-2  w-full max-w-[100%]"
           >
             <div
               style={{ color: accentColor }}
@@ -88,9 +88,9 @@ const Projects = () => {
                           <h3 className="absolute left-1/2 -translate-x-1/2 -top-13 z-10 text-4xl tracking-tighter">
                             {proj.title}
                           </h3>
-                          <h3 className="absolute left-1/2 -translate-x-1/2 -bottom-22 z-10 text-xl tracking-tighter">
+                          <p className="absolute left-1/2 -translate-x-1/2 top-[calc(100%+1rem)] z-10 text-lg tracking-tighter">
                             {proj.desc}
-                          </h3>
+                          </p>
                         </a>
                       ))}
                     </Slider>

@@ -12,7 +12,7 @@ const Skills = () => {
       <div className="flex justify-between items-start gap-10">
         <div
           style={{ borderColor: accentColor }}
-          className="border-t border-b w-full max-w-[100%]"
+          className="border-t-2 border-b-2 w-full max-w-[100%]"
         >
           <div
             style={{ color: accentColor }}

@@ -35,9 +35,11 @@ const Form = () => {
     education,
     email,
     phoneNumber,
+    location,
     githubURL,
     linkedInURL,
     header,
+    about,
     firstTimeUser,
     setFirstName,
     setLastName,
@@ -45,10 +47,11 @@ const Form = () => {
     setEducation,
     setEmail,
     setPhoneNumber,
+    setLocation,
     setGithubURL,
     setLinkedInURL,
     setHeader,
-    setAboutMe,
+    setAbout,
     profilePic,
     setProfilePic,
     setToggleForm,
@@ -183,7 +186,8 @@ const Form = () => {
     setGithubURL(form.github.value);
     setLinkedInURL(form.linkedIn.value);
     setHeader(form.header.value);
-    setAboutMe(form.about.value);
+    setAbout(form.about.value);
+    setLocation(form.location.value);
 
     setToggleForm(false);
   };
@@ -199,7 +203,8 @@ const Form = () => {
     setGithubURL("https://github.com/");
     setLinkedInURL("https://linkedin.com/");
     setHeader("");
-    setAboutMe("");
+    setAbout("");
+    setLocation("");
 
     const form = formRefTwo.current;
 
@@ -213,6 +218,7 @@ const Form = () => {
     form.linkedIn.value = "https://linkedin.com/";
     form.header.value = "";
     form.about.value = "";
+    form.location.value = "";
 
     setProjList([]);
     setProfilePic(null);
@@ -293,6 +299,13 @@ const Form = () => {
                 name="telephone"
                 defaultValue={phoneNumber}
                 placeholder="Phone number"
+                className="outline-none  border-b w-full text-3xl font-light "
+              />
+              <input
+                type="text"
+                name="location"
+                defaultValue={location}
+                placeholder="Location"
                 className="outline-none  border-b w-full text-3xl font-light "
               />
               <input
@@ -519,6 +532,16 @@ const Form = () => {
                   </p>
                 </ul>
               )}
+              <div className="flex w-1/2 justify-end mt-3">
+                <button
+                  type="button"
+                  onClick={() => setProjList([])}
+                  style={{ "--hover-color": accentColor }}
+                  className="flex max-w-fit items-end gap-3 cursor-pointer font-light hover:text-[var(--hover-color)]"
+                >
+                  Reset projects <VscDebugRestart className="h-8 w-8" />
+                </button>
+              </div>
             </div>
 
             <div className="flex flex-col mt-80 mb-30 relative">

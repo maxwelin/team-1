@@ -5,13 +5,16 @@ import { FormContext } from "../providers/FormContext";
 
 const About = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { aboutMe, header } = useContext(FormContext);
+  const { about, header, accentColor, fontColor } = useContext(FormContext);
 
   return (
     <div className="py-6 mb-[260px]">
       <h1 className="text-9xl mb-4 tracking-tighter">{header}</h1>
       <div className="flex justify-between items-start gap-10">
-        <div className="border-t border-b w-full max-w-[100%]">
+        <div
+          style={{ color: accentColor }}
+          className="border-t-2 border-b-2 w-full max-w-[100%]"
+        >
           <div
             className={`flex justify-between items-center py-1 cursor-pointer transition-all duration-200 ${
               !isOpen && "hover:pb-2"
@@ -29,8 +32,11 @@ const About = () => {
               isOpen ? "max-h-[1000px] pt-6" : "max-h-0"
             }`}
           >
-            <div className="w-full p-4 rounded-md text-lg">
-              {aboutMe || "Ingen text angiven."}
+            <div
+              style={{ color: fontColor }}
+              className="w-full py-4 rounded-md text-lg"
+            >
+              {about || "Ingen text angiven."}
             </div>
           </div>
         </div>
