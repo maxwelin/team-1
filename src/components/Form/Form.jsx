@@ -192,8 +192,6 @@ const Form = () => {
     setHeader(form.header.value);
     setAbout(form.about.value);
     setLocation(form.location.value);
-    setQuote(form.quote.value);
-    setSource(form.source.value);
 
     setToggleForm(false);
   };
