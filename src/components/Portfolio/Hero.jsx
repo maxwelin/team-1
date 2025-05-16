@@ -45,7 +45,13 @@ const Hero = () => {
                   {isOpen ? <HiOutlineMinus /> : <GoPlus />}
                 </span>
               </div>
-              {isOpen && <CVViewer />}
+              <div
+                className={`overflow-hidden transition-all duration-500 ${
+                  isOpen ? "max-h-[1400px] pt-2" : "max-h-0"
+                }`}
+              >
+                <CVViewer />
+              </div>
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@ const CVViewer = () => {
   const pdfUrl = URL.createObjectURL(cvFile);
 
   return (
-    <div className="flex justify-center py-4">
+    <div className="flex justify-center py-8">
       <div className="bg-white rounded-xl max-w-[800px] w-full">
         <iframe
           src={pdfUrl}
