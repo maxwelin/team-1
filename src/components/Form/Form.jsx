@@ -268,7 +268,7 @@ const Form = () => {
                   {/* Offset ram bakom bilden */}
                   <div
                     style={{ borderColor: accentColor }}
-                    className="absolute top-4 left-4 w-full h-full border-2 rounded-2xl z-0"
+                    className="absolute top-4 left-4 w-full h-full border-2 z-0"
                   ></div>
 
                   {/* Själva bilden */}
@@ -320,49 +320,50 @@ const Form = () => {
               name="fname"
               defaultValue={firstName}
               placeholder="First name"
-              className="outline-none  border-b w-full text-3xl font-light"
+              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 text-black border-black focus:placeholder-transparent"
             />
+
             <input
               type="text"
               name="lname"
               defaultValue={lastName}
               placeholder="Last name"
-              className="outline-none  border-b w-full text-3xl font-light"
+              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 text-black border-black focus:placeholder-transparent"
             />
             <input
               type="text"
               name="school"
               defaultValue={school}
               placeholder="School"
-              className="outline-none  border-b w-full text-3xl font-light "
+              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 text-black border-black focus:placeholder-transparent"
             />
             <input
               type="text"
               name="education"
               defaultValue={education}
               placeholder="Education"
-              className="outline-none  border-b w-full text-3xl font-light "
+              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 text-black border-black focus:placeholder-transparent"
             />
             <input
               type="email"
               name="email"
               defaultValue={email}
               placeholder="Email"
-              className="outline-none  border-b w-full text-3xl font-light "
+              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 text-black border-black focus:placeholder-transparent"
             />
             <input
               type="tel"
               name="telephone"
               defaultValue={phoneNumber}
               placeholder="Phone number"
-              className="outline-none  border-b w-full text-3xl font-light "
+              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 text-black border-black focus:placeholder-transparent"
             />
             <input
               type="text"
               name="location"
               defaultValue={location}
               placeholder="Location"
-              className="outline-none  border-b w-full text-3xl font-light "
+              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 text-black border-black focus:placeholder-transparent"
             />
             <input
               type="url"
