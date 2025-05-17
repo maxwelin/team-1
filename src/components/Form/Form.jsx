@@ -396,28 +396,40 @@ const Form = () => {
           </div>
         </div>
 
-        <div className="flex flex-col w-1/2 mr-auto ml-auto mt-80 mb-30 gap-1">
-          <h3 className=" text-5xl text-center font-normal mb-5">
-            What Are You Looking For?
+        <div className="flex flex-col w-1/2 mx-auto mt-80 mb-0 gap-2">
+          <h3 className="text-5xl text-center font-normal mb-2">
+            What you’re Looking For?
           </h3>
-          <p className="text-lg text-center mb-3">
+          <p className="text-lg text-center">
             Write your availability and what you’re open to – internship, job,
-            or freelance?
+            or freelance.
           </p>
-          <input
-            type="text"
-            name="header"
-            defaultValue={header}
-            placeholder="Seeking LIA 2025 - Open to Opportunities"
-            className="text-3xl text-left font-normal outline-none border-t pt-2"
-          />
-          <input
-            type="text"
-            name="about"
-            defaultValue={about}
-            placeholder="I'm a passionate developer with a love for clean code and..."
-            className="outline-none border-t border-b w-full text-2xl font-thin  pb-15 pt-3"
-          />
+
+          {/* Header textarea – större */}
+          <div className="flex flex-col border-t border-b py-2">
+            <label className="text-sm italic text-black">
+              Write your header here:
+            </label>
+            <textarea
+              name="header"
+              defaultValue={header}
+              placeholder="Seeking LIA 2025 - Open to opportunities..."
+              className="resize-none text-[4rem] leading-[4.5rem] font-light text-gray-400 focus:text-black placeholder-gray-400 outline-none transition-colors h-[160px]"
+            />
+          </div>
+
+          {/* About textarea */}
+          <div className="flex flex-col border-b">
+            <label className="text-sm italic mb-2 text-black">
+              Cover letter:
+            </label>
+            <textarea
+              name="about"
+              defaultValue={about}
+              placeholder="I'm a creative and detail-oriented person who enjoys working with design and layout..."
+              className="resize-none text-xl font-medium text-gray-400 focus:text-black placeholder-gray-400 outline-none transition-colors leading-relaxed h-[160px]"
+            />
+          </div>
         </div>
 
         <div className="flex flex-col mt-80 mb-30">
