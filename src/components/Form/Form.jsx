@@ -154,11 +154,11 @@ const Form = () => {
     if (skillInput.trim() !== "") {
       setSkills([...skills, skillInput]);
       setSkillInput("");
+      inputFocus();
     }
-    if (expInput.trim() !== "") {
-      setExperience(expInput);
-      setExpInput("");
-    }
+    // if (expInput.trim() !== "") {
+    //   setExpInput(expInput);
+    // }
     console.log("Cleared input");
   };
 
@@ -172,8 +172,16 @@ const Form = () => {
 
   const handleSkillReset = (e) => {
     e.preventDefault();
-    setExperience("");
+    setExpInput("");
     setSkills("");
+  };
+
+  const inputFocus = () => {
+    inputFocusRef.current.focus();
+  };
+
+  const textareaFocus = () => {
+    textareaFocusRef.current.focus();
   };
 
   const handleSubmit = () => {
@@ -191,6 +199,7 @@ const Form = () => {
     setHeader(form.header.value);
     setAbout(form.about.value);
     setLocation(form.location.value);
+    setExperience(form.experience.value);
 
     setToggleForm(false);
   };
@@ -243,6 +252,8 @@ const Form = () => {
   const linkRef = useRef();
   const imageRef = useRef();
   const formRefTwo = useRef();
+  const inputFocusRef = useRef();
+  const textareaFocusRef = useRef();
 
   return (
     <div className="flex flex-col items-start gap-6">
@@ -563,93 +574,86 @@ const Form = () => {
             </div>
           </div>
 
-          <div className="flex flex-col w-1/2 mr-auto ml-auto mt-80 mb-30 relative">
-            <p className=" text-5xl text-center font-normal">Your skills</p>
-            <p className="text-center text-lg pt-4 mb-8">
-              What are you good at? Add one skill at a time - like "React",
-              "Figma" or "CSS"
+          <div className="flex flex-col w-1/2 mr-auto ml-auto mt-80 mb-30">
+            <p className=" text-5xl text-center font-normal">
+              Technical Skills
             </p>
-            <input
-              type="text"
-              name="skills"
-              value={skillInput}
-              onChange={(e) => setSkillInput(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleSkills(e);
-                }
-              }}
-              placeholder="Write your skills..."
-              className="outline-none w-full text-3xl font-light py-1 pb-1"
-            />
-            <input
-              type="text"
-              name="experience"
-              value={expInput}
-              onChange={(e) => setExpInput(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleSkills(e);
-                }
-              }}
-              placeholder="Write your skills..."
-              className="outline-none border-t border-b w-full text-2xl font-light py-1 pb-1 mb-5"
-            />
-            <button
-              type="button"
-              onMouseEnter={() => setHoverAdd(true)}
-              onMouseLeave={() => setHoverAdd(false)}
-              onClick={handleSkills}
-              style={{
-                backgroundColor: hoverAdd ? bgColor : accentColor,
-                color: hoverAdd ? fontColor : bgColor,
-                borderColor: hoverAdd ? fontColor : accentColor,
-                transition: "all 0.2s ease-in-out",
-              }}
-              className="absolute top-35 -translate-y-1/2 right-0 items-center pl-4 pr-4 h-9 w-[100px] border-2 border-
-          rounded-4xl text-xl cursor-pointer"
-            >
-              ADD
-            </button>
-            <div className="flex flex-col border-b w-full h-fit-content font-light justify-center">
-              {skills.length === 0 ? (
-                <div className="flex flex-col justify-center items-center relative h-[300px]">
-                  <div className="flex justify-center">
-                    <p className="text-6xl">Write your skills</p>
-                  </div>
-                  <div className="bottom-0 left-0 absolute">
+            <p className="text-center text-xl pt-4 mb-8">
+              What are you good at or what have you learned? Add as many skills
+              as you like – for example “React”, “Figma” or “CSS”. Then write a
+              few sentences about your experience working with these tools or
+              technologies.
+            </p>
+            <div className="relative">
+              <input
+                type="text"
+                name="skills"
+                value={skillInput}
+                ref={inputFocusRef}
+                onChange={(e) => setSkillInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSkills(e);
+                    inputFocus(e);
+                  }
+                }}
+                placeholder="Add a skill....."
+                className="outline-none relative w-full border-b text-3xl font-light py-1 pb-1 mb-3"
+              />
+              <div className="flex justify-start flex-wrap gap-2 items-center mb-3">
+                {skills &&
+                  skills.map((skill, index) => (
                     <p
-                      style={{ color: accentColor }}
-                      className="text-md text-left mb-4"
+                      key={index}
+                      style={{ color: bgColor, backgroundColor: fontColor }}
+                      className="text-2xl text-center px-2 py-1 rounded-sm w-max"
                     >
-                      Write something about your skills or experience
+                      {skill.toUpperCase()}
                     </p>
-                  </div>
-                </div>
-              ) : (
-                <div className="flex flex-col gap-8 py-7 pb-7">
-                  <div className="flex flex-wrap items-center justify-around">
-                    {skills.map((skill, index) => (
-                      <p
-                        key={index}
-                        className="text-5xl font-bold flex-grow-0 flex-shrink-0 basis-1/5"
-                      >
-                        {skill}
-                      </p>
-                    ))}
-                  </div>
-                  {experience && (
-                    <span
-                      style={{ color: accentColor }}
-                      className="text-md w-1/2 mt-2"
-                    >
-                      {experience}
-                    </span>
-                  )}
-                </div>
-              )}
+                  ))}
+              </div>
+              <div className="relative">
+                <textarea
+                  type="text"
+                  name="experience"
+                  ref={textareaFocusRef}
+                  value={expInput}
+                  onChange={(e) => setExpInput(e.target.value)}
+                  placeholder="Describe your skills and how you've applied them professionally or in school:"
+                  className="outline-none resize-none border rounded-2xl h-[300px] p-2 w-full placeholder:text-sm placeholder-black placeholder:italic mb-5"
+                ></textarea>
+
+                {expInput.trim() === "" && (
+                  <p
+                    onClick={textareaFocus}
+                    className="absolute top-7 text-gray-400 text-xl font-light p-2 mt-5"
+                  >
+                    I’ve applied my skills in HTML, CSS, JavaScript, and React
+                    in various school projects, both individually and in team
+                    settings...
+                  </p>
+                )}
+              </div>
+
+              <button
+                type="button"
+                onMouseEnter={() => setHoverAdd(true)}
+                onMouseLeave={() => setHoverAdd(false)}
+                onClick={handleSkills}
+                style={{
+                  backgroundColor: hoverAdd ? bgColor : accentColor,
+                  color: hoverAdd ? fontColor : bgColor,
+                  borderColor: hoverAdd ? fontColor : accentColor,
+                  transition: "all 0.2s ease-in-out",
+                }}
+                className="absolute top-0 right-0 items-center pl-4 pr-4 h-9 w-[100px] border-2 border-
+          rounded-4xl text-xl cursor-pointer"
+              >
+                ADD
+              </button>
             </div>
-            <div className="flex justify-end mt-3">
+
+            <div className="flex justify-end">
               <button
                 type="button"
                 onClick={handleSkillReset}
