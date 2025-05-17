@@ -268,7 +268,7 @@ const Form = () => {
                   {/* Offset ram bakom bilden */}
                   <div
                     style={{ borderColor: accentColor }}
-                    className="absolute top-4 left-4 w-full h-full border-2 z-0"
+                    className="absolute top-4 left-4 w-full h-full border-2 rounded-2xl z-0"
                   ></div>
 
                   {/* Själva bilden */}
