@@ -414,7 +414,7 @@ const Form = () => {
               name="header"
               defaultValue={header}
               placeholder="Seeking LIA 2025 - Open to opportunities..."
-              className="resize-none text-[4rem] leading-[4.5rem] font-light text-gray-400 focus:text-black placeholder-gray-400 outline-none transition-colors h-[260px] focus:placeholder-transparent"
+              className="resize-none text-[4rem] leading-[4.5rem] font-medium text-gray-400 focus:text-black placeholder-gray-400 outline-none transition-colors h-[260px] focus:placeholder-transparent"
             />
           </div>
 
@@ -662,43 +662,42 @@ const Form = () => {
           </div>
         </div>
 
-        <div className="w-1/2 text-center mt-80 ml-auto mr-auto">
-          <h3 className="text-5xl mb-5">Your Quote</h3>
-          <p className="text-lg text-center mb-10">
+        <div className="flex flex-col w-1/2 mx-auto mt-80 gap-2">
+          <h3 className="text-5xl text-center font-normal mb-2">Your Quote</h3>
+          <p className="text-lg text-center">
             Share a quote that inspires you – lyrics, a saying, or something
-            personal. <br /> Include who said it, if you want. Both fields are
-            optional.
+            personal. <br />
+            Include who said it, if you want. Both fields are optional.
           </p>
-          <input
-            type="text"
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                e.preventDefault();
-                setQuote(e.target.value);
-              }
-            }}
-            name="quote"
-            placeholder="Quote"
-            className="outline-none border-b w-full text-3xl font-light "
-          />
-          <h3 className="text-7xl text-left italic overflow-hidden opacity-25 tracking-tighter mt-10 mb-50">
-            "{quote}"
-          </h3>
-          <input
-            type="text"
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                e.preventDefault();
-                setSource(e.target.value);
-              }
-            }}
-            name="source"
-            placeholder="Who said it?"
-            className="outline-none border-b w-full text-3xl font-light "
-          />
-          <h4 className="text-right text-3xl opacity-30 tracking-tighter">
-            -{source}
-          </h4>
+
+          {/* Quote textarea */}
+          <div className="flex flex-col border-t border-b py-2">
+            <label className="text-sm italic mb-2 text-black">
+              Write your quote here:
+            </label>
+            <textarea
+              name="quote"
+              defaultValue={quote}
+              placeholder="“The hardest problem in web development?&#10;Centering a div.”"
+              onChange={(e) => setQuote(e.target.value)}
+              className="resize-none text-5xl italic font-medium text-gray-400 focus:text-black placeholder-gray-400 outline-none transition-colors leading-snug h-[340px] focus:placeholder-transparent"
+            />
+          </div>
+
+          {/* Source input */}
+          <div className="flex flex-col border-b pb-2">
+            <label className="text-sm italic mb-2 text-black">
+              Who said it?, write here:
+            </label>
+            <input
+              type="text"
+              name="source"
+              defaultValue={source}
+              placeholder="– Every developer, at some point"
+              onChange={(e) => setSource(e.target.value)}
+              className="text-xl italic font-medium text-gray-400 focus:text-black placeholder-gray-400 outline-none transition-colors focus:placeholder-transparent"
+            />
+          </div>
         </div>
 
         <div className="flex flex-col w-1/2 ml-auto mr-auto gap-2.5 mt-80 mb-30">
