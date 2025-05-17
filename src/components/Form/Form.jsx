@@ -414,20 +414,20 @@ const Form = () => {
               name="header"
               defaultValue={header}
               placeholder="Seeking LIA 2025 - Open to opportunities..."
-              className="resize-none text-[4rem] leading-[4.5rem] font-light text-gray-400 focus:text-black placeholder-gray-400 outline-none transition-colors h-[160px]"
+              className="resize-none text-[4rem] leading-[4.5rem] font-light text-gray-400 focus:text-black placeholder-gray-400 outline-none transition-colors h-[260px] focus:placeholder-transparent"
             />
           </div>
 
           {/* About textarea */}
           <div className="flex flex-col border-b">
             <label className="text-sm italic mb-2 text-black">
-              Cover letter:
+              Something about you like a cover letter:
             </label>
             <textarea
               name="about"
               defaultValue={about}
               placeholder="I'm a creative and detail-oriented person who enjoys working with design and layout..."
-              className="resize-none text-xl font-medium text-gray-400 focus:text-black placeholder-gray-400 outline-none transition-colors leading-relaxed h-[160px]"
+              className="resize-none text-xl font-medium text-gray-400 focus:text-black placeholder-gray-400 outline-none transition-colors leading-relaxed h-[300px] focus:placeholder-transparent"
             />
           </div>
         </div>
@@ -503,21 +503,21 @@ const Form = () => {
                 name="projTitle"
                 placeholder="Project title"
                 ref={projRef}
-                className="outline-none border-b text-3xl font-light py-1 pb-1 mb-3"
+                className="outline-none border-b text-3xl font-light py-1 pb-1 mb-3 focus:placeholder-transparent"
               />
               <input
                 type="text"
                 name="projDescription"
                 placeholder="Short description"
                 ref={descRef}
-                className="outline-none border-b text-3xl font-light py-1 pb-1 mb-3"
+                className="outline-none border-b text-3xl font-light py-1 pb-1 mb-3 focus:placeholder-transparent"
               />
               <input
                 type="url"
                 name="projLink"
                 placeholder="Link to /url"
                 ref={linkRef}
-                className="outline-none border-b text-3xl font-light py-1 pb-1 mb-4"
+                className="outline-none border-b text-3xl font-light py-1 pb-1 mb-4 focus:placeholder-transparent"
               />
               <button
                 type="button"
