@@ -18,31 +18,34 @@ const AboveFold = () => {
   };
 
   return (
-    <div
-      // style={{ backgroundImage: "url(/psycho.webp)"}}
-      className="min-h-[100vh] w-full flex flex-col pt-[20%] items-center mb-20 "
-    >
-      <h1 className="text-7xl mb-10 tracking-tighter">
-        Generate Your Personal Portfolio
-      </h1>
-      <p className="italic text-2xl mb-20 tracking-normal">
-        Fill in your name, contact info, profile picture, projects and links –
-        then customize the style to make the portfolio truly your own.
-      </p>
-      <button
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        onClick={handleClick}
-        style={{
-          backgroundColor: hover ? bgColor : accentColor,
-          color: hover ? fontColor : bgColor,
-          borderColor: hover ? fontColor : accentColor,
-          transition: "all 0.2s ease-in-out",
-        }}
-        className="cursor-pointer h-10 w-[300px] items-center border-2 border- rounded-4xl text-2xl "
+    <div className="min-h-[100vh] w-full">
+      <div className="absolute w-full h-[100dvh] bg-black/40 z-10"></div>
+      <div
+        style={{ backgroundImage: "url(/hero.jpg" }}
+        className=" flex flex-col pt-[20%] items-center mb-20 bg-no-repeat bg-cover min-h-[100dvh]"
       >
-        GET STARTED
-      </button>
+        <h1 className="text-7xl mb-5 tracking-tighter text-white z-100">
+          Generate Your Personal Portfolio
+        </h1>
+        <p className="italic text-2xl mb-10 tracking-normal text-white z-100">
+          Fill in your name, contact info, profile picture, projects and links{" "}
+          <br />– then customize the style to make the portfolio truly your own.
+        </p>
+        <button
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          onClick={handleClick}
+          style={{
+            backgroundColor: hover ? bgColor : accentColor,
+            color: hover ? fontColor : bgColor,
+            borderColor: hover ? fontColor : accentColor,
+            transition: "all 0.2s ease-in-out",
+          }}
+          className="cursor-pointer h-10 w-[300px] items-center border-2 border- rounded-4xl text-2xl z-100"
+        >
+          GET STARTED
+        </button>
+      </div>
     </div>
   );
 };

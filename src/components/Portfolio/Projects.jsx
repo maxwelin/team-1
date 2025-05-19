@@ -83,7 +83,7 @@ const Projects = () => {
                           <img
                             src={proj.img}
                             alt=""
-                            className="object-cover w-full  max-h-full"
+                            className="object-cover w-full  max-h-full  hover:scale-102 transition-all duration-150"
                           />
                           <h3 className="absolute left-1/2 -translate-x-1/2 -top-13 z-10 text-4xl tracking-tighter">
                             {proj.title}

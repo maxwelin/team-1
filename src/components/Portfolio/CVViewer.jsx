@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { FormContext } from "../providers/FormContext";
 
 const CVViewer = () => {
-  const { cvFile, fontColor } = useContext(FormContext);
+  const { cvFile, fontColor, accentColor } = useContext(FormContext);
 
   if (!cvFile) {
     return (
@@ -15,7 +15,7 @@ const CVViewer = () => {
   const pdfUrl = URL.createObjectURL(cvFile);
 
   return (
-    <div className="flex justify-center py-8">
+    <div style={{ color: fontColor }} className="flex justify-center py-8">
       <div className="bg-white rounded-xl max-w-[800px] w-full">
         <iframe
           src={pdfUrl}
@@ -24,6 +24,12 @@ const CVViewer = () => {
           height="1140px"
           className="rounded border border-gray-300"
         />
+        <button
+          style={{ "--hover-color": accentColor }}
+          className="hover:text-[var(--hover-color)] mt-4 cursor-pointer"
+        >
+          Download CV
+        </button>
       </div>
     </div>
   );
