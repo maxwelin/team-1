@@ -26,9 +26,7 @@ const Hero = () => {
         <div className="w-full xl:w-[80%]">
           <h1
             className={`text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold ${
-              fontFamily === "Impact"
-                ? "tracking-normal leading-normal"
-                : "tracking-tight leading-tight"
+              fontFamily === "Impact" ? "tracking-normal" : "tracking-tight"
             }`}
           >
             <span>HI! I'M </span>
@@ -37,10 +35,18 @@ const Hero = () => {
             </span>
           </h1>
 
-          <h2 className="text-xl sm:text-2xl md:text-3xl xl:text-4xl font-light mt-2">
+          <h2
+            className={`text-xl sm:text-2xl md:text-3xl xl:text-4xl font-light mt-2 ${
+              fontFamily === "Impact" ? "tracking-normal" : "tracking-tight"
+            }`}
+          >
             {school}
           </h2>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold mt-3 mb-8">
+          <h2
+            className={`text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold mt-3 mb-8 ${
+              fontFamily === "Impact" ? "tracking-normal" : "tracking-tight"
+            }`}
+          >
             {education}
           </h2>
 
