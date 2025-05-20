@@ -16,6 +16,15 @@ const Form = () => {
   const [toggleBtn, setToggleBtn] = useState(false);
   const [expInput, setExpInput] = useState("");
 
+  function hexToRgb(hex) {
+    const sanitized = hex.replace("#", "");
+    const bigint = parseInt(sanitized, 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return `${r}, ${g}, ${b}`;
+  }
+
   useEffect(() => {
     if (firstTimeUser) {
       const handleScroll = () => {
@@ -320,7 +329,7 @@ const Form = () => {
                     </div>
                   </label>
                   <input
-                    className="relative z-10 h-[400px] w-[300px] object-center object-cover border-1 rounded-2xl grid place-content-center cursor-pointer"
+                    className="relative hover:scale-101 z-10 h-[400px] w-[300px] object-center object-cover border-1 rounded-2xl grid place-content-center cursor-pointer"
                     style={{
                       borderColor: fontColor,
                       backgroundColor: bgColor,
@@ -338,70 +347,73 @@ const Form = () => {
             <input
               type="text"
               name="fname"
+              style={{ color: fontColor }}
               defaultValue={firstName}
               placeholder="First name"
-              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 focus:placeholder-transparent"
+              className="outline-none border-b w-full text-3xl font-light focus:placeholder-transparent placeholder:font-normal"
             />
 
             <input
               type="text"
               name="lname"
               defaultValue={lastName}
+              style={{ color: fontColor }}
               placeholder="Last name"
-              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 focus:placeholder-transparent"
+              className="outline-none border-b w-full text-3xl focus:placeholder-transparent placeholder:font-normal"
             />
             <input
               type="text"
+              style={{ color: fontColor }}
               name="school"
               defaultValue={school}
               placeholder="School"
-              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 focus:placeholder-transparent"
+              className="outline-none border-b w-full text-3xl focus:placeholder-transparent placeholder:font-normal"
             />
             <input
               type="text"
               name="education"
               defaultValue={education}
               placeholder="Education"
-              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 focus:placeholder-transparent"
+              className="outline-none border-b w-full text-3xl focus:placeholder-transparent placeholder:font-normal"
             />
             <input
               type="email"
               name="email"
               defaultValue={email}
               placeholder="Email"
-              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 focus:placeholder-transparent"
+              className="outline-none border-b w-full text-3xl focus:placeholder-transparent placeholder:font-normal"
             />
             <input
               type="tel"
               name="telephone"
               defaultValue={phoneNumber}
               placeholder="Phone number"
-              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 focus:placeholder-transparent"
+              className="outline-none border-b w-full text-3xl focus:placeholder-transparent placeholder:font-normal"
             />
             <input
               type="text"
               name="location"
               defaultValue={location}
               placeholder="Location"
-              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 focus:placeholder-transparent"
+              className="outline-none border-b w-full text-3xl focus:placeholder-transparent placeholder:font-normal"
             />
             <input
               type="url"
               name="github"
               defaultValue={githubURL}
               placeholder="Github"
-              className="outline-none  border-b w-full text-3xl font-light "
+              className="outline-none  border-b w-full text-3xl "
             />
             <input
               type="url"
               name="linkedIn"
               defaultValue={linkedInURL}
               placeholder="LinkedIn"
-              className="outline-none  border-b w-full text-3xl font-light "
+              className="outline-none  border-b w-full text-3xl "
             />
             <div className="flex gap-6 w-full border-b hover:pb-1 transition-all duration-200">
               <label className="relative w-full">
-                <div className="flex justify-between items-center text-3xl font-light ">
+                <div className="flex justify-between items-center text-3xl ">
                   {cvFileName ? cvFileName : "Upload CV"} <BsFiletypePdf />
                 </div>
                 <input
@@ -437,7 +449,10 @@ const Form = () => {
               name="header"
               defaultValue={header}
               placeholder="Seeking LIA 2025 - Open to opportunities..."
-              className="focus:placeholder-transparent shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal text-4xl"
+              style={{
+                boxShadow: `0px 0px 15px ${fontColor + "50"}`,
+              }}
+              className="focus:placeholder-transparent resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium outline-none placeholder:font-normal text-4xl"
             />
           </div>
 
@@ -454,7 +469,10 @@ const Form = () => {
               name="about"
               defaultValue={about}
               placeholder="I'm a creative and detail-oriented person who enjoys working with design and layout..."
-              className="focus:placeholder-transparent shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] text-xl resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal"
+              style={{
+                boxShadow: `0px 0px 15px ${fontColor + "50"}`,
+              }}
+              className="focus:placeholder-transparent  text-xl resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium outline-none placeholder:font-normal"
             />
           </div>
         </div>
@@ -505,15 +523,20 @@ const Form = () => {
                   >
                     <HiCloudArrowUp
                       style={{ color: accentColor }}
-                      className="text-6xl ml-auto mr-auto group-hover:translate-y-3"
+                      className="text-6xl ml-auto z-10 mr-auto group-hover:translate-y-3"
                     />
-                    <h3 className="text-2xl wfont-semibold">Upload image</h3>
-                    <p className="text-sm">Image must be in .jpg or .png</p>
+                    <h3 className="text-2xl z-10 wfont-semibold">
+                      Upload image
+                    </h3>
+                    <p className="text-sm z-10">
+                      Image must be in .jpg or .png
+                    </p>
                   </div>
                 </label>
                 <input
-                  className=" h-[350px] shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] transition-all hover:shadow-[0_4px_8px_rgba(0,0,0,0.3),_0_-4px_8px_rgba(0,0,0,0.1)] w-full rounded-2xl cursor-pointer mb-7"
+                  className=" h-[350px]  transition-all w-full hover:scale-101 z-0 rounded-2xl cursor-pointer mb-7"
                   style={{
+                    boxShadow: `0px 0px 15px ${fontColor + "50"}`,
                     borderColor: fontColor,
                     backgroundColor: bgColor,
                     color: bgColor,
@@ -533,21 +556,21 @@ const Form = () => {
                 name="projTitle"
                 placeholder="Project title"
                 ref={projRef}
-                className="outline-none border-b text-3xl font-light py-1 pb-1 mb-3 focus:placeholder-transparent"
+                className="outline-none border-b text-3xl font-light py-1 pb-1 mb-3 focus:placeholder-transparent placeholder:font-normal"
               />
               <input
                 type="text"
                 name="projDescription"
                 placeholder="Short description"
                 ref={descRef}
-                className="outline-none border-b text-3xl font-light py-1 pb-1 mb-3 focus:placeholder-transparent"
+                className="outline-none border-b text-3xl font-light py-1 pb-1 mb-3 focus:placeholder-transparent placeholder:font-normal"
               />
               <input
                 type="url"
                 name="projLink"
                 placeholder="Link to /url"
                 ref={linkRef}
-                className="outline-none border-b text-3xl font-light py-1 pb-1 mb-4 focus:placeholder-transparent"
+                className="outline-none border-b text-3xl font-light py-1 pb-1 mb-4 focus:placeholder-transparent placeholder:font-normal"
               />
               <button
                 type="button"
@@ -617,7 +640,7 @@ const Form = () => {
                   }
                 }}
                 placeholder="Add a skill....."
-                className="focus:placeholder-transparent outline-none relative w-full border-b text-3xl font-light py-1 pb-1 mb-3"
+                className="focus:placeholder-transparent placeholder:font-normal outline-none relative w-full border-b text-3xl font-light py-1 pb-1 mb-3"
               />
               <div className="flex justify-start flex-wrap gap-2 items-center mb-3">
                 {skills &&
@@ -644,9 +667,12 @@ const Form = () => {
                   maxLength={300}
                   ref={textareaFocusRef}
                   defaultValue={experience}
+                  style={{
+                    boxShadow: `0px 0px 15px ${fontColor + "50"}`,
+                  }}
                   // onChange={(e) => setExpInput(e.target.value)}
                   placeholder="I’ve applied my skills in HTML, CSS, JavaScript, and React in various school projects, both individually and in team settings..."
-                  className="focus:placeholder-transparent shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] text-xl resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal"
+                  className="focus:placeholder-transparent text-xl resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium outline-none placeholder:font-normal"
                 ></textarea>
               </div>
 
@@ -702,9 +728,12 @@ const Form = () => {
               name="quote"
               maxLength={300}
               defaultValue={quote}
+              style={{
+                boxShadow: `0px 0px 15px ${fontColor + "50"}`,
+              }}
               // onChange={(e) => setExpInput(e.target.value)}
               placeholder={`"The hardest problem in web development? Centering a div."`}
-              className="shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] italic text-4xl resize-none pt-12 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal focus:placeholder-transparent"
+              className="italic text-4xl resize-none pt-12 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium outline-none placeholder:font-normal focus:placeholder-transparent"
             ></textarea>
           </div>
 
@@ -720,9 +749,12 @@ const Form = () => {
               type="text"
               name="source"
               defaultValue={source}
+              style={{
+                boxShadow: `0px 0px 15px ${fontColor + "50"}`,
+              }}
               // onChange={(e) => setExpInput(e.target.value)}
               placeholder="-Every web developer, at some point"
-              className="shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] text-2xl resize-none pl-5 pr-5 pt-6 rounded-2xl h-[100px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal focus:placeholder-transparent"
+              className="text-2xl resize-none pl-5 pr-5 pt-6 rounded-2xl h-[100px] w-full font-medium outline-none placeholder:font-normal focus:placeholder-transparent"
             ></input>
           </div>
         </div>
