@@ -12,7 +12,7 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowButton(window.scrollY > 700);
+      setShowButton(window.scrollY > 500);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
