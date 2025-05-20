@@ -329,7 +329,7 @@ const Form = () => {
                     </div>
                   </label>
                   <input
-                    className="relative hover:scale-101 z-10 h-[400px] w-[300px] object-center object-cover border-1 rounded-2xl grid place-content-center cursor-pointer"
+                    className="relative hover:scale-101 transition-all z-10 h-[400px] w-[300px] object-center object-cover border-1 rounded-2xl grid place-content-center cursor-pointer"
                     style={{
                       borderColor: fontColor,
                       backgroundColor: bgColor,
