@@ -434,18 +434,18 @@ const Form = () => {
 
         <div className="flex flex-col w-1/2 mx-auto mt-80 mb-0 gap-2">
           <h3 className="text-5xl text-center font-normal mb-1">
-            What you’re Looking For?
+            What Are You Looking For?
           </h3>
           <p className="text-lg text-center">
-            Write your availability and what you’re open to – internship, job,
-            or freelance.
+            Write your availability and what you’re open to – internship, job or
+            freelance?
           </p>
 
           {/* Header textarea – större */}
           <div className="flex relative flex-col py-6">
             <label
               style={{ color: fontColor }}
-              className="absolute top-6 text-lg italic pl-5 pt-5 pr-5"
+              className="absolute font-semibold top-6 text-lg italic pl-5 pt-5 pr-5"
             >
               What is this portfolio for? Write your header here:
             </label>
@@ -464,7 +464,7 @@ const Form = () => {
           <div className="relative flex flex-col">
             <label
               style={{ color: fontColor }}
-              className="absolute top-0 text-lg italic pl-5 pt-5 pr-5"
+              className="absolute font-semibold top-0 text-lg italic pl-5 pt-5 pr-5"
             >
               Something about you, like a cover letter:
             </label>
@@ -660,7 +660,7 @@ const Form = () => {
               <div className="relative">
                 <label
                   style={{ color: fontColor }}
-                  className="absolute top-0 text-lg italic pl-5 pt-5 pr-5"
+                  className="absolute font-semibold top-0 text-lg italic pl-5 pt-5 pr-5"
                 >
                   Describe your skills and how you've applied them:
                 </label>
@@ -722,7 +722,7 @@ const Form = () => {
           <div className="flex flex-col relative  py-2">
             <label
               style={{ color: fontColor }}
-              className="absolute top-0 text-lg italic pl-5 pt-5 pr-5"
+              className="absolute font-semibold top-0 text-lg italic pl-5 pt-5 pr-5"
             >
               Write your quote here:
             </label>
@@ -744,7 +744,7 @@ const Form = () => {
           <div className="flex relative flex-col">
             <label
               style={{ color: fontColor }}
-              className="absolute top-0 text-lg italic pl-5 pt-5 pr-5"
+              className="absolute font-semibold top-0 text-lg italic pl-5 pt-5 pr-5"
             >
               Who said it? Write here:
             </label>
@@ -771,8 +771,8 @@ const Form = () => {
             portfolio truly yours. <br /> Customize the style to match your
             personality and see your changes instantly. You can always go back
             and make edits at any time. <br /> When you're happy with how it
-            looks, hit "Generate Portfolio" to save or "Reset All" to start
-            over.
+            looks, hit <span className="italic">"Generate Portfolio"</span> to
+            save or <span className="italic">"Reset All"</span> to start over.
           </p>
           <select
             style={{ backgroundColor: bgColor }}
