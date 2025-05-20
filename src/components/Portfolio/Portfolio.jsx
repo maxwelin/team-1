@@ -25,8 +25,8 @@ const Portfolio = () => {
         <About />
       </div>
       <div className="col-span-full">
-        <Skills />
         {projList.length > 0 && <Projects />}
+        <Skills />
       </div>
       <div className="col-start-3 col-span-full">
         <Quote />

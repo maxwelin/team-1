@@ -8,7 +8,7 @@ const About = () => {
   const { about, header, accentColor, fontColor } = useContext(FormContext);
 
   return (
-    <div className="py-6 mb-[300px]">
+    <div className="py-6 mb-[260px]">
       <h1 className="text-9xl mb-4 tracking-tighter">{header}</h1>
       <div className="flex justify-between items-start gap-10">
         <div
