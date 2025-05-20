@@ -23,7 +23,7 @@ const Skills = () => {
   }, [isOpen]);
 
   return (
-    <div className="text-4xl py-6">
+    <div className="text-4xl py-6 mt-20">
       <div className="flex justify-between items-start gap-10">
         <div
           style={{ borderColor: accentColor }}
@@ -43,10 +43,10 @@ const Skills = () => {
           </div>
           <div
             className={`overflow-hidden flex justify-around transition-all duration-500 ${
-              isOpen ? "max-h-[1000px] pt-20" : "max-h-0"
+              isOpen ? "max-h-[1000px] pt-26" : "max-h-0"
             }`}
           >
-            <div className="w-full mb-30">
+            <div className="w-full mb-20">
               {showMarquee && (
                 <Marquee
                   key={isOpen ? "open" : "closed"}
