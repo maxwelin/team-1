@@ -18,16 +18,19 @@ const AboveFold = () => {
   };
 
   return (
-    <div className="min-h-[100vh] w-full">
-      <div className="absolute w-full h-[100dvh] bg-black/40 z-10"></div>
+    <div className="relative min-h-screen w-full">
       <div
-        style={{ backgroundImage: "url(/hero.jpg" }}
-        className=" flex flex-col pt-[20%] items-center mb-20 bg-no-repeat bg-cover min-h-[100dvh]"
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url(/hero.jpg)" }}
       >
-        <h1 className="text-7xl mb-5 tracking-tighter text-white z-100">
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
+
+      <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-screen px-4">
+        <h1 className="text-5xl md:text-7xl mb-5 tracking-tighter text-white">
           Generate Your Personal Portfolio
         </h1>
-        <p className="italic text-2xl mb-10 tracking-normal text-white z-100">
+        <p className="italic text-sm md:text-2xl mb-10 tracking-normal text-white">
           Fill in your name, contact info, profile picture, projects and links{" "}
           <br />– then customize the style to make the portfolio truly your own.
         </p>
@@ -36,12 +39,12 @@ const AboveFold = () => {
           onMouseLeave={() => setHover(false)}
           onClick={handleClick}
           style={{
-            backgroundColor: hover ? bgColor : accentColor,
-            color: hover ? fontColor : bgColor,
-            borderColor: hover ? fontColor : accentColor,
+            backgroundColor: hover ? "transparent" : accentColor,
+            color: hover ? bgColor : bgColor,
+            borderColor: hover ? bgColor : "transparent",
             transition: "all 0.2s ease-in-out",
           }}
-          className="cursor-pointer h-10 w-[300px] items-center border-2 border- rounded-4xl text-2xl z-100"
+          className="cursor-pointer px-10 py-1 flex items-center justify-center border-2 rounded-full text-2xl"
         >
           GET STARTED
         </button>
