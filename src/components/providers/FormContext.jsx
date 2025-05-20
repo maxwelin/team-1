@@ -30,10 +30,8 @@ const FormContextProvider = ({ children }) => {
   const [fontFamily, setFontFamily] = useState("Helvetica, sans-serif");
   const [location, setLocation] = useState("");
   const [author, setAuthor] = useState("Team Juan");
-  const [quote, setQuote] = useState(
-    "The hardest problem in web development? Centering a div."
-  );
-  const [source, setSource] = useState("Every web developer, at some point");
+  const [quote, setQuote] = useState("");
+  const [source, setSource] = useState("");
   const [projList, setProjList] = useState([]);
   const [firstTimeUser, setFirstTimeUser] = useState(true);
   const [experience, setExperience] = useState("");

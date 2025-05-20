@@ -200,6 +200,8 @@ const Form = () => {
     setAbout(form.about.value);
     setLocation(form.location.value);
     setExperience(form.experience.value);
+    setQuote(form.quote.value);
+    setSource(form.source.value);
 
     setToggleForm(false);
   };
@@ -212,13 +214,13 @@ const Form = () => {
     setEducation("");
     setEmail("");
     setPhoneNumber("");
-    setGithubURL("https://github.com/");
-    setLinkedInURL("https://linkedin.com/");
+    setGithubURL("https://github.com/yourname");
+    setLinkedInURL("https://linkedin.com/yourname");
     setHeader("");
     setAbout("");
     setLocation("");
-    setQuote("The hardest problem in web development? Centering a div.");
-    setSource("Every web developer, at some point");
+    setQuote("");
+    setSource("");
 
     const form = formRefTwo.current;
 
@@ -233,6 +235,8 @@ const Form = () => {
     form.header.value = "";
     form.about.value = "";
     form.location.value = "";
+    form.quote.value = "";
+    form.soruce.value = "";
 
     setProjList([]);
     setProfilePic(null);
@@ -393,7 +397,7 @@ const Form = () => {
               placeholder="LinkedIn"
               className="outline-none  border-b w-full text-3xl font-light "
             />
-            <div className="flex gap-6 w-full border-b-bla hover:pb-1 transition-all duration-200">
+            <div className="flex gap-6 w-full border-b hover:pb-1 transition-all duration-200">
               <label className="relative w-full">
                 <div className="flex justify-between items-center text-3xl font-light ">
                   {cvFileName ? cvFileName : "Upload CV"} <BsFiletypePdf />
@@ -431,7 +435,7 @@ const Form = () => {
               name="header"
               defaultValue={header}
               placeholder="Seeking LIA 2025 - Open to opportunities..."
-              className="shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal text-4xl"
+              className="focus:placeholder-transparent shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal text-4xl"
             />
           </div>
 
@@ -448,7 +452,7 @@ const Form = () => {
               name="about"
               defaultValue={about}
               placeholder="I'm a creative and detail-oriented person who enjoys working with design and layout..."
-              className="shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] text-xl resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal"
+              className="focus:placeholder-transparent shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] text-xl resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal"
             />
           </div>
         </div>
@@ -611,7 +615,7 @@ const Form = () => {
                   }
                 }}
                 placeholder="Add a skill....."
-                className="outline-none relative w-full border-b text-3xl font-light py-1 pb-1 mb-3"
+                className="focus:placeholder-transparent outline-none relative w-full border-b text-3xl font-light py-1 pb-1 mb-3"
               />
               <div className="flex justify-start flex-wrap gap-2 items-center mb-3">
                 {skills &&
@@ -640,7 +644,7 @@ const Form = () => {
                   defaultValue={experience}
                   // onChange={(e) => setExpInput(e.target.value)}
                   placeholder="I’ve applied my skills in HTML, CSS, JavaScript, and React in various school projects, both individually and in team settings..."
-                  className="shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] text-xl resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal"
+                  className="focus:placeholder-transparent shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] text-xl resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal"
                 ></textarea>
               </div>
 
@@ -684,32 +688,40 @@ const Form = () => {
           </p>
 
           {/* Quote textarea */}
-          <div className="flex flex-col border-t border-b py-2">
-            <label className="text-base italic mb-2">
+          <div className="flex flex-col relative  py-2">
+            <label
+              style={{ color: fontColor }}
+              className="absolute top-0 text-lg italic pl-5 pt-5 pr-5"
+            >
               Write your quote here:
             </label>
             <textarea
+              type="text"
               name="quote"
+              maxLength={300}
               defaultValue={quote}
-              placeholder="“The hardest problem in web development?&#10;Centering a div.”"
-              onChange={(e) => setQuote(e.target.value)}
-              className="resize-none text-5xl italic font-medium placeholder-gray-400 outline-none transition-colors leading-snug h-[340px] focus:placeholder-transparent"
-            />
+              // onChange={(e) => setExpInput(e.target.value)}
+              placeholder={`"The hardest problem in web development? Centering a div."`}
+              className="shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] italic text-4xl resize-none pt-12 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal focus:placeholder-transparent"
+            ></textarea>
           </div>
 
           {/* Source input */}
-          <div className="flex flex-col border-b pb-2">
-            <label className="text-base italic mb-2">
-              Who said it?, write here:
+          <div className="flex relative flex-col">
+            <label
+              style={{ color: fontColor }}
+              className="absolute top-0 text-lg italic pl-5 pt-5 pr-5"
+            >
+              Who said it? Write here:
             </label>
             <input
               type="text"
               name="source"
               defaultValue={source}
-              placeholder="– Every developer, at some point"
-              onChange={(e) => setSource(e.target.value)}
-              className="text-xl italic font-medium placeholder-gray-400 outline-none transition-colors focus:placeholder-transparent"
-            />
+              // onChange={(e) => setExpInput(e.target.value)}
+              placeholder="-Every web developer, at some point"
+              className="shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] text-4xl resize-none pl-5 pr-5 pt-6 rounded-2xl h-[130px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal focus:placeholder-transparent"
+            ></input>
           </div>
         </div>
 
