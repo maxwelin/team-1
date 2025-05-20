@@ -42,7 +42,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <div className="text-xl mx-10 my-10 mt-[260px]">
+    <div className="text-xl mx-10 my-10 mt-[300px]">
       <div className="flex justify-center">
         <h1
           ref={headerRef}
