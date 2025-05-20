@@ -183,6 +183,7 @@ const Form = () => {
     e.preventDefault();
     setExpInput("");
     setSkills("");
+    textareaFocusRef.current.value = "";
   };
 
   const inputFocus = () => {
@@ -313,8 +314,11 @@ const Form = () => {
 
                   <label
                     htmlFor="projectImg"
-                    className="absolute w-full h-full z-100 top-1/3 pointer-events-none"
-                    style={{ color: fontColor }}
+                    className="absolute w-full h-full z-100 top-0 rounded-2xl pt-32 pointer-events-none"
+                    style={{
+                      color: fontColor,
+                      backgroundColor: `${fontColor + "20"}`,
+                    }}
                   >
                     {" "}
                     <div className="flex flex-col text-center">
@@ -329,7 +333,7 @@ const Form = () => {
                     </div>
                   </label>
                   <input
-                    className="relative hover:scale-101 transition-all z-10 h-[400px] w-[300px] object-center object-cover border-1 rounded-2xl grid place-content-center cursor-pointer"
+                    className="relative hover:scale-101 transition-all z-10 h-[400px] w-[300px] object-center object-cover rounded-2xl grid place-content-center cursor-pointer"
                     style={{
                       borderColor: fontColor,
                       backgroundColor: bgColor,
@@ -525,8 +529,8 @@ const Form = () => {
                       style={{ color: accentColor }}
                       className="text-6xl ml-auto z-10 mr-auto group-hover:translate-y-3"
                     />
-                    <h3 className="text-2xl z-10 wfont-semibold">
-                      Upload image
+                    <h3 className="text-2xl z-10 font-semibold">
+                      Upload project image
                     </h3>
                     <p className="text-sm z-10">
                       Image must be in .jpg or .png
@@ -536,10 +540,9 @@ const Form = () => {
                 <input
                   className=" h-[350px]  transition-all w-full hover:scale-101 z-0 rounded-2xl cursor-pointer mb-7"
                   style={{
-                    boxShadow: `0px 0px 15px ${fontColor + "50"}`,
                     borderColor: fontColor,
-                    backgroundColor: bgColor,
-                    color: bgColor,
+                    backgroundColor: `${fontColor + "20"}`,
+                    color: "transparent",
                   }}
                   type="file"
                   accept="image/*"
