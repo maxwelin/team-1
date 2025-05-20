@@ -402,18 +402,18 @@ const Form = () => {
               className="outline-none border-b w-full text-3xl focus:placeholder-transparent placeholder:font-normal"
             />
             <input
-              type="url"
+              type="text"
               name="github"
               defaultValue={githubURL}
-              placeholder="Github"
-              className="outline-none  border-b w-full text-3xl "
+              placeholder="https://github.com/yourprofile"
+              className="outline-none  border-b w-full text-3xl focus:placeholder-transparent placeholder:font-normal"
             />
             <input
-              type="url"
+              type="text"
               name="linkedIn"
               defaultValue={linkedInURL}
-              placeholder="LinkedIn"
-              className="outline-none  border-b w-full text-3xl "
+              placeholder="https://linkedin.com/yourprofile"
+              className="outline-none  border-b w-full text-3xl focus:placeholder-transparent placeholder:font-normal"
             />
             <div className="flex gap-6 w-full border-b hover:pb-1 transition-all duration-200">
               <label className="relative w-full">
@@ -772,7 +772,7 @@ const Form = () => {
             personality and see your changes instantly. You can always go back
             and make edits at any time. <br /> When you're happy with how it
             looks, hit <span className="italic">"Generate Portfolio"</span> to
-            save or <span className="italic">"Reset All"</span> to start over.
+            save or <span className="">"Reset All"</span> to start over.
           </p>
           <select
             style={{ backgroundColor: bgColor }}

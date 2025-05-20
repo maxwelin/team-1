@@ -10,10 +10,8 @@ const FormContextProvider = ({ children }) => {
   const [education, setEducation] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [githubURL, setGithubURL] = useState("https://github.com/yourname");
-  const [linkedInURL, setLinkedInURL] = useState(
-    "https://linkedin.com/yourname"
-  );
+  const [githubURL, setGithubURL] = useState("");
+  const [linkedInURL, setLinkedInURL] = useState("");
   const [profilePic, setProfilePic] = useState(null);
   const [about, setAbout] = useState("");
   const [header, setHeader] = useState("");
