@@ -219,6 +219,7 @@ const Form = () => {
     setHeader("");
     setAbout("");
     setLocation("");
+    setExperience("");
     setQuote("");
     setSource("");
 
@@ -235,8 +236,9 @@ const Form = () => {
     form.header.value = "";
     form.about.value = "";
     form.location.value = "";
+    form.experience.value = "";
     form.quote.value = "";
-    form.soruce.value = "";
+    form.source.value = "";
 
     setProjList([]);
     setProfilePic(null);
@@ -720,7 +722,7 @@ const Form = () => {
               defaultValue={source}
               // onChange={(e) => setExpInput(e.target.value)}
               placeholder="-Every web developer, at some point"
-              className="shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] text-4xl resize-none pl-5 pr-5 pt-6 rounded-2xl h-[130px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal focus:placeholder-transparent"
+              className="shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] text-2xl resize-none pl-5 pr-5 pt-6 rounded-2xl h-[100px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal focus:placeholder-transparent"
             ></input>
           </div>
         </div>
