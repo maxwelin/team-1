@@ -53,7 +53,7 @@ const Projects = () => {
 
             <div
               className={`overflow-hidden transition-all duration-500 ${
-                isOpen ? "max-h-[1000px] pb-20 pt-50" : "max-h-0"
+                isOpen ? "max-h-[1000px] pb-20 pt-55" : "max-h-0"
               }`}
             >
               <div className="relative text-center pb-50 overflow-visible">
@@ -87,10 +87,10 @@ const Projects = () => {
                               proj.link.length > 0 ? "hover:scale-102" : ""
                             }  transition-all duration-150`}
                           />
-                          <h3 className="absolute left-1/2 -translate-x-1/2 -top-20 z-10 text-4xl tracking-tighter w-full">
+                          <h3 className="absolute left-1/2 -translate-x-1/2 -bottom-[calc(-100%-1rem)] z-10 text-4xl tracking-tighter w-full">
                             {proj.title}
                           </h3>
-                          <p className="absolute left-1/2 -translate-x-1/2 top-[calc(100%+1rem)] z-10 text-lg tracking-tighter">
+                          <p className="absolute left-1/2 -translate-x-1/2 top-[calc(100%+3.5rem)] z-10 text-lg tracking-tighter">
                             {proj.desc}
                           </p>
                         </a>
@@ -120,10 +120,10 @@ const Projects = () => {
                           projList[0].link.length > 0 ? "hover:scale-102" : ""
                         }  transition-all duration-150`}
                       />
-                      <h3 className="absolute left-1/2 -translate-x-1/2 -top-20 z-10 text-4xl tracking-tighter">
+                      <h3 className="absolute left-1/2 -translate-x-1/2 -bottom-[calc(-100%-1rem)] z-10 text-4xl tracking-tighter">
                         {projList[0]?.title}
                       </h3>
-                      <h3 className="absolute left-1/2 -translate-x-1/2 top-[calc(100%+2rem)] z-10 text-xl tracking-tighter">
+                      <h3 className="absolute left-1/2 -translate-x-1/2 top-[calc(100%+3.5rem)] z-10 text-xl tracking-tighter">
                         {projList[0]?.desc}
                       </h3>
                     </div>

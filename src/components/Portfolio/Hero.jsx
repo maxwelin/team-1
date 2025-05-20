@@ -7,8 +7,15 @@ import { HiOutlineMinus } from "react-icons/hi2";
 import { CgProfile } from "react-icons/cg";
 
 const Hero = () => {
-  const { firstName, lastName, school, education, profilePic, accentColor } =
-    useContext(FormContext);
+  const {
+    firstName,
+    lastName,
+    school,
+    education,
+    profilePic,
+    accentColor,
+    fontFamily,
+  } = useContext(FormContext);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -17,7 +24,13 @@ const Hero = () => {
       <div className="flex flex-col-reverse xl:flex-row items-start gap-10">
         {/* 📝 TEXT */}
         <div className="w-full xl:w-[80%]">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight leading-tight">
+          <h1
+            className={`text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold ${
+              fontFamily === "Impact"
+                ? "tracking-normal leading-normal"
+                : "tracking-tight leading-tight"
+            }`}
+          >
             <span>HI! I'M </span>
             <span className="whitespace-nowrap" style={{ color: accentColor }}>
               {firstName} {lastName}

@@ -263,7 +263,7 @@ const Form = () => {
       >
         Introduce Yourself
       </h1>
-      <p className=" text-lg text-center mb-2 w-full font-normal">
+      <p className=" text-lg text-center mb-2 w-1/2 mr-auto ml-auto font-normal">
         Fill in all the fields below to build your personal portfolio. <br />{" "}
         Add your name, contact details, school, education, and links to GitHub
         and LinkedIn. <br /> Don’t forget to upload your CV and profile picture
@@ -279,7 +279,7 @@ const Form = () => {
                   {/* Offset ram bakom bilden */}
                   <div
                     style={{ borderColor: accentColor }}
-                    className="absolute top-4 left-4 w-full h-full border-2 z-0"
+                    className="absolute top-4 left-4 w-full h-full border-2 z-0 rounded-2xl"
                   ></div>
 
                   {/* Själva bilden */}
@@ -303,7 +303,10 @@ const Form = () => {
                   >
                     {" "}
                     <div className="flex flex-col text-center">
-                      <HiCloudArrowUp className="text-6xl ml-auto mr-auto" />
+                      <HiCloudArrowUp
+                        style={{ color: accentColor }}
+                        className="text-6xl ml-auto mr-auto"
+                      />
                       <h3 className="text-2xl font-semibold">
                         Upload Profile Picture
                       </h3>
@@ -390,9 +393,9 @@ const Form = () => {
               placeholder="LinkedIn"
               className="outline-none  border-b w-full text-3xl font-light "
             />
-            <div className="flex gap-6 w-full">
-              <label className="relative w-full cursor-pointer">
-                <div className="flex justify-between items-center border-b text-3xl font-light ">
+            <div className="flex gap-6 w-full border-b-bla hover:pb-1 transition-all duration-200">
+              <label className="relative w-full">
+                <div className="flex justify-between items-center text-3xl font-light ">
                   {cvFileName ? cvFileName : "Upload CV"} <BsFiletypePdf />
                 </div>
                 <input
@@ -408,7 +411,7 @@ const Form = () => {
         </div>
 
         <div className="flex flex-col w-1/2 mx-auto mt-80 mb-0 gap-2">
-          <h3 className="text-5xl text-center font-normal mb-2">
+          <h3 className="text-5xl text-center font-normal mb-1">
             What you’re Looking For?
           </h3>
           <p className="text-lg text-center">
@@ -417,26 +420,35 @@ const Form = () => {
           </p>
 
           {/* Header textarea – större */}
-          <div className="flex flex-col border-t border-b py-2">
-            <label className="text-base italic">Write your header here:</label>
+          <div className="flex relative flex-col py-6">
+            <label
+              style={{ color: fontColor }}
+              className="absolute top-6 text-lg italic pl-5 pt-5 pr-5"
+            >
+              What is this portfolio for? Write your header here:
+            </label>
             <textarea
               name="header"
               defaultValue={header}
               placeholder="Seeking LIA 2025 - Open to opportunities..."
-              className="resize-none text-[4rem] leading-[4.5rem] font-medium placeholder-gray-400 outline-none transition-colors h-[260px] focus:placeholder-transparent"
+              className="shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal text-4xl"
             />
           </div>
 
           {/* About textarea */}
-          <div className="flex flex-col border-b">
-            <label className="text-base italic mb-2">
-              Something about you like a cover letter:
+          <div className="relative flex flex-col">
+            <label
+              style={{ color: fontColor }}
+              className="absolute top-0 text-lg italic pl-5 pt-5 pr-5"
+            >
+              Something about you, like a cover letter:
             </label>
+
             <textarea
               name="about"
               defaultValue={about}
               placeholder="I'm a creative and detail-oriented person who enjoys working with design and layout..."
-              className="resize-none text-xl font-medium placeholder-gray-400 outline-none transition-colors leading-relaxed h-[300px] focus:placeholder-transparent"
+              className="shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] text-xl resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal"
             />
           </div>
         </div>
@@ -449,7 +461,7 @@ const Form = () => {
             Upload an image, write a short description, and share a link to your
             GitHub or live demo.
           </p>
-          <div className="relative flex flex-col items-center border-t w-1/2 mr-auto ml-auto pt-7 pb-7 mb-5 justify-around">
+          <div className="relative flex flex-col items-center w-1/2 mr-auto ml-auto pt-7 pb-7 mb-5 justify-around">
             {imgUrl ? (
               <>
                 <label
@@ -485,13 +497,16 @@ const Form = () => {
                     className="flex flex-col text-center"
                     style={{ color: fontColor }}
                   >
-                    <HiCloudArrowUp className="text-6xl ml-auto mr-auto" />
+                    <HiCloudArrowUp
+                      style={{ color: accentColor }}
+                      className="text-6xl ml-auto mr-auto group-hover:translate-y-3"
+                    />
                     <h3 className="text-2xl wfont-semibold">Upload image</h3>
                     <p className="text-sm">Image must be in .jpg or .png</p>
                   </div>
                 </label>
                 <input
-                  className=" h-[350px] border-1 w-full rounded-2xl cursor-pointer mb-7"
+                  className=" h-[350px] shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] transition-all hover:shadow-[0_4px_8px_rgba(0,0,0,0.3),_0_-4px_8px_rgba(0,0,0,0.1)] w-full rounded-2xl cursor-pointer mb-7"
                   style={{
                     borderColor: fontColor,
                     backgroundColor: bgColor,
@@ -613,7 +628,7 @@ const Form = () => {
               <div className="relative">
                 <label
                   style={{ color: fontColor }}
-                  className="absolute top-0 text-base italic pl-5 pt-5 pr-5"
+                  className="absolute top-0 text-lg italic pl-5 pt-5 pr-5"
                 >
                   Describe your skills and how you've applied them:
                 </label>
