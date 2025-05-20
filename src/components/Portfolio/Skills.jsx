@@ -7,7 +7,7 @@ import Marquee from "react-fast-marquee";
 const Skills = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showMarquee, setShowMarquee] = useState(false);
-  const { skills, accentColor, experience } = useContext(FormContext);
+  const { skills, accentColor, bgColor, experience } = useContext(FormContext);
 
   useEffect(() => {
     let timeout;
@@ -46,12 +46,13 @@ const Skills = () => {
               isOpen ? "max-h-[1000px] pt-20" : "max-h-0"
             }`}
           >
-            <div className="w-full mb-10">
+            <div className="w-full mb-30">
               {showMarquee && (
                 <Marquee
                   key={isOpen ? "open" : "closed"}
                   pauseOnHover="true"
                   gradient="true"
+                  gradientColor={bgColor}
                   gradientWidth="300px"
                   speed="100"
                   style={{}}
