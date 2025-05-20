@@ -60,7 +60,7 @@ const Skills = () => {
                   {skills.map((skill, index) => (
                     <p
                       key={index}
-                      className="text-6xl font-bold flex-grow-0 flex-shrink-0 basis-1/5 mr-30 overflow-hidden pb-1 mb-4"
+                      className="text-7xl font-bold flex-grow-0 flex-shrink-0 basis-1/5 mr-30 overflow-hidden pb-1 mb-4"
                     >
                       {skill}
                     </p>
