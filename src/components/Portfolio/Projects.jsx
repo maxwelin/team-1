@@ -12,11 +12,11 @@ import { FormContext } from "../providers/FormContext";
 const Projects = () => {
   const { accentColor, projList, fontColor } = useContext(FormContext);
 
+  console.log(projList);
+
   const [isOpen, setIsOpen] = useState(false);
   const [hoverNext, setHoverNext] = useState(false);
   const [hoverBack, setHoverBack] = useState(false);
-
-  console.log(projList);
 
   var settings = {
     centerMode: true,
@@ -83,9 +83,11 @@ const Projects = () => {
                           <img
                             src={proj.img}
                             alt=""
-                            className="object-cover w-full  max-h-full  hover:scale-102 transition-all duration-150"
+                            className={`object-cover w-full max-h-full ${
+                              proj.link.length > 0 ? "hover:scale-102" : ""
+                            }  transition-all duration-150`}
                           />
-                          <h3 className="absolute left-1/2 -translate-x-1/2 -top-13 z-10 text-4xl tracking-tighter">
+                          <h3 className="absolute left-1/2 -translate-x-1/2 -top-20 z-10 text-4xl tracking-tighter w-full">
                             {proj.title}
                           </h3>
                           <p className="absolute left-1/2 -translate-x-1/2 top-[calc(100%+1rem)] z-10 text-lg tracking-tighter">
@@ -110,16 +112,18 @@ const Projects = () => {
                   </>
                 ) : (
                   <>
-                    <div className=" w-[900px] h-[450px] relative ml-auto mr-auto">
+                    <div className=" w-[900px] h-[450px] relative ml-auto mr-auto ">
                       <img
                         src={projList[0]?.img}
                         alt=""
-                        className="object-cover w-full  max-h-full"
+                        className={`object-cover w-full max-h-full ${
+                          projList[0].link.length > 0 ? "hover:scale-102" : ""
+                        }  transition-all duration-150`}
                       />
-                      <h3 className="absolute left-1/2 -translate-x-1/2 -top-13 z-10 text-4xl tracking-tighter">
+                      <h3 className="absolute left-1/2 -translate-x-1/2 -top-20 z-10 text-4xl tracking-tighter">
                         {projList[0]?.title}
                       </h3>
-                      <h3 className="absolute left-1/2 -translate-x-1/2 -bottom-22 z-10 text-xl tracking-tighter">
+                      <h3 className="absolute left-1/2 -translate-x-1/2 top-[calc(100%+2rem)] z-10 text-xl tracking-tighter">
                         {projList[0]?.desc}
                       </h3>
                     </div>
