@@ -1,11 +1,26 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { GoPlus } from "react-icons/go";
 import { HiOutlineMinus } from "react-icons/hi2";
 import { FormContext } from "../providers/FormContext";
+import Marquee from "react-fast-marquee";
 
 const Skills = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showMarquee, setShowMarquee] = useState(false);
   const { skills, accentColor, experience } = useContext(FormContext);
+
+  useEffect(() => {
+    let timeout;
+    if (isOpen) {
+      timeout = setTimeout(() => {
+        setShowMarquee(true);
+      }, 100);
+    } else {
+      setShowMarquee(false);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [isOpen]);
 
   return (
     <div className="text-4xl py-6">
@@ -31,25 +46,31 @@ const Skills = () => {
               isOpen ? "max-h-[1000px] pt-20" : "max-h-0"
             }`}
           >
-            <div className="flex flex-col gap-8">
-              <div className="flex flex-wrap items-center justify-around">
-                {skills.map((skill, index) => (
-                  <p
-                    key={index}
-                    className="text-5xl font-bold flex-grow-0 flex-shrink-0 basis-1/5"
-                  >
-                    {skill}
-                  </p>
-                ))}
-              </div>
-              {experience && (
-                <span
-                  style={{ color: accentColor }}
-                  className="text-lg w-1/2 mt-2"
+            <div className="w-full mb-10">
+              {showMarquee && (
+                <Marquee
+                  key={isOpen ? "open" : "closed"}
+                  pauseOnHover="true"
+                  gradient="true"
+                  gradientWidth="300px"
+                  speed="100"
+                  style={{}}
                 >
-                  {experience}
-                </span>
+                  {skills.map((skill, index) => (
+                    <p
+                      key={index}
+                      className="text-6xl font-bold flex-grow-0 flex-shrink-0 basis-1/5 mr-30 overflow-hidden pb-1 mb-4"
+                    >
+                      {skill}
+                    </p>
+                  ))}
+                </Marquee>
               )}
+              <div className="text-lg w-1/2">
+                {experience && (
+                  <span style={{ color: accentColor }}>{experience}</span>
+                )}
+              </div>
             </div>
           </div>
         </div>
