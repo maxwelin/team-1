@@ -331,7 +331,7 @@ const Form = () => {
               name="fname"
               defaultValue={firstName}
               placeholder="First name"
-              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 text-black border-black focus:placeholder-transparent"
+              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 focus:placeholder-transparent"
             />
 
             <input
@@ -339,42 +339,42 @@ const Form = () => {
               name="lname"
               defaultValue={lastName}
               placeholder="Last name"
-              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 text-black border-black focus:placeholder-transparent"
+              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 focus:placeholder-transparent"
             />
             <input
               type="text"
               name="school"
               defaultValue={school}
               placeholder="School"
-              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 text-black border-black focus:placeholder-transparent"
+              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 focus:placeholder-transparent"
             />
             <input
               type="text"
               name="education"
               defaultValue={education}
               placeholder="Education"
-              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 text-black border-black focus:placeholder-transparent"
+              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 focus:placeholder-transparent"
             />
             <input
               type="email"
               name="email"
               defaultValue={email}
               placeholder="Email"
-              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 text-black border-black focus:placeholder-transparent"
+              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 focus:placeholder-transparent"
             />
             <input
               type="tel"
               name="telephone"
               defaultValue={phoneNumber}
               placeholder="Phone number"
-              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 text-black border-black focus:placeholder-transparent"
+              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 focus:placeholder-transparent"
             />
             <input
               type="text"
               name="location"
               defaultValue={location}
               placeholder="Location"
-              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 text-black border-black focus:placeholder-transparent"
+              className="outline-none border-b w-full text-3xl font-light placeholder-gray-400 focus:placeholder-transparent"
             />
             <input
               type="url"
@@ -418,27 +418,25 @@ const Form = () => {
 
           {/* Header textarea – större */}
           <div className="flex flex-col border-t border-b py-2">
-            <label className="text-sm italic text-black">
-              Write your header here:
-            </label>
+            <label className="text-base italic">Write your header here:</label>
             <textarea
               name="header"
               defaultValue={header}
               placeholder="Seeking LIA 2025 - Open to opportunities..."
-              className="resize-none text-[4rem] leading-[4.5rem] font-medium text-gray-400 focus:text-black placeholder-gray-400 outline-none transition-colors h-[260px] focus:placeholder-transparent"
+              className="resize-none text-[4rem] leading-[4.5rem] font-medium placeholder-gray-400 outline-none transition-colors h-[260px] focus:placeholder-transparent"
             />
           </div>
 
           {/* About textarea */}
           <div className="flex flex-col border-b">
-            <label className="text-sm italic mb-2 text-black">
+            <label className="text-base italic mb-2">
               Something about you like a cover letter:
             </label>
             <textarea
               name="about"
               defaultValue={about}
               placeholder="I'm a creative and detail-oriented person who enjoys working with design and layout..."
-              className="resize-none text-xl font-medium text-gray-400 focus:text-black placeholder-gray-400 outline-none transition-colors leading-relaxed h-[300px] focus:placeholder-transparent"
+              className="resize-none text-xl font-medium placeholder-gray-400 outline-none transition-colors leading-relaxed h-[300px] focus:placeholder-transparent"
             />
           </div>
         </div>
@@ -451,7 +449,7 @@ const Form = () => {
             Upload an image, write a short description, and share a link to your
             GitHub or live demo.
           </p>
-          <div className="relative flex flex-col items-center border-t w-1/2 mr-auto ml-auto border-b pt-7 pb-7 mb-5 justify-around">
+          <div className="relative flex flex-col items-center border-t w-1/2 mr-auto ml-auto pt-7 pb-7 mb-5 justify-around">
             {imgUrl ? (
               <>
                 <label
@@ -613,7 +611,10 @@ const Form = () => {
                   ))}
               </div>
               <div className="relative">
-                <label className="absolute top-0 text-base italic text-black pl-5 pt-5 pr-5">
+                <label
+                  style={{ color: fontColor }}
+                  className="absolute top-0 text-base italic pl-5 pt-5 pr-5"
+                >
                   Describe your skills and how you've applied them:
                 </label>
                 <textarea
@@ -621,8 +622,8 @@ const Form = () => {
                   name="experience"
                   maxLength={300}
                   ref={textareaFocusRef}
-                  value={expInput}
-                  onChange={(e) => setExpInput(e.target.value)}
+                  defaultValue={experience}
+                  // onChange={(e) => setExpInput(e.target.value)}
                   placeholder="I’ve applied my skills in HTML, CSS, JavaScript, and React in various school projects, both individually and in team settings..."
                   className="shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] text-xl resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal"
                 ></textarea>
@@ -669,7 +670,7 @@ const Form = () => {
 
           {/* Quote textarea */}
           <div className="flex flex-col border-t border-b py-2">
-            <label className="text-sm italic mb-2 text-black">
+            <label className="text-base italic mb-2">
               Write your quote here:
             </label>
             <textarea
@@ -677,13 +678,13 @@ const Form = () => {
               defaultValue={quote}
               placeholder="“The hardest problem in web development?&#10;Centering a div.”"
               onChange={(e) => setQuote(e.target.value)}
-              className="resize-none text-5xl italic font-medium text-gray-400 focus:text-black placeholder-gray-400 outline-none transition-colors leading-snug h-[340px] focus:placeholder-transparent"
+              className="resize-none text-5xl italic font-medium placeholder-gray-400 outline-none transition-colors leading-snug h-[340px] focus:placeholder-transparent"
             />
           </div>
 
           {/* Source input */}
           <div className="flex flex-col border-b pb-2">
-            <label className="text-sm italic mb-2 text-black">
+            <label className="text-base italic mb-2">
               Who said it?, write here:
             </label>
             <input
@@ -692,7 +693,7 @@ const Form = () => {
               defaultValue={source}
               placeholder="– Every developer, at some point"
               onChange={(e) => setSource(e.target.value)}
-              className="text-xl italic font-medium text-gray-400 focus:text-black placeholder-gray-400 outline-none transition-colors focus:placeholder-transparent"
+              className="text-xl italic font-medium placeholder-gray-400 outline-none transition-colors focus:placeholder-transparent"
             />
           </div>
         </div>
