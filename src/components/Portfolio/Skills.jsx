@@ -66,7 +66,7 @@ const Skills = () => {
                   ))}
                 </Marquee>
               )}
-              <div className="text-lg w-1/2">
+              <div className="text-xl w-1/2">
                 {experience && (
                   <span style={{ color: accentColor }}>{experience}</span>
                 )}
