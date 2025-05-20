@@ -608,31 +608,24 @@ const Form = () => {
                       style={{ color: bgColor, backgroundColor: fontColor }}
                       className="text-2xl text-center px-2 py-1 rounded-sm w-max"
                     >
-                      {skill.toUpperCase()}
+                      {skill}
                     </p>
                   ))}
               </div>
               <div className="relative">
+                <label className="absolute top-0 text-base italic text-black pl-5 pt-5 pr-5">
+                  Describe your skills and how you've applied them:
+                </label>
                 <textarea
                   type="text"
                   name="experience"
+                  maxLength={300}
                   ref={textareaFocusRef}
                   value={expInput}
                   onChange={(e) => setExpInput(e.target.value)}
-                  placeholder="Describe your skills and how you've applied them professionally or in school:"
-                  className="outline-none resize-none border rounded-2xl h-[300px] p-2 w-full placeholder:text-sm placeholder-black placeholder:italic mb-5"
+                  placeholder="I’ve applied my skills in HTML, CSS, JavaScript, and React in various school projects, both individually and in team settings..."
+                  className="shadow-[0_4px_8px_rgba(0,0,0,0.1),_0_-4px_8px_rgba(0,0,0,0.05)] text-xl resize-none pt-18 pl-5 pr-5 rounded-2xl h-[300px] w-full font-medium placeholder:text-gray-400 outline-none placeholder:font-normal"
                 ></textarea>
-
-                {expInput.trim() === "" && (
-                  <p
-                    onClick={textareaFocus}
-                    className="absolute top-7 text-gray-400 text-xl font-light p-2 mt-5"
-                  >
-                    I’ve applied my skills in HTML, CSS, JavaScript, and React
-                    in various school projects, both individually and in team
-                    settings...
-                  </p>
-                )}
               </div>
 
               <button
