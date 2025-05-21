@@ -370,14 +370,14 @@ const Form = () => {
               style={{ color: fontColor }}
               name="school"
               defaultValue={school}
-              placeholder="School"
+              placeholder="School/Workplace"
               className="outline-none border-b w-full text-3xl focus:placeholder-transparent placeholder:font-normal"
             />
             <input
               type="text"
               name="education"
               defaultValue={education}
-              placeholder="Education"
+              placeholder="Title"
               className="outline-none border-b w-full text-3xl focus:placeholder-transparent placeholder:font-normal"
             />
             <input
