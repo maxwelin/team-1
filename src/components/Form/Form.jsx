@@ -354,7 +354,7 @@ const Form = () => {
               style={{ color: fontColor }}
               defaultValue={firstName}
               placeholder="First name"
-              className="outline-none border-b w-full text-3xl font-light focus:placeholder-transparent placeholder:font-normal"
+              className="outline-none border-b w-full text-3xl focus:placeholder-transparent placeholder:font-normal"
             />
 
             <input
@@ -436,7 +436,7 @@ const Form = () => {
           <h3 className="text-5xl text-center font-normal mb-1">
             What Are You Looking For?
           </h3>
-          <p className="text-lg text-center">
+          <p className="text-lg text-center mb-7">
             Write your availability and what you’re open to – internship, job or
             freelance?
           </p>
@@ -445,7 +445,7 @@ const Form = () => {
           <div className="flex relative flex-col py-2">
             <label
               style={{ color: fontColor, backgroundColor : bgColor }}
-              className="absolute font-semibold top-2 text-lg z-10 italic pl-5 pt-5 pr-5"
+              className="absolute font-semibold rounded-2xl top-2 text-lg z-10 italic pl-5 pt-5 pr-5"
             >
               What is this portfolio for? Write your header here:
             </label>
@@ -464,7 +464,7 @@ const Form = () => {
           <div className="relative flex flex-col">
             <label
               style={{ color: fontColor, backgroundColor : bgColor }}
-              className="absolute font-semibold top-0 z-10 text-lg italic pl-5 pt-5 pr-5"
+              className="absolute font-semibold top-0 rounded-2xl z-10 text-lg italic pl-5 pt-5 pr-5"
             >
               Something about you, like a cover letter:
             </label>
@@ -482,10 +482,10 @@ const Form = () => {
         </div>
 
         <div className="flex flex-col mt-80 mb-30">
-          <h3 className=" text-5xl text-center font-normal">
+          <h3 className=" text-5xl w-1/2 mr-auto ml-auto text-center font-normal">
             Got Any Projects To Show?
           </h3>
-          <p className="text-center text-lg pt-4 mb-3">
+          <p className="text-center w-1/2 mr-auto ml-auto text-lg pt-4 mb-7">
             Upload an image, write a short description, and share a link to your
             GitHub or live demo.
           </p>
@@ -623,7 +623,7 @@ const Form = () => {
             <p className=" text-5xl text-center font-normal">
               Technical Skills
             </p>
-            <p className="text-center text-xl pt-4 mb-8">
+            <p className="text-center text-xl pt-4 mb-7">
               What are you good at or what have you learned? Add as many skills
               as you like – for example “React”, “Figma” or “CSS”. Then write a
               few sentences about your experience working with these tools or
@@ -660,7 +660,7 @@ const Form = () => {
               <div className="relative">
                 <label
                   style={{ color: fontColor, backgroundColor : bgColor }}
-                  className="absolute font-semibold top-0 z-10 text-lg italic pl-5 pt-5 pr-5"
+                  className="absolute rounded-2xl font-semibold top-0 z-10 text-lg italic pl-5 pt-5 pr-5"
                 >
                   Describe your skills and how you've applied them:
                 </label>
@@ -712,7 +712,7 @@ const Form = () => {
 
         <div className="flex flex-col w-1/2 mx-auto mt-80 gap-2">
           <h3 className="text-5xl text-center font-normal mb-2">Your Quote</h3>
-          <p className="text-lg text-center">
+          <p className="text-lg text-center mb-5">
             Share a quote that inspires you – lyrics, a saying, or something
             personal. <br />
             Include who said it, if you want. Both fields are optional.
@@ -722,7 +722,7 @@ const Form = () => {
           <div className="flex flex-col relative py-2">
             <label
               style={{ color: fontColor, backgroundColor : bgColor }}
-              className="absolute font-semibold z-10 top-2 text-lg italic pl-5 pt-5 pr-5"
+              className="absolute rounded-2xl font-semibold z-10 top-2 text-lg italic pl-5 pt-5 pr-5"
             >
               Write your quote here:
             </label>
@@ -766,7 +766,7 @@ const Form = () => {
           <h3 className="text-5xl text-center font-normal mb-5">
             Style Your Portfolio
           </h3>
-          <p className="text-lg text-center mb-10">
+          <p className="text-lg text-center mb-7">
             Great! You've filled in all the details – now it’s time to make the
             portfolio truly yours. <br /> Customize the style to match your
             personality and see your changes instantly. You can always go back
