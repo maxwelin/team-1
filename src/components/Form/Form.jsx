@@ -442,10 +442,10 @@ const Form = () => {
           </p>
 
           {/* Header textarea – större */}
-          <div className="flex relative flex-col py-6">
+          <div className="flex relative flex-col py-2">
             <label
               style={{ color: fontColor }}
-              className="absolute font-semibold top-6 text-lg italic pl-5 pt-5 pr-5"
+              className="absolute font-semibold top-2 text-lg italic pl-5 pt-5 pr-5"
             >
               What is this portfolio for? Write your header here:
             </label>
@@ -719,7 +719,7 @@ const Form = () => {
           </p>
 
           {/* Quote textarea */}
-          <div className="flex flex-col relative  py-2">
+          <div className="flex flex-col relative py-2">
             <label
               style={{ color: fontColor }}
               className="absolute font-semibold top-0 text-lg italic pl-5 pt-5 pr-5"
