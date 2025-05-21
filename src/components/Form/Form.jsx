@@ -444,8 +444,8 @@ const Form = () => {
           {/* Header textarea – större */}
           <div className="flex relative flex-col py-2">
             <label
-              style={{ color: fontColor }}
-              className="absolute font-semibold top-2 text-lg italic pl-5 pt-5 pr-5"
+              style={{ color: fontColor, backgroundColor : bgColor }}
+              className="absolute font-semibold top-2 text-lg z-10 italic pl-5 pt-5 pr-5"
             >
               What is this portfolio for? Write your header here:
             </label>
@@ -463,8 +463,8 @@ const Form = () => {
           {/* About textarea */}
           <div className="relative flex flex-col">
             <label
-              style={{ color: fontColor }}
-              className="absolute font-semibold top-0 text-lg italic pl-5 pt-5 pr-5"
+              style={{ color: fontColor, backgroundColor : bgColor }}
+              className="absolute font-semibold top-0 z-10 text-lg italic pl-5 pt-5 pr-5"
             >
               Something about you, like a cover letter:
             </label>
@@ -659,8 +659,8 @@ const Form = () => {
               </div>
               <div className="relative">
                 <label
-                  style={{ color: fontColor }}
-                  className="absolute font-semibold top-0 text-lg italic pl-5 pt-5 pr-5"
+                  style={{ color: fontColor, backgroundColor : bgColor }}
+                  className="absolute font-semibold top-0 z-10 text-lg italic pl-5 pt-5 pr-5"
                 >
                   Describe your skills and how you've applied them:
                 </label>
@@ -721,8 +721,8 @@ const Form = () => {
           {/* Quote textarea */}
           <div className="flex flex-col relative py-2">
             <label
-              style={{ color: fontColor }}
-              className="absolute font-semibold top-0 text-lg italic pl-5 pt-5 pr-5"
+              style={{ color: fontColor, backgroundColor : bgColor }}
+              className="absolute font-semibold z-10 top-2 text-lg italic pl-5 pt-5 pr-5"
             >
               Write your quote here:
             </label>
