@@ -32,10 +32,7 @@ const About = () => {
               isOpen ? "max-h-[1000px] pt-6" : "max-h-0"
             }`}
           >
-            <div
-              style={{ color: fontColor }}
-              className="w-full py-4 rounded-md text-lg"
-            >
+            <div style={{ color: fontColor }} className="w-full py-4 text-lg">
               {about || "Ingen text angiven."}
             </div>
           </div>
